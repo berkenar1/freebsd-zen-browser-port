@@ -1,0 +1,174 @@
+bin/zen-browser
+lib/zen-browser/application.ini
+lib/zen-browser/browser.dtd
+lib/zen-browser/browser/aboutCertError.html
+lib/zen-browser/browser/aboutDialog.html
+lib/zen-browser/browser/aboutNetError.html
+lib/zen-browser/browser/aboutNetError_certonly.html
+lib/zen-browser/browser/aboutNeterror.css
+lib/zen-browser/browser/aboutNetErrorButtons.css
+lib/zen-browser/browser/aboutNetErrorItemsAndButtons.css
+lib/zen-browser/browser/aboutNetErrorJSLogic.js
+lib/zen-browser/browser/aboutRobots.html
+lib/zen-browser/browser/aboutSessionRestore.html
+lib/zen-browser/browser/aboutWelcome.html
+lib/zen-browser/browser/base/content/browser.xhtml
+lib/zen-browser/browser/chrome.manifest
+lib/zen-browser/browser/defaults/preferences/all-l10n.js
+lib/zen-browser/browser/defaults/preferences/browser-l10n.js
+lib/zen-browser/browser/defaults/preferences/firefox-branding.js
+lib/zen-browser/browser/defaults/preferences/firefox.js
+lib/zen-browser/browser/defaults/preferences/syspref.js
+lib/zen-browser/browser/chrome/en-US/browser/aboutCertError.dtd
+lib/zen-browser/browser/chrome/en-US/browser/aboutDialog.dtd
+lib/zen-browser/browser/chrome/en-US/browser/aboutDialogExtensions.dtd
+lib/zen-browser/browser/chrome/en-US/browser/aboutNetError.dtd
+lib/zen-browser/browser/chrome/en-US/browser/baseMenubar.dtd
+lib/zen-browser/browser/chrome/en-US/browser/browser.dtd
+lib/zen-browser/browser/chrome/en-US/browser/compatPanel.dtd
+lib/zen-browser/browser/chrome/en-US/browser/downloads.dtd
+lib/zen-browser/browser/chrome/en-US/browser/pageInfo.dtd
+lib/zen-browser/browser/chrome/en-US/browser/preferences/preferences.dtd
+lib/zen-browser/browser/omni.ja
+lib/zen-browser/chrome/toolkit/res/cursors/alias.png
+lib/zen-browser/chrome/toolkit/res/cursors/alias@2x.png
+lib/zen-browser/chrome/toolkit/res/cursors/cell.png
+lib/zen-browser/chrome/toolkit/res/cursors/cell@2x.png
+lib/zen-browser/chrome/toolkit/res/cursors/col-resize.png
+lib/zen-browser/chrome/toolkit/res/cursors/col-resize@2x.png
+lib/zen-browser/chrome/toolkit/res/cursors/copy.png
+lib/zen-browser/chrome/toolkit/res/cursors/copy@2x.png
+lib/zen-browser/chrome/toolkit/res/cursors/help.png
+lib/zen-browser/chrome/toolkit/res/cursors/help@2x.png
+lib/zen-browser/chrome/toolkit/res/cursors/move.png
+lib/zen-browser/chrome/toolkit/res/cursors/move@2x.png
+lib/zen-browser/chrome/toolkit/res/cursors/no-drop.png
+lib/zen-browser/chrome/toolkit/res/cursors/no-drop@2x.png
+lib/zen-browser/chrome/toolkit/res/cursors/not-allowed.png
+lib/zen-browser/chrome/toolkit/res/cursors/not-allowed@2x.png
+lib/zen-browser/chrome/toolkit/res/cursors/pointer.png
+lib/zen-browser/chrome/toolkit/res/cursors/pointer@2x.png
+lib/zen-browser/chrome/toolkit/res/cursors/row-resize.png
+lib/zen-browser/chrome/toolkit/res/cursors/row-resize@2x.png
+lib/zen-browser/chrome/toolkit/res/cursors/vert-text.png
+lib/zen-browser/chrome/toolkit/res/cursors/vert-text@2x.png
+lib/zen-browser/chrome/toolkit/res/html/folder.png
+lib/zen-browser/chrome/toolkit/res/html/glyph-warning.png
+lib/zen-browser/defaults/autoconfig/prefcalls.js
+lib/zen-browser/defaults/profile/prefs.js
+lib/zen-browser/features/firefox-view@mozilla.org.xpi
+lib/zen-browser/features/screenshots@mozilla.org.xpi
+lib/zen-browser/firefox
+lib/zen-browser/firefox-bin
+lib/zen-browser/omni.ja
+lib/zen-browser/platform.ini
+lib/zen-browser/plugin-container
+lib/zen-browser/pingsender
+lib/zen-browser/libaudiookapi.so
+lib/zen-browser/liblgpllibs.so
+lib/zen-browser/libmozgtk.so
+lib/zen-browser/libmozgtk.so.0
+lib/zen-browser/libmozsandbox.so
+lib/zen-browser/libmozwayland.so
+lib/zen-browser/libmozwayland.so.0
+lib/zen-browser/libmozsqlite3.so
+lib/zen-browser/libmozxul.so
+lib/zen-browser/libmozxul.so.0
+lib/zen-browser/libxul.so
+lib/zen-browser/libxul.so.0
+lib/zen-browser/libpixel.so
+lib/zen-browser/librdp.so
+lib/zen-browser/libwdmf.so
+lib/zen-browser/resources/app-theme.svg
+lib/zen-browser/resources/builtin/balrog/manifest.json
+lib/zen-browser/resources/builtin/geoip.sqlite
+lib/zen-browser/resources/gre-resources.manifest
+lib/zen-browser/resources/app.mozbuild
+lib/zen-browser/update-settings.ini
+lib/zen-browser/removed-files
+lib/zen-browser/blocklist.xml
+lib/zen-browser/components/components.manifest
+lib/zen-browser/components/aboutmemory.js
+lib/zen-browser/components/aboutaddons.js
+lib/zen-browser/components/aboutcache.js
+lib/zen-browser/components/aboutcacheentry.js
+lib/zen-browser/components/aboutconfig.js
+lib/zen-browser/components/abouthealth.js
+lib/zen-browser/components/aboutobservers.js
+lib/zen-browser/components/aboutprocesses.js
+lib/zen-browser/components/aboutprofile.js
+lib/zen-browser/components/abusereport.js
+lib/zen-browser/components/captiveportals.manifest
+lib/zen-browser/components/crashes.js
+lib/zen-browser/components/extensions.manifest
+lib/zen-browser/components/httpd.js
+lib/zen-browser/components/identity.manifest
+lib/zen-browser/components/mozintl.manifest
+lib/zen-browser/components/newtabservices.manifest
+lib/zen-browser/components/nsGeolocationProvider.js
+lib/zen-browser/components/privacypane.manifest
+lib/zen-browser/components/recording-state.jsm
+lib/zen-browser/components/screenshots.manifest
+lib/zen-browser/components/socketprocess.manifest
+lib/zen-browser/components/storage.manifest
+lib/zen-browser/components/sync.manifest
+lib/zen-browser/components/toolkit.manifest
+lib/zen-browser/components/toolkitsystem.manifest
+lib/zen-browser/components/update.manifest
+lib/zen-browser/components/updates.xml
+lib/zen-browser/components/versionchecker.manifest
+lib/zen-browser/gmp-clearkey/0.1/gmpclearkeydecryptor.so
+lib/zen-browser/gmp-clearkey/0.1/gmp-clearkey.so
+lib/zen-browser/gmp-clearkey/0.1/libstagefright_chromiummp4.so
+lib/zen-browser/gmp-clearkey/0.1/manifest.json
+lib/zen-browser/fonts/EmojiOneColor.otf
+lib/zen-browser/fonts/Twemoji.otf
+lib/zen-browser/distribution/searchplugins/google.xml
+lib/zen-browser/distribution/searchplugins/bing.xml
+lib/zen-browser/distribution/searchplugins/duckduckgo.xml
+lib/zen-browser/dictionaries/en-US.aff
+lib/zen-browser/dictionaries/en-US.dic
+lib/zen-browser/defaults/locale/branding/brand.dtd
+lib/zen-browser/defaults/locale/branding/brand.properties
+lib/zen-browser/defaults/locale/en-US/browser/aboutDialog.properties
+lib/zen-browser/defaults/locale/en-US/browser/browser.properties
+lib/zen-browser/defaults/locale/en-US/browser/browserContext.properties
+lib/zen-browser/defaults/locale/en-US/browser/preferences/privacy.properties
+lib/zen-browser/defaults/locale/en-US/browser/screenshots.properties
+lib/zen-browser/defaults/locale/en-US/extensions.properties
+lib/zen-browser/defaults/locale/en-US/global.properties
+lib/zen-browser/defaults/locale/en-US/global-keys.properties
+lib/zen-browser/extensions/formautofill@mozilla.org/manifest.json
+lib/zen-browser/extensions/formautofill@mozilla.org/background.js
+lib/zen-browser/extensions/fxmonitor@mozilla.org/manifest.json
+lib/zen-browser/extensions/fxmonitor@mozilla.org/popup.html
+lib/zen-browser/extensions/screenshots@mozilla.org/manifest.json
+lib/zen-browser/modules/AssumeGuestOnlyContext.jsm
+lib/zen-browser/modules/ExtensionProcessScript.jsm
+lib/zen-browser/modules/addons/ChangeLog
+share/applications/zen-browser.desktop
+share/icons/hicolor/16x16/apps/zen-browser.png
+share/icons/hicolor/22x22/apps/zen-browser.png
+share/icons/hicolor/24x24/apps/zen-browser.png
+share/icons/hicolor/32x32/apps/zen-browser.png
+share/icons/hicolor/48x48/apps/zen-browser.png
+share/icons/hicolor/64x64/apps/zen-browser.png
+share/icons/hicolor/128x128/apps/zen-browser.png
+share/pixmaps/zen-browser.png
+@dir lib/zen-browser/distribution
+@dir lib/zen-browser/extensions
+@dir lib/zen-browser/modules
+@dir lib/zen-browser/components
+@dir lib/zen-browser/dictionaries
+@dir lib/zen-browser/gmp-clearkey/0.1
+@dir lib/zen-browser/fonts
+@dir lib/zen-browser/chrome/toolkit/res/cursors
+@dir lib/zen-browser/chrome/toolkit/res/html
+@dir lib/zen-browser/browser/chrome/en-US/browser
+@dir lib/zen-browser/browser/chrome/en-US
+@dir lib/zen-browser/browser/chrome
+@dir lib/zen-browser/browser/defaults/preferences
+@dir lib/zen-browser/browser/defaults
+@dir lib/zen-browser/browser/base/content
+@dir lib/zen-browser/browser/base
+@dir lib/zen-browser/browser

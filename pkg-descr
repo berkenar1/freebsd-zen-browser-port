@@ -1,0 +1,19 @@
+Zen Browser is a high-performance, privacy-focused web browser built on
+Firefox's Gecko engine. It combines the stability and compatibility of Firefox
+with enhanced privacy controls, improved user experience, and performance
+optimizations.
+
+Key Features:
+
+- Privacy First: Telemetry disabled by default, enhanced tracking protection
+- Performance: Optimized compilation with modern C++ toolchain and Rust
+- Firefox Compatible: Uses the same Gecko engine for excellent web compatibility
+- WebRTC Support: Full real-time communication support for video/audio
+- Cross-Platform: Runs on Windows, macOS, Linux, and FreeBSD
+- Active Development: Regular updates with latest security patches
+
+Zen Browser prioritizes user privacy and control while maintaining full web
+compatibility. It includes built-in privacy features, secure defaults, and
+advanced customization options for power users.
+
+For more information and documentation, visit https://zen-browser.app
