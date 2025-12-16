@@ -1,6 +1,7 @@
 PORTNAME=	zen-browser
 DISTVERSION=	1.17.12b
 CATEGORIES=	www wayland
+
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Zen Browser - Firefox-based privacy-focused browser
 WWW=		https://zen-browser.app
@@ -30,7 +31,7 @@ USE_GECKO=	gecko
 USE_MOZILLA=	-sqlite
 
 USES=		tar:zst gmake python:3.11,build compiler:c17-lang \
-		desktop-file-utils gl gnome localbase:ldflags pkgconfig
+		desktop-file-utils gl gnome localbase:ldflags pkgconfig 
 
 USE_GL=		gl
 USE_GNOME=	cairo gdkpixbuf2 gtk30
@@ -40,16 +41,21 @@ WRKSRC=		${WRKDIR}
 # Add ALSA compatibility headers from files/ directory
 CPPFLAGS+=	-I${FILESDIR}
 
-MAKE_ENV+=	RUSTC=${LOCALBASE}/bin/rustc \
-		CARGO=${LOCALBASE}/bin/cargo \
-		PATH=${LOCALBASE}/bin:${LOCALBASE}/sbin:/bin:/sbin:/usr/bin:/usr/sbin \
-		RUSTUP_HOME=/nonexistent \
-		CARGO_HOME=/nonexistent
+# Use rust from ports (already built under /usr/ports)
+
+CONFIGURE_ENV=  RUSTC=${LOCALBASE}/bin/rustc \
+                CARGO=${LOCALBASE}/bin/cargo
+
+MAKE_ENV=       RUSTC=${LOCALBASE}/bin/rustc \
+                CARGO=${LOCALBASE}/bin/cargo \
+                RUSTUP_HOME=nonexistent \
+                CARGO_HOME=nonexistent \
+                PATH=${LOCALBASE}/bin:${LOCALBASE}/sbin:/bin:/sbin:/usr/bin:/usr/sbin
 
 do-configure:
 	cd ${WRKSRC} && ./mach configure \
 		--without-wasm-sandboxed-libraries \
-		--disable-telemetry
+		
 
 do-build:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ./mach build
