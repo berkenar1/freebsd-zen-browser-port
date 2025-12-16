@@ -1,0 +1,11 @@
+# CodeQL artifacts
+_codeql_*
+
+# Build artifacts
+work/
+*.core
+*.o
+*.so
+
+# FreeBSD ports artifacts
+.makesum

@@ -23,7 +23,8 @@ BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 		v4l_compat>0:multimedia/v4l_compat \
 		nasm:devel/nasm \
 		yasm:devel/yasm \
-		zip:archivers/zip
+		zip:archivers/zip \
+		alsa-lib>=1.2.14:audio/alsa-lib
 
 USE_GECKO=	gecko
 USE_MOZILLA=	-sqlite
@@ -36,16 +37,14 @@ USE_GNOME=	cairo gdkpixbuf2 gtk30
 
 WRKSRC=		${WRKDIR}
 
+# Add ALSA compatibility headers from files/ directory
+CPPFLAGS+=	-I${FILESDIR}
+
 MAKE_ENV+=	RUSTC=${LOCALBASE}/bin/rustc \
 		CARGO=${LOCALBASE}/bin/cargo \
 		PATH=${LOCALBASE}/bin:${LOCALBASE}/sbin:/bin:/sbin:/usr/bin:/usr/sbin \
 		RUSTUP_HOME=/nonexistent \
 		CARGO_HOME=/nonexistent
-
-post-extract:
-	if [ -f ${WRKSRC}/media/libcubeb/src/cubeb_alsa.c ]; then \
-		${SED} -i '' '1s/^/#include <stdlib.h>\n/' ${WRKSRC}/media/libcubeb/src/cubeb_alsa.c; \
-	fi
 
 do-configure:
 	cd ${WRKSRC} && ./mach configure \
