@@ -1,4 +1,4 @@
 #ifndef _ENDIAN_H
 #define	_ENDIAN_H
-#include <linux/types.h>
+#include <sys/endian.h>
 #endif /* _ENDIAN_H */

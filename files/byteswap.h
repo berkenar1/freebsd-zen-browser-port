@@ -1,6 +1,8 @@
 #ifndef _BYTESWAP_H
 #define _BYTESWAP_H
 
+#include <sys/endian.h>
+
 #ifdef __OpenBSD__
 #define bswap_16(x)	swap16(x)
 #define bswap_32(x)	swap32(x)
