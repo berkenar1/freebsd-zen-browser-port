@@ -1,0 +1,27 @@
+[
+  {
+    "name": "SmartCmd Example: Git Status & Log",
+    "cmd": "git status && echo '====================' && git log --oneline -5",
+    "description": "Show current git status and last 5 commits in a single view",
+    "execDir": "<workspace>",
+    "id": "7876c7a7-777f-48a5-9de7-deb4b87d81c5"
+  },
+  {
+    "name": "SmartCmd Example: Test with User Input",
+    "cmd": "\"/home/berke/workdir/www/zen-browser/.vscode/devBoost/scripts/example_greeting.sh\" \"{name}\" \"{message}\"",
+    "scriptFile": "example_greeting.sh",
+    "description": "Example script that demonstrates input fields and argument passing",
+    "execDir": "<workspace>",
+    "inputs": [
+      {
+        "placeholder": "Enter your name",
+        "variable": "{name}"
+      },
+      {
+        "placeholder": "Enter a greeting message",
+        "variable": "{message}"
+      }
+    ],
+    "id": "dd920d14-a0b7-4980-b730-5cff9d47c89d"
+  }
+]

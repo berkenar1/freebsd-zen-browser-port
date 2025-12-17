@@ -53,9 +53,8 @@ MAKE_ENV=       RUSTC=${LOCALBASE}/bin/rustc \
                 PATH=${LOCALBASE}/bin:${LOCALBASE}/sbin:/bin:/sbin:/usr/bin:/usr/sbin
 
 do-configure:
-	cd ${WRKSRC} && ./mach configure \
-		--without-wasm-sandboxed-libraries \
-		
+	cd ${WRKSRC} && ./mach configure 
+				
 
 do-build:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ./mach build

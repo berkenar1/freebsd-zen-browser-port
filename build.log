@@ -1,0 +1,10 @@
+===>  Patching for zen-browser-1.17.12.b
+===>  Applying FreeBSD patches for zen-browser-1.17.12.b from /home/berke/workdir/www/zen-browser/files
+Ignoring previously applied (or reversed) patch.
+1 out of 1 hunks ignored--saving rejects to dom/media/webrtc/libwebrtc_overrides/moz.build.rej
+===>  FAILED Applying FreeBSD patch-dom_media_webrtc_libwebrtc_overrides_moz.build
+===> FAILED to apply cleanly FreeBSD patch(es)  patch-dom_media_webrtc_libwebrtc_overrides_moz.build
+*** Error code 1
+
+Stop.
+make: stopped making "build" in /home/berke/workdir/www/zen-browser
