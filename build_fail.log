@@ -1,0 +1,71 @@
+===>  Building for zen-browser-1.17.12.b
+cd /home/berke/workdir/www/zen-browser/work && /usr/bin/env RUSTC=/usr/local/bin/rustc  CARGO=/usr/local/bin/cargo  RUSTUP_HOME=nonexistent  CARGO_HOME=nonexistent  PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin XDG_DATA_HOME=/home/berke/workdir/www/zen-browser/work  XDG_CONFIG_HOME=/home/berke/workdir/www/zen-browser/work  XDG_CACHE_HOME=/home/berke/workdir/www/zen-browser/work/.cache  HOME=/home/berke/workdir/www/zen-browser/work PKG_CONFIG_LIBDIR=/home/berke/workdir/www/zen-browser/work/.pkgconfig:/usr/local/libdata/pkgconfig:/usr/local/share/pkgconfig:/usr/libdata/pkgconfig MK_DEBUG_FILES=no MK_KERNEL_SYMBOLS=no SHELL=/bin/sh NO_LINT=YES PREFIX=/usr/local  LOCALBASE=/usr/local  CC="/usr/local/bin/clang19" CFLAGS="-O2 -pipe  -DLIBICONV_PLUG -fstack-protector-strong -isystem /usr/local/include -fno-strict-aliasing "  CPP="/usr/local/bin/clang-cpp19" CPPFLAGS="-I/home/berke/workdir/www/zen-browser/files -DLIBICONV_PLUG -isystem /usr/local/include"  LDFLAGS=" -Wl,--as-needed -Wl,--undefined-version -L/usr/local/lib " LIBS=""  CXX="/usr/local/bin/clang++19" CXXFLAGS="-O2 -pipe -DLIBICONV_PLUG -fstack-protector-strong -isystem /usr/local/include -fno-strict-aliasing   -DLIBICONV_PLUG -isystem /usr/local/include " CCACHE_DIR="/root/.ccache" BSD_INSTALL_PROGRAM="install  -s -m 555"  BSD_INSTALL_LIB="install  -s -m 0644"  BSD_INSTALL_SCRIPT="install  -m 555"  BSD_INSTALL_DATA="install  -m 0644"  BSD_INSTALL_MAN="install  -m 444" ./mach build
+ 0:00.26 W Clobber not needed.
+ 0:00.81 W Adding make options from /home/berke/workdir/www/zen-browser/work/.mozconfig
+    MOZ_OBJDIR=/home/berke/workdir/www/zen-browser/work/.build
+    OBJDIR=/home/berke/workdir/www/zen-browser/work/.build
+    FOUND_MOZCONFIG=/home/berke/workdir/www/zen-browser/work/.mozconfig
+    export FOUND_MOZCONFIG
+ 0:00.81 /usr/local/bin/gmake -f client.mk -j12 -s
+ 0:01.54 ./buildid.h.stub
+ 0:01.54 ./source-repo.h.stub
+ 0:01.77 ./application.ini.stub
+ 0:01.92 ./application.ini.h.stub
+ 0:02.16 memory/mozalloc
+ 0:02.16 memory/build
+ 0:02.17 browser/app
+ 0:02.17 dom/media/fake-cdm
+ 0:02.17 third_party/llama.cpp
+ 0:02.17 dom/media/gmp-plugin-openh264
+ 0:02.17 ipc/app
+ 0:02.18 toolkit/library/build/libxul.so.symbols.stub
+ 0:02.22 accessible/aom
+ 0:02.54 In file included from Unified_cpp_memory_mozalloc0.cpp:2:
+ 0:02.54 /home/berke/workdir/www/zen-browser/work/memory/mozalloc/mozalloc.cpp:114:15: error: use of undeclared identifier 'memalign'
+ 0:02.54   114 |   void* ptr = memalign_impl(boundary, size);
+ 0:02.54       |               ^
+ 0:02.54 /home/berke/workdir/www/zen-browser/work/memory/mozalloc/mozalloc.cpp:27:25: note: expanded from macro 'memalign_impl'
+ 0:02.54    27 | #  define memalign_impl memalign
+ 0:02.54       |                         ^
+ 0:02.55 /home/berke/workdir/www/zen-browser/work/memory/mozalloc/mozalloc.cpp:130:10: error: use of undeclared identifier 'malloc_usable_size'; did you mean 'moz_malloc_usable_size'?
+ 0:02.55   130 |   return malloc_usable_size_impl(ptr);
+ 0:02.55       |          ^~~~~~~~~~~~~~~~~~~~~~~
+ 0:02.55       |          moz_malloc_usable_size
+ 0:02.56 /home/berke/workdir/www/zen-browser/work/memory/mozalloc/mozalloc.cpp:28:35: note: expanded from macro 'malloc_usable_size_impl'
+ 0:02.56    28 | #  define malloc_usable_size_impl malloc_usable_size
+ 0:02.56       |                                   ^
+ 0:02.57 /home/berke/workdir/www/zen-browser/work/memory/mozalloc/mozalloc.cpp:124:8: note: 'moz_malloc_usable_size' declared here
+ 0:02.57   124 | size_t moz_malloc_usable_size(void* ptr) {
+ 0:02.57       |        ^
+ 0:03.69 2 errors generated.
+ 0:03.75 gmake[5]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:670: Unified_cpp_memory_mozalloc0.o] Error 1
+ 0:03.75 gmake[4]: *** [/home/berke/workdir/www/zen-browser/work/config/recurse.mk:72: memory/mozalloc/target-objects] Error 2
+ 0:03.75 gmake[4]: *** Waiting for unfinished jobs....
+ 0:05.42 In file included from Unified_cpp_memory_build0.cpp:2:
+ 0:05.42 In file included from /home/berke/workdir/www/zen-browser/work/memory/build/Fallback.cpp:31:
+ 0:05.42 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:64:1: error: no member named 'memalign' in the global namespace; did you mean simply 'memalign'?
+ 0:05.42    64 | NOTHROW_MALLOC_DECL(memalign, void*, size_t, size_t)
+ 0:05.42       | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 0:05.42 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:56:33: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:05.42    56 | #    define NOTHROW_MALLOC_DECL MALLOC_DECL
+ 0:05.42       |                                 ^
+ 0:05.42 /home/berke/workdir/www/zen-browser/work/memory/build/Fallback.cpp:28:12: note: expanded from macro 'MALLOC_DECL'
+ 0:05.42    28 |     return ::name(ARGS_HELPER(ARGS, ##__VA_ARGS__));                       \
+ 0:05.42       |            ^~
+ 0:05.42 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:64:21: note: 'memalign' declared here
+ 0:05.42    64 | NOTHROW_MALLOC_DECL(memalign, void*, size_t, size_t)
+ 0:05.42       |                     ^
+ 0:05.42 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:56:33: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:05.42    56 | #    define NOTHROW_MALLOC_DECL MALLOC_DECL
+ 0:05.42       |                                 ^
+ 0:05.51 1 error generated.
+ 0:05.54 gmake[5]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:670: Unified_cpp_memory_build0.o] Error 1
+ 0:05.54 gmake[4]: *** [/home/berke/workdir/www/zen-browser/work/config/recurse.mk:72: memory/build/target-objects] Error 2
+ 0:42.82 gmake[3]: *** [/home/berke/workdir/www/zen-browser/work/config/recurse.mk:34: compile] Error 2
+ 0:42.82 gmake[2]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:359: default] Error 2
+ 0:42.82 gmake[1]: *** [client.mk:60: build] Error 2
+ 0:42.92 W 11 compiler warnings present.
+*** Error code 2
+
+Stop.
+make: stopped making "all" in /home/berke/workdir/www/zen-browser

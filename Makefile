@@ -30,6 +30,9 @@ BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 USE_GECKO=	gecko
 USE_MOZILLA=	-sqlite
 
+# wasi-sysroot not present; skip wasm sandboxed libs to avoid missing headers
+MOZ_OPTIONS+=	--without-wasm-sandboxed-libraries
+
 USES=		tar:zst gmake python:3.11,build compiler:c17-lang \
 		desktop-file-utils gl gnome localbase:ldflags pkgconfig 
 
