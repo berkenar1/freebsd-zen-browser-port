@@ -1,5 +1,7 @@
 PORTNAME=	zen-browser
 DISTVERSION=	1.17.12b
+PORTREVISION=	0
+PORTEPOCH=	1
 CATEGORIES=	www wayland
 
 MAINTAINER=	ports@FreeBSD.org
@@ -10,6 +12,9 @@ MASTER_SITES=	https://github.com/zen-browser/desktop/releases/download/${DISTVER
 DISTFILES=	zen.source.tar.zst
 
 LICENSE=	MPL20
+
+# Work around bindgen not finding ICU headers
+CONFIGURE_ENV+=	BINDGEN_CFLAGS="-I${LOCALBASE}/include"
 
 BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 		nss>=3.118:security/nss \
@@ -30,34 +35,41 @@ BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 USE_GECKO=	gecko
 USE_MOZILLA=	-sqlite
 
-# wasi-sysroot not present; skip wasm sandboxed libs to avoid missing headers
+# Disable WASM sandboxing (wasi-sysroot not present on FreeBSD)
 MOZ_OPTIONS+=	--without-wasm-sandboxed-libraries
-# Disable telemetry to avoid glean-sdk build issues on FreeBSD
-MOZ_OPTIONS+=	--disable-telemetry
+
 # Enable Mozilla's jemalloc (suppresses WIN32_REDIST_DIR warning)
 MOZ_OPTIONS+=	--enable-jemalloc
 
 USES=		tar:zst gmake python:3.11,build compiler:c17-lang \
-		desktop-file-utils gl gnome localbase:ldflags pkgconfig 
+		desktop-file-utils gl gnome localbase:ldflags pkgconfig
 
 USE_GL=		gl
 USE_GNOME=	cairo gdkpixbuf2 gtk30
+
+ZEN_ICON=		${PORTNAME}.png
+ZEN_ICON_SRC=	${PREFIX}/lib/${PORTNAME}/browser/chrome/icons/default/default48.png
 
 WRKSRC=		${WRKDIR}
 
 # Add ALSA compatibility headers from files/ directory
 CPPFLAGS+=	-I${FILESDIR}
 
-# Use rust from ports (already built under /usr/ports)
+# Use rust from ports and enable ccache
 
 CONFIGURE_ENV=  RUSTC=${LOCALBASE}/bin/rustc \
-                CARGO=${LOCALBASE}/bin/cargo
+                CARGO=${LOCALBASE}/bin/cargo \
+                CCACHE=${LOCALBASE}/bin/ccache
 
 MAKE_ENV=       RUSTC=${LOCALBASE}/bin/rustc \
                 CARGO=${LOCALBASE}/bin/cargo \
                 RUSTUP_HOME=nonexistent \
                 CARGO_HOME=nonexistent \
+                CCACHE=${LOCALBASE}/bin/ccache \
                 PATH=${LOCALBASE}/bin:${LOCALBASE}/sbin:/bin:/sbin:/usr/bin:/usr/sbin
+
+# Enable ccache for faster rebuilds
+MOZ_OPTIONS+=	--with-ccache=${LOCALBASE}/bin/ccache
 
 do-configure:
 	cd ${WRKSRC} && ./mach configure 
@@ -66,8 +78,23 @@ do-configure:
 do-build:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ./mach build
 
+post-patch:
+	@${ECHO_MSG} "===> Applying FreeBSD patches"
+	@for p in ${FILESDIR}/patch-*; do \
+		if [ -f "$$p" ]; then \
+			${ECHO_MSG} "Applying $${p##*/}"; \
+			${PATCH} -d ${WRKSRC} -p0 < $$p || exit 1; \
+		fi; \
+	done
+
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}
 	${MKDIR} ${STAGEDIR}${PREFIX}/bin
+
+post-install:
+	${MKDIR} ${STAGEDIR}${PREFIX}/share/pixmaps
+	${LN} -sf ${ZEN_ICON_SRC} ${STAGEDIR}${PREFIX}/share/pixmaps/${ZEN_ICON}
+	${MKDIR} ${STAGEDIR}${PREFIX}/share/applications
+	${INSTALL_DATA} ${WRKDIR}/zen.desktop ${STAGEDIR}${PREFIX}/share/applications 2>/dev/null || true
 
 .include <bsd.port.mk>
