@@ -32,6 +32,10 @@ USE_MOZILLA=	-sqlite
 
 # wasi-sysroot not present; skip wasm sandboxed libs to avoid missing headers
 MOZ_OPTIONS+=	--without-wasm-sandboxed-libraries
+# Disable telemetry to avoid glean-sdk build issues on FreeBSD
+MOZ_OPTIONS+=	--disable-telemetry
+# Enable Mozilla's jemalloc (suppresses WIN32_REDIST_DIR warning)
+MOZ_OPTIONS+=	--enable-jemalloc
 
 USES=		tar:zst gmake python:3.11,build compiler:c17-lang \
 		desktop-file-utils gl gnome localbase:ldflags pkgconfig 

@@ -20,9 +20,12 @@ https://docs.freebsd.org/en/articles/contributing/#ports-contributing
 ===> Fetching all distfiles required by zen-browser-1.17.12.b for building
 ===>  Extracting for zen-browser-1.17.12.b
 => SHA256 Checksum OK for zen.source.tar.zst.
-./testing/web-platform/mozilla/meta/webgpu/cts/webgpu/api/operation/memory_sync/buffer/single_buffer/cts.https.html.ini: Could not chdir testing/web-platform/mozilla/meta/webgpu/cts/webgpu/api/operation/memory_sync/buffer/single_buffer/cts.https.html.ini: No such file or directory
-tar: Error exit delayed from previous errors.
-===>  Failed to extract "/home/berke/workdir/distfiles/zen.source.tar.zst".
+===>  Patching for zen-browser-1.17.12.b
+===>  Applying FreeBSD patches for zen-browser-1.17.12.b from /home/berke/workdir/www/zen-browser/files
+patch: **** malformed patch at line 27:      return ::name(ARGS_HELPER(ARGS, ##__VA_ARGS__));                       \
+===>  FAILED Applying FreeBSD patch-memory_build_Fallback.cpp
+===> Cleanly applied FreeBSD patch(es)  patch-dom_media_webrtc_libwebrtc_overrides_moz.build patch-dom_media_webrtc_third_party_build_webrtc.mozbuild patch-libwebrtc-powerpc64 patch-media_libcubeb_src_cubeb_alsa.c
+===> FAILED to apply cleanly FreeBSD patch(es)  patch-memory_build_Fallback.cpp
 *** Error code 1
 
 Stop.
