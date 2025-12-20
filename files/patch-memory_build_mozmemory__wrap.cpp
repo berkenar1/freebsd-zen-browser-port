@@ -14,9 +14,3 @@
  #define MALLOC_DECL(name, return_type, ...) \
    MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__);
  #define MALLOC_FUNCS MALLOC_FUNCS_MALLOC
-+
-+patch:
-+    patch -p0 < files/patch-memory_build_mozmemory__wrap.patch
-+
-+build: patch
-+    # your build commands here
