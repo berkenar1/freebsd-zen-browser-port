@@ -4,8 +4,6 @@
  
  // Declare malloc implementation functions with the right return and
  // argument types.
-+// FreeBSD system headers don't declare these functions with noexcept,
-+// so we can't add it here without causing declaration mismatch errors.
 +#if defined(__FreeBSD__)
 +#define NOTHROW_MALLOC_DECL(name, return_type, ...) \
 +  MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__);
@@ -16,3 +14,9 @@
  #define MALLOC_DECL(name, return_type, ...) \
    MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__);
  #define MALLOC_FUNCS MALLOC_FUNCS_MALLOC
++
++patch:
++    patch -p0 < files/patch-memory_build_mozmemory__wrap.patch
++
++build: patch
++    # your build commands here
