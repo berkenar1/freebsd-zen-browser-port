@@ -90,6 +90,15 @@ post-patch:
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}
 	${MKDIR} ${STAGEDIR}${PREFIX}/bin
+	# Copy built application to staging directory
+	cd ${WRKSRC}/obj-*/dist/bin && \
+		${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/{} \; && \
+		${FIND} . -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/{} \; && \
+		${FIND} . -type f -perm +111 -exec ${INSTALL_PROGRAM} {} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/{} \;
+	# Create wrapper script
+	${ECHO_CMD} '#!/bin/sh' > ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+	${ECHO_CMD} 'exec ${PREFIX}/lib/${PORTNAME}/zen-bin "$$@"' >> ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+	${CHMOD} +x ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/pixmaps
