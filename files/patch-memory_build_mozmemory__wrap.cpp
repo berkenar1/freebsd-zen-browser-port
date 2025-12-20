@@ -1,6 +1,6 @@
 --- memory/build/mozmemory_wrap.cpp.orig	2025-01-01 00:00:00 UTC
 +++ memory/build/mozmemory_wrap.cpp
-@@ -10,6 +10,13 @@
+@@ -10,8 +10,13 @@
  
  // Declare malloc implementation functions with the right return and
  // argument types.
