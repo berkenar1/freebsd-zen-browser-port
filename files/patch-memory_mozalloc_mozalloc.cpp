@@ -1,4 +1,4 @@
---- memory/mozalloc/mozalloc.cpp.orig2024-01-01 00:00:00 UTC
+--- memory/mozalloc/mozalloc.cpp.orig	2024-01-01 00:00:00 UTC
 +++ memory/mozalloc/mozalloc.cpp
 @@ -14,6 +14,17 @@
  #if !defined(MOZ_MEMORY)

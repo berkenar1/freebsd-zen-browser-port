@@ -1,3 +1,11 @@
+/*
+ * glibc byteswap.h compatibility wrapper for FreeBSD
+ * 
+ * Provides glibc-style byte swapping function names (bswap_16, bswap_32, bswap_64)
+ * by mapping them to FreeBSD's native functions (bswap16, bswap32, bswap64)
+ * or OpenBSD's swap* functions.
+ */
+
 #ifndef _BYTESWAP_H
 #define _BYTESWAP_H
 
