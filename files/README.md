@@ -83,10 +83,43 @@ This ensures our wrapper headers are found **before** system headers, allowing u
 
 ## Testing
 
+### Unit Test
+
+A test program is provided in `test_malloc_wrapper.c` to verify the wrappers work correctly.
+
+**On FreeBSD:**
+```bash
+cd files
+cc -I. test_malloc_wrapper.c -o test_malloc_wrapper
+./test_malloc_wrapper
+```
+
+**On Linux (for comparison):**
+```bash
+cd files
+cc test_malloc_wrapper.c -o test_malloc_wrapper
+./test_malloc_wrapper
+```
+
+The test verifies:
+1. `memalign()` works with various alignment values (8, 16, 32, 64, 128, 256 bytes)
+2. Returned pointers are properly aligned
+3. `malloc_usable_size()` returns reasonable values
+4. Allocated memory is readable and writable
+
+### Integration Testing
+
 After applying these patches:
 1. Mozilla's jemalloc should build with FreeBSD compatibility
 2. Memory allocation functions work transparently
 3. No runtime memory corruption or leaks
+
+You can verify the build with:
+```bash
+make clean
+make configure
+make build
+```
 
 ## References
 
