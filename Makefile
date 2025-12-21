@@ -32,17 +32,21 @@ BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 		zip:archivers/zip \
 		alsa-lib>=1.2.14:audio/alsa-lib
 
+# sqlite3 is provided by FreeBSD base system
+
 USE_GECKO=	gecko
 USE_MOZILLA=	-sqlite
-
-# Disable WASM sandboxing (wasi-sysroot not present on FreeBSD)
-MOZ_OPTIONS+=	--without-wasm-sandboxed-libraries
 
 # Enable Mozilla's jemalloc (suppresses WIN32_REDIST_DIR warning)
 MOZ_OPTIONS+=	--enable-jemalloc
 
 USES=		tar:zst gmake python:3.11,build compiler:c17-lang \
 		desktop-file-utils gl gnome localbase:ldflags pkgconfig
+
+# Force use of bsdtar for long paths
+EXTRACT_CMD=		/usr/bin/bsdtar
+EXTRACT_BEFORE_ARGS=	-xf
+EXTRACT_AFTER_ARGS=	--no-same-owner --no-same-permissions
 
 USE_GL=		gl
 USE_GNOME=	cairo gdkpixbuf2 gtk30
@@ -72,7 +76,10 @@ MAKE_ENV=       RUSTC=${LOCALBASE}/bin/rustc \
 MOZ_OPTIONS+=	--with-ccache=${LOCALBASE}/bin/ccache
 
 do-configure:
-	cd ${WRKSRC} && ./mach configure 
+	cd ${WRKSRC} && \
+		echo "ac_add_options --without-wasm-sandboxed-libraries" >> .mozconfig && \
+		${SETENV} ${CONFIGURE_ENV} ${MAKE_ENV} \
+		./mach configure
 				
 
 do-build:
