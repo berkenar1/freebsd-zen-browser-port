@@ -40,8 +40,24 @@ USE_MOZILLA=	-sqlite
 # Enable Mozilla's jemalloc (suppresses WIN32_REDIST_DIR warning)
 MOZ_OPTIONS+=	--enable-jemalloc
 
-USES=		tar:zst gmake python:3.11,build compiler:c17-lang \
-		desktop-file-utils gl gnome localbase:ldflags pkgconfig
+USES=   tar:zst \
+        gmake \
+        python:3.11,build \
+        compiler:c++17 \
+        cmake:noninja \
+        pkgconfig \
+        localbase:ldflags \
+        gl \
+        gnome \
+        desktop-file-utils \
+        libtool \
+        xorg \
+        gettext \
+		sqlite3 \
+		highway \
+		aom \
+		chromium
+
 
 # Force use of bsdtar for long paths
 EXTRACT_CMD=		/usr/bin/bsdtar
@@ -74,6 +90,12 @@ MAKE_ENV=       RUSTC=${LOCALBASE}/bin/rustc \
 
 # Enable ccache for faster rebuilds
 MOZ_OPTIONS+=	--with-ccache=${LOCALBASE}/bin/ccache
+
+# Disable LTO (Link Time Optimization) to save ~4GB RAM
+CONFIGURE_ARGS+=	--disable-lto
+
+# Reduce parallel jobs during linking
+MAKE_JOBS=	2
 
 do-configure:
 	cd ${WRKSRC} && \

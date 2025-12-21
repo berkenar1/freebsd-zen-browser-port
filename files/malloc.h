@@ -1,6 +1,6 @@
 /*
  * glibc malloc.h compatibility wrapper for FreeBSD
- * 
+ *
  * This wrapper provides glibc-style memory allocation functions
  * for FreeBSD's libc, enabling Mozilla/Firefox code to compile
  * without modifications.
@@ -11,7 +11,7 @@
  */
 
 #ifndef _MALLOC_H
-#define	_MALLOC_H
+#define _MALLOC_H
 
 #include <stdlib.h>
 
@@ -27,7 +27,7 @@ extern "C" {
  * glibc provides memalign() but FreeBSD only has posix_memalign()
  * This wrapper translates the glibc interface to FreeBSD's POSIX interface
  */
-static inline void* memalign(size_t alignment, size_t size) {
+inline void* memalign(size_t alignment, size_t size) {
     void* ptr = NULL;
     if (posix_memalign(&ptr, alignment, size) != 0) {
         return NULL;
@@ -40,5 +40,4 @@ static inline void* memalign(size_t alignment, size_t size) {
 #endif
 
 #endif /* __FreeBSD__ */
-
 #endif /* _MALLOC_H */

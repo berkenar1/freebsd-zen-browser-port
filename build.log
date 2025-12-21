@@ -1,29 +1,1017 @@
-/!\ WARNING /!\
-
-You have security/openssl installed but do not have
-DEFAULT_VERSIONS+=ssl=openssl set in your make.conf
-
-===>   NOTICE:
-
-The zen-browser port currently does not have a maintainer. As a result, it is
-more likely to have unresolved issues, not be up-to-date, or even be removed in
-the future. To volunteer to maintain this port, please create an issue at:
-
-https://bugs.freebsd.org/bugzilla
-
-More information about port maintainership is available at:
-
-https://docs.freebsd.org/en/articles/contributing/#ports-contributing
-
-===>  License MPL20 accepted by the user
-===>   zen-browser-1.17.12.b depends on file: /usr/local/sbin/pkg - found
-===> Fetching all distfiles required by zen-browser-1.17.12.b for building
-===>  Extracting for zen-browser-1.17.12.b
-=> SHA256 Checksum OK for zen.source.tar.zst.
-./testing/web-platform/mozilla/meta/webgpu/cts/webgpu/api/operation/memory_sync/buffer/single_buffer/cts.https.html.ini: Could not chdir testing/web-platform/mozilla/meta/webgpu/cts/webgpu/api/operation/memory_sync/buffer/single_buffer/cts.https.html.ini: No such file or directory
-tar: Error exit delayed from previous errors.
-===>  Failed to extract "/home/berke/workdir/distfiles/zen.source.tar.zst".
-*** Error code 1
+===>  Building for zen-browser-1.17.12.b,1
+cd /home/berke/workdir/www/zen-browser/work && /usr/bin/env RUSTC=/usr/local/bin/rustc  CARGO=/usr/local/bin/cargo  RUSTUP_HOME=nonexistent  CARGO_HOME=nonexistent  CCACHE=/usr/local/bin/ccache  PATH=/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin XDG_DATA_HOME=/home/berke/workdir/www/zen-browser/work  XDG_CONFIG_HOME=/home/berke/workdir/www/zen-browser/work  XDG_CACHE_HOME=/home/berke/workdir/www/zen-browser/work/.cache  HOME=/home/berke/workdir/www/zen-browser/work PKG_CONFIG_LIBDIR=/home/berke/workdir/www/zen-browser/work/.pkgconfig:/usr/local/libdata/pkgconfig:/usr/local/share/pkgconfig:/usr/libdata/pkgconfig MK_DEBUG_FILES=no MK_KERNEL_SYMBOLS=no SHELL=/bin/sh NO_LINT=YES PREFIX=/usr/local  LOCALBASE=/usr/local  CC="/usr/local/bin/clang19" CFLAGS="-O2 -pipe  -DLIBICONV_PLUG -fstack-protector-strong -isystem /usr/local/include -fno-strict-aliasing "  CPP="/usr/local/bin/clang-cpp19" CPPFLAGS="-I/home/berke/workdir/www/zen-browser/files -DLIBICONV_PLUG -isystem /usr/local/include"  LDFLAGS=" -Wl,--as-needed -Wl,--undefined-version -L/usr/local/lib " LIBS=""  CXX="/usr/local/bin/clang++19" CXXFLAGS="-O2 -pipe -DLIBICONV_PLUG -fstack-protector-strong -isystem /usr/local/include -fno-strict-aliasing   -DLIBICONV_PLUG -isystem /usr/local/include " CCACHE_DIR="/root/.ccache" BSD_INSTALL_PROGRAM="install  -s -m 555"  BSD_INSTALL_LIB="install  -s -m 0644"  BSD_INSTALL_SCRIPT="install  -m 555"  BSD_INSTALL_DATA="install  -m 0644"  BSD_INSTALL_MAN="install  -m 444" ./mach build
+ 0:00.24 W Clobber not needed.
+ 0:00.31 W Adding make options from /home/berke/workdir/www/zen-browser/work/.mozconfig
+    MOZ_OBJDIR=/home/berke/workdir/www/zen-browser/work/.build
+    OBJDIR=/home/berke/workdir/www/zen-browser/work/.build
+    FOUND_MOZCONFIG=/home/berke/workdir/www/zen-browser/work/.mozconfig
+    export FOUND_MOZCONFIG
+ 0:00.31 /usr/local/bin/gmake -f client.mk -j12 -s
+ 0:00.81 ./buildid.h.stub
+ 0:00.81 ./source-repo.h.stub
+ 0:00.98 ./application.ini.stub
+ 0:01.13 ./application.ini.h.stub
+ 0:01.42 memory/mozalloc
+ 0:01.42 memory/build
+ 0:01.42 third_party/fmt
+ 0:01.42 browser/app
+ 0:01.43 mozglue/baseprofiler
+ 0:01.43 mozglue/misc
+ 0:01.93 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/AwakeTimeStamp.cpp:14:
+ 0:01.93 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/DebugOnly.h:17:
+ 0:01.93 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/utility:68:
+ 0:01.93 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:01.93 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:63:1: error: exception specification in declaration does not match previous declaration
+ 0:01.93    63 | NOTHROW_MALLOC_DECL(free, void, void*)
+ 0:01.93       | ^
+ 0:01.93 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:01.93    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:01.93       |                                ^
+ 0:01.93 <scratch space>:68:1: note: expanded from here
+ 0:01.93    68 | free_impl
+ 0:01.93       | ^
+ 0:01.93 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:147:38: note: expanded from macro 'free_impl'
+ 0:01.93   147 | #define free_impl mozmem_malloc_impl(free)
+ 0:01.93       |                                      ^
+ 0:01.93 /usr/include/stdlib.h:96:7: note: previous declaration is here
+ 0:01.93    96 | void     free(void *);
+ 0:01.93       |          ^
+ 0:01.93 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/AwakeTimeStamp.cpp:14:
+ 0:01.93 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/DebugOnly.h:17:
+ 0:01.93 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/utility:68:
+ 0:01.93 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:01.93 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:67:1: error: exception specification in declaration does not match previous declaration
+ 0:01.93    67 | NOTHROW_MALLOC_DECL(posix_memalign, int, void**, size_t, size_t)
+ 0:01.93       | ^
+ 0:01.93 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:01.93    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:01.93       |                                ^
+ 0:01.93 <scratch space>:70:1: note: expanded from here
+ 0:01.93    70 | posix_memalign_impl
+ 0:01.94       | ^
+ 0:01.94 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:143:48: note: expanded from macro 'posix_memalign_impl'
+ 0:01.94   143 | #define posix_memalign_impl mozmem_malloc_impl(posix_memalign)
+ 0:01.94       |                                                ^
+ 0:01.94 /usr/include/stdlib.h:180:6: note: previous declaration is here
+ 0:01.94   180 | int      posix_memalign(void **, size_t, size_t); /* (ADV) */
+ 0:01.94       |          ^
+ 0:01.94 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/AwakeTimeStamp.cpp:14:
+ 0:01.94 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/DebugOnly.h:17:
+ 0:01.94 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/utility:68:
+ 0:01.94 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:01.94 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:68:1: error: exception specification in declaration does not match previous declaration
+ 0:01.94    68 | NOTHROW_MALLOC_DECL(aligned_alloc, void*, size_t, size_t)
+ 0:01.94       | ^
+ 0:01.94 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:01.94    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:01.94       |                                ^
+ 0:01.94 <scratch space>:71:1: note: expanded from here
+ 0:01.94    71 | aligned_alloc_impl
+ 0:01.94       | ^
+ 0:01.94 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:144:47: note: expanded from macro 'aligned_alloc_impl'
+ 0:01.94   144 | #define aligned_alloc_impl mozmem_malloc_impl(aligned_alloc)
+ 0:01.94       |                                               ^
+ 0:01.94 /usr/include/stdlib.h:164:8: note: previous declaration is here
+ 0:01.94   164 | void *  aligned_alloc(size_t, size_t) __malloc_like __alloc_align(1)
+ 0:01.94       |         ^
+ 0:01.94 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/AwakeTimeStamp.cpp:14:
+ 0:01.94 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/DebugOnly.h:17:
+ 0:01.94 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/utility:68:
+ 0:01.94 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:01.94 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:69:1: error: exception specification in declaration does not match previous declaration
+ 0:01.94    69 | NOTHROW_MALLOC_DECL(valloc, void*, size_t)
+ 0:01.94       | ^
+ 0:01.94 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:01.94    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:01.94       |                                ^
+ 0:01.94 <scratch space>:72:1: note: expanded from here
+ 0:01.94    72 | valloc_impl
+ 0:01.94       | ^
+ 0:01.94 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:149:40: note: expanded from macro 'valloc_impl'
+ 0:01.94   149 | #define valloc_impl mozmem_malloc_impl(valloc)
+ 0:01.94       |                                        ^
+ 0:01.94 /usr/include/unistd.h:595:7: note: previous declaration is here
+ 0:01.94   595 | void    *valloc(size_t);                        /* obsoleted by malloc() */
+ 0:01.94       |          ^
+ 0:01.94 4 errors generated.
+ 0:01.94 gmake[5]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:670: AwakeTimeStamp.o] Error 1
+ 0:01.98 gmake[5]: *** Waiting for unfinished jobs....
+ 0:02.09 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/AutoProfilerLabel.cpp:7:
+ 0:02.09 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/AutoProfilerLabel.h:13:
+ 0:02.09 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/tuple:68:
+ 0:02.09 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.09 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:63:1: error: exception specification in declaration does not match previous declaration
+ 0:02.09    63 | NOTHROW_MALLOC_DECL(free, void, void*)
+ 0:02.09       | ^
+ 0:02.09 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.09    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.09       |                                ^
+ 0:02.09 <scratch space>:157:1: note: expanded from here
+ 0:02.09   157 | free_impl
+ 0:02.09       | ^
+ 0:02.09 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:147:38: note: expanded from macro 'free_impl'
+ 0:02.09   147 | #define free_impl mozmem_malloc_impl(free)
+ 0:02.09       |                                      ^
+ 0:02.09 /usr/include/stdlib.h:96:7: note: previous declaration is here
+ 0:02.09    96 | void     free(void *);
+ 0:02.09       |          ^
+ 0:02.09 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/AutoProfilerLabel.cpp:7:
+ 0:02.09 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/AutoProfilerLabel.h:13:
+ 0:02.09 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/tuple:68:
+ 0:02.09 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.09 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:67:1: error: exception specification in declaration does not match previous declaration
+ 0:02.09    67 | NOTHROW_MALLOC_DECL(posix_memalign, int, void**, size_t, size_t)
+ 0:02.09       | ^
+ 0:02.09 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.09    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.09       |                                ^
+ 0:02.09 <scratch space>:159:1: note: expanded from here
+ 0:02.09   159 | posix_memalign_impl
+ 0:02.09       | ^
+ 0:02.09 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:143:48: note: expanded from macro 'posix_memalign_impl'
+ 0:02.09   143 | #define posix_memalign_impl mozmem_malloc_impl(posix_memalign)
+ 0:02.09       |                                                ^
+ 0:02.09 /usr/include/stdlib.h:180:6: note: previous declaration is here
+ 0:02.09   180 | int      posix_memalign(void **, size_t, size_t); /* (ADV) */
+ 0:02.09       |          ^
+ 0:02.09 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/AutoProfilerLabel.cpp:7:
+ 0:02.10 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/AutoProfilerLabel.h:13:
+ 0:02.10 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/tuple:68:
+ 0:02.10 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.10 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:68:1: error: exception specification in declaration does not match previous declaration
+ 0:02.10    68 | NOTHROW_MALLOC_DECL(aligned_alloc, void*, size_t, size_t)
+ 0:02.10       | ^
+ 0:02.10 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.10    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.10       |                                ^
+ 0:02.10 <scratch space>:160:1: note: expanded from here
+ 0:02.10   160 | aligned_alloc_impl
+ 0:02.11       | ^
+ 0:02.11 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:144:47: note: expanded from macro 'aligned_alloc_impl'
+ 0:02.11   144 | #define aligned_alloc_impl mozmem_malloc_impl(aligned_alloc)
+ 0:02.11       |                                               ^
+ 0:02.11 /usr/include/stdlib.h:164:8: note: previous declaration is here
+ 0:02.11   164 | void *  aligned_alloc(size_t, size_t) __malloc_like __alloc_align(1)
+ 0:02.11       |         ^
+ 0:02.11 3 errors generated.
+ 0:02.11 gmake[5]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:670: AutoProfilerLabel.o] Error 1
+ 0:02.21 browser/components/shell
+ 0:02.21 browser/components/about
+ 0:02.38 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/MmapFaultHandler.cpp:12:
+ 0:02.38 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Atomics.h:24:
+ 0:02.38 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/atomic:68:
+ 0:02.38 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.38 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:63:1: error: exception specification in declaration does not match previous declaration
+ 0:02.38    63 | NOTHROW_MALLOC_DECL(free, void, void*)
+ 0:02.38       | ^
+ 0:02.38 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.38    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.38       |                                ^
+ 0:02.38 <scratch space>:171:1: note: expanded from here
+ 0:02.38   171 | free_impl
+ 0:02.38       | ^
+ 0:02.38 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:147:38: note: expanded from macro 'free_impl'
+ 0:02.38   147 | #define free_impl mozmem_malloc_impl(free)
+ 0:02.38       |                                      ^
+ 0:02.38 /usr/include/stdlib.h:96:7: note: previous declaration is here
+ 0:02.38    96 | void     free(void *);
+ 0:02.38       |          ^
+ 0:02.38 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/MmapFaultHandler.cpp:12:
+ 0:02.38 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Atomics.h:24:
+ 0:02.38 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/atomic:68:
+ 0:02.38 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.38 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:67:1: error: exception specification in declaration does not match previous declaration
+ 0:02.38    67 | NOTHROW_MALLOC_DECL(posix_memalign, int, void**, size_t, size_t)
+ 0:02.38       | ^
+ 0:02.38 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.38    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.38       |                                ^
+ 0:02.38 <scratch space>:173:1: note: expanded from here
+ 0:02.38   173 | posix_memalign_impl
+ 0:02.38       | ^
+ 0:02.38 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:143:48: note: expanded from macro 'posix_memalign_impl'
+ 0:02.38   143 | #define posix_memalign_impl mozmem_malloc_impl(posix_memalign)
+ 0:02.38       |                                                ^
+ 0:02.38 /usr/include/stdlib.h:180:6: note: previous declaration is here
+ 0:02.38   180 | int      posix_memalign(void **, size_t, size_t); /* (ADV) */
+ 0:02.38       |          ^
+ 0:02.38 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/MmapFaultHandler.cpp:12:
+ 0:02.38 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Atomics.h:24:
+ 0:02.38 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/atomic:68:
+ 0:02.38 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.38 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:68:1: error: exception specification in declaration does not match previous declaration
+ 0:02.38    68 | NOTHROW_MALLOC_DECL(aligned_alloc, void*, size_t, size_t)
+ 0:02.38       | ^
+ 0:02.38 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.38    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.38       |                                ^
+ 0:02.38 <scratch space>:174:1: note: expanded from here
+ 0:02.38   174 | aligned_alloc_impl
+ 0:02.38       | ^
+ 0:02.38 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:144:47: note: expanded from macro 'aligned_alloc_impl'
+ 0:02.38   144 | #define aligned_alloc_impl mozmem_malloc_impl(aligned_alloc)
+ 0:02.38       |                                               ^
+ 0:02.38 /usr/include/stdlib.h:164:8: note: previous declaration is here
+ 0:02.39   164 | void *  aligned_alloc(size_t, size_t) __malloc_like __alloc_align(1)
+ 0:02.39       |         ^
+ 0:02.39 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/MmapFaultHandler.cpp:12:
+ 0:02.39 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Atomics.h:24:
+ 0:02.39 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/atomic:68:
+ 0:02.39 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.39 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:69:1: error: exception specification in declaration does not match previous declaration
+ 0:02.39    69 | NOTHROW_MALLOC_DECL(valloc, void*, size_t)
+ 0:02.39       | ^
+ 0:02.39 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.39    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.39       |                                ^
+ 0:02.39 <scratch space>:175:1: note: expanded from here
+ 0:02.39   175 | valloc_impl
+ 0:02.39       | ^
+ 0:02.39 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:149:40: note: expanded from macro 'valloc_impl'
+ 0:02.39   149 | #define valloc_impl mozmem_malloc_impl(valloc)
+ 0:02.39       |                                        ^
+ 0:02.39 /usr/include/unistd.h:595:7: note: previous declaration is here
+ 0:02.39   595 | void    *valloc(size_t);                        /* obsoleted by malloc() */
+ 0:02.39       |          ^
+ 0:02.39 4 errors generated.
+ 0:02.39 gmake[5]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:670: MmapFaultHandler.o] Error 1
+ 0:02.51 caps
+ 0:02.78 In file included from Unified_cpp_memory_mozalloc0.cpp:2:
+ 0:02.78 In file included from /home/berke/workdir/www/zen-browser/work/memory/mozalloc/mozalloc.cpp:43:
+ 0:02.79 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.79 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:63:1: error: exception specification in declaration does not match previous declaration
+ 0:02.79    63 | NOTHROW_MALLOC_DECL(free, void, void*)
+ 0:02.79       | ^
+ 0:02.79 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.79    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.79       |                                ^
+ 0:02.79 <scratch space>:331:1: note: expanded from here
+ 0:02.79   331 | free_impl
+ 0:02.79       | ^
+ 0:02.79 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.h:147:38: note: expanded from macro 'free_impl'
+ 0:02.79   147 | #define free_impl mozmem_malloc_impl(free)
+ 0:02.79       |                                      ^
+ 0:02.79 /usr/include/stdlib.h:96:7: note: previous declaration is here
+ 0:02.79    96 | void     free(void *);
+ 0:02.79       |          ^
+ 0:02.79 In file included from Unified_cpp_memory_mozalloc0.cpp:2:
+ 0:02.79 In file included from /home/berke/workdir/www/zen-browser/work/memory/mozalloc/mozalloc.cpp:43:
+ 0:02.79 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.79 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:64:1: error: exception specification in declaration does not match previous declaration
+ 0:02.79    64 | NOTHROW_MALLOC_DECL(memalign, void*, size_t, size_t)
+ 0:02.79       | ^
+ 0:02.79 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.79    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.79       |                                ^
+ 0:02.79 <scratch space>:332:1: note: expanded from here
+ 0:02.79   332 | memalign_impl
+ 0:02.79       | ^
+ 0:02.79 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.h:148:42: note: expanded from macro 'memalign_impl'
+ 0:02.79   148 | #define memalign_impl mozmem_malloc_impl(memalign)
+ 0:02.79       |                                          ^
+ 0:02.79 /home/berke/workdir/www/zen-browser/files/malloc.h:30:14: note: previous declaration is here
+ 0:02.79    30 | inline void* memalign(size_t alignment, size_t size) {
+ 0:02.79       |              ^
+ 0:02.79 In file included from Unified_cpp_memory_mozalloc0.cpp:2:
+ 0:02.79 In file included from /home/berke/workdir/www/zen-browser/work/memory/mozalloc/mozalloc.cpp:43:
+ 0:02.79 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.79 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:67:1: error: exception specification in declaration does not match previous declaration
+ 0:02.79    67 | NOTHROW_MALLOC_DECL(posix_memalign, int, void**, size_t, size_t)
+ 0:02.79       | ^
+ 0:02.79 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.79    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.79       |                                ^
+ 0:02.79 <scratch space>:333:1: note: expanded from here
+ 0:02.79   333 | posix_memalign_impl
+ 0:02.79       | ^
+ 0:02.79 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.h:143:48: note: expanded from macro 'posix_memalign_impl'
+ 0:02.79   143 | #define posix_memalign_impl mozmem_malloc_impl(posix_memalign)
+ 0:02.79       |                                                ^
+ 0:02.79 /usr/include/stdlib.h:180:6: note: previous declaration is here
+ 0:02.79   180 | int      posix_memalign(void **, size_t, size_t); /* (ADV) */
+ 0:02.79       |          ^
+ 0:02.79 In file included from Unified_cpp_memory_mozalloc0.cpp:2:
+ 0:02.79 In file included from /home/berke/workdir/www/zen-browser/work/memory/mozalloc/mozalloc.cpp:43:
+ 0:02.79 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.79 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:68:1: error: exception specification in declaration does not match previous declaration
+ 0:02.79    68 | NOTHROW_MALLOC_DECL(aligned_alloc, void*, size_t, size_t)
+ 0:02.79       | ^
+ 0:02.79 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.79    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.79       |                                ^
+ 0:02.79 <scratch space>:334:1: note: expanded from here
+ 0:02.79   334 | aligned_alloc_impl
+ 0:02.79       | ^
+ 0:02.79 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.h:144:47: note: expanded from macro 'aligned_alloc_impl'
+ 0:02.79   144 | #define aligned_alloc_impl mozmem_malloc_impl(aligned_alloc)
+ 0:02.79       |                                               ^
+ 0:02.79 /usr/include/stdlib.h:164:8: note: previous declaration is here
+ 0:02.79   164 | void *  aligned_alloc(size_t, size_t) __malloc_like __alloc_align(1)
+ 0:02.79       |         ^
+ 0:02.79 In file included from Unified_cpp_memory_mozalloc0.cpp:2:
+ 0:02.79 In file included from /home/berke/workdir/www/zen-browser/work/memory/mozalloc/mozalloc.cpp:43:
+ 0:02.80 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.80 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:69:1: error: exception specification in declaration does not match previous declaration
+ 0:02.80    69 | NOTHROW_MALLOC_DECL(valloc, void*, size_t)
+ 0:02.80       | ^
+ 0:02.80 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.80    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.80       |                                ^
+ 0:02.80 <scratch space>:335:1: note: expanded from here
+ 0:02.80   335 | valloc_impl
+ 0:02.80       | ^
+ 0:02.80 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.h:149:40: note: expanded from macro 'valloc_impl'
+ 0:02.80   149 | #define valloc_impl mozmem_malloc_impl(valloc)
+ 0:02.80       |                                        ^
+ 0:02.81 /usr/include/unistd.h:595:7: note: previous declaration is here
+ 0:02.81   595 | void    *valloc(size_t);                        /* obsoleted by malloc() */
+ 0:02.81       |          ^
+ 0:02.81 In file included from Unified_cpp_memory_mozalloc0.cpp:2:
+ 0:02.81 In file included from /home/berke/workdir/www/zen-browser/work/memory/mozalloc/mozalloc.cpp:43:
+ 0:02.81 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.81 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:70:1: error: exception specification in declaration does not match previous declaration
+ 0:02.81    70 | NOTHROW_MALLOC_DECL(malloc_usable_size, size_t, usable_ptr_t)
+ 0:02.81       | ^
+ 0:02.81 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.81    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.81       |                                ^
+ 0:02.81 <scratch space>:336:1: note: expanded from here
+ 0:02.81   336 | malloc_usable_size_impl
+ 0:02.81       | ^
+ 0:02.81 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.h:150:52: note: expanded from macro 'malloc_usable_size_impl'
+ 0:02.81   150 | #define malloc_usable_size_impl mozmem_malloc_impl(malloc_usable_size)
+ 0:02.81       |                                                    ^
+ 0:02.81 /usr/include/malloc_np.h:73:8: note: previous declaration is here
+ 0:02.81    73 | size_t  malloc_usable_size(const void *ptr);
+ 0:02.81       |         ^
+ 0:02.81 6 errors generated.
+ 0:02.81 gmake[5]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:670: Unified_cpp_memory_mozalloc0.o] Error 1
+ 0:02.81 gmake[4]: *** [/home/berke/workdir/www/zen-browser/work/config/recurse.mk:72: memory/mozalloc/target-objects] Error 2
+ 0:02.81 gmake[4]: *** Waiting for unfinished jobs....
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/LoggingCore.cpp:6:
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/LoggingCore.h:11:
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Atomics.h:24:
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/atomic:68:
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.95 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:63:1: error: exception specification in declaration does not match previous declaration
+ 0:02.95    63 | NOTHROW_MALLOC_DECL(free, void, void*)
+ 0:02.95       | ^
+ 0:02.95 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.95    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.95       |                                ^
+ 0:02.95 <scratch space>:139:1: note: expanded from here
+ 0:02.95   139 | free_impl
+ 0:02.95       | ^
+ 0:02.95 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:147:38: note: expanded from macro 'free_impl'
+ 0:02.95   147 | #define free_impl mozmem_malloc_impl(free)
+ 0:02.95       |                                      ^
+ 0:02.95 /usr/include/stdlib.h:96:7: note: previous declaration is here
+ 0:02.95    96 | void     free(void *);
+ 0:02.95       |          ^
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/LoggingCore.cpp:6:
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/LoggingCore.h:11:
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Atomics.h:24:
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/atomic:68:
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.95 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:67:1: error: exception specification in declaration does not match previous declaration
+ 0:02.95    67 | NOTHROW_MALLOC_DECL(posix_memalign, int, void**, size_t, size_t)
+ 0:02.95       | ^
+ 0:02.95 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.95    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.95       |                                ^
+ 0:02.95 <scratch space>:141:1: note: expanded from here
+ 0:02.95   141 | posix_memalign_impl
+ 0:02.95       | ^
+ 0:02.95 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:143:48: note: expanded from macro 'posix_memalign_impl'
+ 0:02.95   143 | #define posix_memalign_impl mozmem_malloc_impl(posix_memalign)
+ 0:02.95       |                                                ^
+ 0:02.95 /usr/include/stdlib.h:180:6: note: previous declaration is here
+ 0:02.95   180 | int      posix_memalign(void **, size_t, size_t); /* (ADV) */
+ 0:02.95       |          ^
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/LoggingCore.cpp:6:
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/LoggingCore.h:11:
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Atomics.h:24:
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/atomic:68:
+ 0:02.95 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:02.95 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:68:1: error: exception specification in declaration does not match previous declaration
+ 0:02.96    68 | NOTHROW_MALLOC_DECL(aligned_alloc, void*, size_t, size_t)
+ 0:02.96       | ^
+ 0:02.96 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:02.96    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:02.96       |                                ^
+ 0:02.96 <scratch space>:142:1: note: expanded from here
+ 0:02.96   142 | aligned_alloc_impl
+ 0:02.96       | ^
+ 0:02.96 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:144:47: note: expanded from macro 'aligned_alloc_impl'
+ 0:02.96   144 | #define aligned_alloc_impl mozmem_malloc_impl(aligned_alloc)
+ 0:02.96       |                                               ^
+ 0:02.96 /usr/include/stdlib.h:164:8: note: previous declaration is here
+ 0:02.96   164 | void *  aligned_alloc(size_t, size_t) __malloc_like __alloc_align(1)
+ 0:02.96       |         ^
+ 0:02.96 3 errors generated.
+ 0:02.96 gmake[5]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:670: LoggingCore.o] Error 1
+ 0:03.76 In file included from Unified_cpp_third_party_fmt0.cpp:2:
+ 0:03.76 In file included from /home/berke/workdir/www/zen-browser/work/third_party/fmt/src/format.cc:8:
+ 0:03.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/fmt/format-inl.h:12:
+ 0:03.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/algorithm:68:
+ 0:03.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:03.76 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:63:1: error: exception specification in declaration does not match previous declaration
+ 0:03.76    63 | NOTHROW_MALLOC_DECL(free, void, void*)
+ 0:03.76       | ^
+ 0:03.76 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:03.76    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:03.76       |                                ^
+ 0:03.76 <scratch space>:149:1: note: expanded from here
+ 0:03.76   149 | free_impl
+ 0:03.76       | ^
+ 0:03.76 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:147:38: note: expanded from macro 'free_impl'
+ 0:03.76   147 | #define free_impl mozmem_malloc_impl(free)
+ 0:03.76       |                                      ^
+ 0:03.76 /usr/include/stdlib.h:96:7: note: previous declaration is here
+ 0:03.76    96 | void     free(void *);
+ 0:03.76       |          ^
+ 0:03.76 In file included from Unified_cpp_third_party_fmt0.cpp:2:
+ 0:03.76 In file included from /home/berke/workdir/www/zen-browser/work/third_party/fmt/src/format.cc:8:
+ 0:03.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/fmt/format-inl.h:12:
+ 0:03.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/algorithm:68:
+ 0:03.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:03.76 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:67:1: error: exception specification in declaration does not match previous declaration
+ 0:03.76    67 | NOTHROW_MALLOC_DECL(posix_memalign, int, void**, size_t, size_t)
+ 0:03.76       | ^
+ 0:03.76 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:03.76    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:03.76       |                                ^
+ 0:03.76 <scratch space>:151:1: note: expanded from here
+ 0:03.76   151 | posix_memalign_impl
+ 0:03.76       | ^
+ 0:03.76 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:143:48: note: expanded from macro 'posix_memalign_impl'
+ 0:03.76   143 | #define posix_memalign_impl mozmem_malloc_impl(posix_memalign)
+ 0:03.76       |                                                ^
+ 0:03.76 /usr/include/stdlib.h:180:6: note: previous declaration is here
+ 0:03.76   180 | int      posix_memalign(void **, size_t, size_t); /* (ADV) */
+ 0:03.77       |          ^
+ 0:03.77 In file included from Unified_cpp_third_party_fmt0.cpp:2:
+ 0:03.77 In file included from /home/berke/workdir/www/zen-browser/work/third_party/fmt/src/format.cc:8:
+ 0:03.77 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/fmt/format-inl.h:12:
+ 0:03.77 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/algorithm:68:
+ 0:03.77 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:03.77 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:68:1: error: exception specification in declaration does not match previous declaration
+ 0:03.77    68 | NOTHROW_MALLOC_DECL(aligned_alloc, void*, size_t, size_t)
+ 0:03.77       | ^
+ 0:03.77 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:03.77    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:03.77       |                                ^
+ 0:03.77 <scratch space>:152:1: note: expanded from here
+ 0:03.77   152 | aligned_alloc_impl
+ 0:03.77       | ^
+ 0:03.77 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:144:47: note: expanded from macro 'aligned_alloc_impl'
+ 0:03.77   144 | #define aligned_alloc_impl mozmem_malloc_impl(aligned_alloc)
+ 0:03.77       |                                               ^
+ 0:03.77 /usr/include/stdlib.h:164:8: note: previous declaration is here
+ 0:03.77   164 | void *  aligned_alloc(size_t, size_t) __malloc_like __alloc_align(1)
+ 0:03.77       |         ^
+ 0:03.77 3 errors generated.
+ 0:03.77 gmake[5]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:670: Unified_cpp_third_party_fmt0.o] Error 1
+ 0:03.77 gmake[4]: *** [/home/berke/workdir/www/zen-browser/work/config/recurse.mk:72: third_party/fmt/target-objects] Error 2
+ 0:03.88 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/Debug.cpp:7:
+ 0:03.88 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/glue/Debug.h:13:
+ 0:03.88 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/cstdarg:68:
+ 0:03.88 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:03.88 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:63:1: error: exception specification in declaration does not match previous declaration
+ 0:03.88    63 | NOTHROW_MALLOC_DECL(free, void, void*)
+ 0:03.88       | ^
+ 0:03.88 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:03.88    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:03.88       |                                ^
+ 0:03.88 <scratch space>:139:1: note: expanded from here
+ 0:03.88   139 | free_impl
+ 0:03.88       | ^
+ 0:03.88 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:147:38: note: expanded from macro 'free_impl'
+ 0:03.88   147 | #define free_impl mozmem_malloc_impl(free)
+ 0:03.88       |                                      ^
+ 0:03.88 /usr/include/stdlib.h:96:7: note: previous declaration is here
+ 0:03.88    96 | void     free(void *);
+ 0:03.88       |          ^
+ 0:03.88 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/Debug.cpp:7:
+ 0:03.88 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/glue/Debug.h:13:
+ 0:03.88 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/cstdarg:68:
+ 0:03.88 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:03.88 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:67:1: error: exception specification in declaration does not match previous declaration
+ 0:03.88    67 | NOTHROW_MALLOC_DECL(posix_memalign, int, void**, size_t, size_t)
+ 0:03.88       | ^
+ 0:03.88 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:03.88    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:03.88       |                                ^
+ 0:03.88 <scratch space>:141:1: note: expanded from here
+ 0:03.88   141 | posix_memalign_impl
+ 0:03.88       | ^
+ 0:03.88 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:143:48: note: expanded from macro 'posix_memalign_impl'
+ 0:03.88   143 | #define posix_memalign_impl mozmem_malloc_impl(posix_memalign)
+ 0:03.88       |                                                ^
+ 0:03.88 /usr/include/stdlib.h:180:6: note: previous declaration is here
+ 0:03.88   180 | int      posix_memalign(void **, size_t, size_t); /* (ADV) */
+ 0:03.88       |          ^
+ 0:03.88 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/Debug.cpp:7:
+ 0:03.88 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/glue/Debug.h:13:
+ 0:03.88 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/cstdarg:68:
+ 0:03.88 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:03.88 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:68:1: error: exception specification in declaration does not match previous declaration
+ 0:03.88    68 | NOTHROW_MALLOC_DECL(aligned_alloc, void*, size_t, size_t)
+ 0:03.88       | ^
+ 0:03.88 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:03.88    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:03.88       |                                ^
+ 0:03.88 <scratch space>:142:1: note: expanded from here
+ 0:03.88   142 | aligned_alloc_impl
+ 0:03.88       | ^
+ 0:03.88 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:144:47: note: expanded from macro 'aligned_alloc_impl'
+ 0:03.88   144 | #define aligned_alloc_impl mozmem_malloc_impl(aligned_alloc)
+ 0:03.88       |                                               ^
+ 0:03.88 /usr/include/stdlib.h:164:8: note: previous declaration is here
+ 0:03.88   164 | void *  aligned_alloc(size_t, size_t) __malloc_like __alloc_align(1)
+ 0:03.88       |         ^
+ 0:03.88 3 errors generated.
+ 0:03.88 gmake[5]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:670: Debug.o] Error 1
+ 0:03.91 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/ConditionVariable_posix.cpp:14:
+ 0:03.91 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/PlatformConditionVariable.h:12:
+ 0:03.91 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/utility:68:
+ 0:03.91 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:03.91 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:63:1: error: exception specification in declaration does not match previous declaration
+ 0:03.91    63 | NOTHROW_MALLOC_DECL(free, void, void*)
+ 0:03.91       | ^
+ 0:03.91 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:03.91    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:03.91       |                                ^
+ 0:03.91 <scratch space>:80:1: note: expanded from here
+ 0:03.91    80 | free_impl
+ 0:03.91       | ^
+ 0:03.91 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:147:38: note: expanded from macro 'free_impl'
+ 0:03.91   147 | #define free_impl mozmem_malloc_impl(free)
+ 0:03.91       |                                      ^
+ 0:03.91 /usr/include/stdlib.h:96:7: note: previous declaration is here
+ 0:03.91    96 | void     free(void *);
+ 0:03.91       |          ^
+ 0:03.91 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/ConditionVariable_posix.cpp:14:
+ 0:03.91 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/PlatformConditionVariable.h:12:
+ 0:03.91 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/utility:68:
+ 0:03.91 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:03.91 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:67:1: error: exception specification in declaration does not match previous declaration
+ 0:03.91    67 | NOTHROW_MALLOC_DECL(posix_memalign, int, void**, size_t, size_t)
+ 0:03.91       | ^
+ 0:03.91 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:03.91    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:03.91       |                                ^
+ 0:03.91 <scratch space>:82:1: note: expanded from here
+ 0:03.92    82 | posix_memalign_impl
+ 0:03.92       | ^
+ 0:03.92 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:143:48: note: expanded from macro 'posix_memalign_impl'
+ 0:03.92   143 | #define posix_memalign_impl mozmem_malloc_impl(posix_memalign)
+ 0:03.92       |                                                ^
+ 0:03.92 /usr/include/stdlib.h:180:6: note: previous declaration is here
+ 0:03.92   180 | int      posix_memalign(void **, size_t, size_t); /* (ADV) */
+ 0:03.92       |          ^
+ 0:03.92 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/ConditionVariable_posix.cpp:14:
+ 0:03.92 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/PlatformConditionVariable.h:12:
+ 0:03.92 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/utility:68:
+ 0:03.92 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:03.92 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:68:1: error: exception specification in declaration does not match previous declaration
+ 0:03.92    68 | NOTHROW_MALLOC_DECL(aligned_alloc, void*, size_t, size_t)
+ 0:03.92       | ^
+ 0:03.92 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:03.92    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:03.92       |                                ^
+ 0:03.92 <scratch space>:83:1: note: expanded from here
+ 0:03.92    83 | aligned_alloc_impl
+ 0:03.92       | ^
+ 0:03.92 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:144:47: note: expanded from macro 'aligned_alloc_impl'
+ 0:03.92   144 | #define aligned_alloc_impl mozmem_malloc_impl(aligned_alloc)
+ 0:03.92       |                                               ^
+ 0:03.92 /usr/include/stdlib.h:164:8: note: previous declaration is here
+ 0:03.92   164 | void *  aligned_alloc(size_t, size_t) __malloc_like __alloc_align(1)
+ 0:03.92       |         ^
+ 0:03.92 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/misc/ConditionVariable_posix.cpp:14:
+ 0:03.92 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/PlatformConditionVariable.h:12:
+ 0:03.93 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/utility:68:
+ 0:03.93 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:03.93 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:69:1: error: exception specification in declaration does not match previous declaration
+ 0:03.93    69 | NOTHROW_MALLOC_DECL(valloc, void*, size_t)
+ 0:03.93       | ^
+ 0:03.93 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:03.93    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:03.93       |                                ^
+ 0:03.93 <scratch space>:84:1: note: expanded from here
+ 0:03.93    84 | valloc_impl
+ 0:03.93       | ^
+ 0:03.93 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:149:40: note: expanded from macro 'valloc_impl'
+ 0:03.93   149 | #define valloc_impl mozmem_malloc_impl(valloc)
+ 0:03.93       |                                        ^
+ 0:03.93 /usr/include/unistd.h:595:7: note: previous declaration is here
+ 0:03.93   595 | void    *valloc(size_t);                        /* obsoleted by malloc() */
+ 0:03.93       |          ^
+ 0:03.93 4 errors generated.
+ 0:03.93 gmake[5]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:670: ConditionVariable_posix.o] Error 1
+ 0:03.93 gmake[4]: *** [/home/berke/workdir/www/zen-browser/work/config/recurse.mk:72: mozglue/misc/target-objects] Error 2
+ 0:04.28 In file included from Unified_cpp_memory_build0.cpp:47:
+ 0:04.29 In file included from /home/berke/workdir/www/zen-browser/work/memory/build/mozjemalloc.cpp:5171:
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:63:1: error: exception specification in declaration does not match previous declaration
+ 0:04.29    63 | NOTHROW_MALLOC_DECL(free, void, void*)
+ 0:04.29       | ^
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/mozjemalloc.cpp:5167:29: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:04.29  5167 |   MOZ_MEMORY_API MACRO_CALL(GENERIC_MALLOC_DECL, (noexcept(true), __VA_ARGS__))
+ 0:04.29       |                             ^
+ 0:04.29 /usr/include/stdlib.h:96:7: note: previous declaration is here
+ 0:04.29    96 | void     free(void *);
+ 0:04.29       |          ^
+ 0:04.29 In file included from Unified_cpp_memory_build0.cpp:47:
+ 0:04.29 In file included from /home/berke/workdir/www/zen-browser/work/memory/build/mozjemalloc.cpp:5171:
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:67:1: error: exception specification in declaration does not match previous declaration
+ 0:04.29    67 | NOTHROW_MALLOC_DECL(posix_memalign, int, void**, size_t, size_t)
+ 0:04.29       | ^
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/mozjemalloc.cpp:5167:29: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:04.29  5167 |   MOZ_MEMORY_API MACRO_CALL(GENERIC_MALLOC_DECL, (noexcept(true), __VA_ARGS__))
+ 0:04.29       |                             ^
+ 0:04.29 /usr/local/llvm19/lib/clang/19/include/mm_malloc.h:25:16: note: previous declaration is here
+ 0:04.29    25 | extern "C" int posix_memalign(void **__memptr, size_t __alignment, size_t __size);
+ 0:04.29       |                ^
+ 0:04.29 In file included from Unified_cpp_memory_build0.cpp:47:
+ 0:04.29 In file included from /home/berke/workdir/www/zen-browser/work/memory/build/mozjemalloc.cpp:5171:
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:68:1: error: exception specification in declaration does not match previous declaration
+ 0:04.29    68 | NOTHROW_MALLOC_DECL(aligned_alloc, void*, size_t, size_t)
+ 0:04.29       | ^
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/mozjemalloc.cpp:5167:29: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:04.29  5167 |   MOZ_MEMORY_API MACRO_CALL(GENERIC_MALLOC_DECL, (noexcept(true), __VA_ARGS__))
+ 0:04.29       |                             ^
+ 0:04.29 /usr/include/stdlib.h:164:8: note: previous declaration is here
+ 0:04.29   164 | void *  aligned_alloc(size_t, size_t) __malloc_like __alloc_align(1)
+ 0:04.29       |         ^
+ 0:04.29 In file included from Unified_cpp_memory_build0.cpp:47:
+ 0:04.29 In file included from /home/berke/workdir/www/zen-browser/work/memory/build/mozjemalloc.cpp:5171:
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:69:1: error: exception specification in declaration does not match previous declaration
+ 0:04.29    69 | NOTHROW_MALLOC_DECL(valloc, void*, size_t)
+ 0:04.29       | ^
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/mozjemalloc.cpp:5167:29: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:04.29  5167 |   MOZ_MEMORY_API MACRO_CALL(GENERIC_MALLOC_DECL, (noexcept(true), __VA_ARGS__))
+ 0:04.29       |                             ^
+ 0:04.29 /usr/include/unistd.h:595:7: note: previous declaration is here
+ 0:04.29   595 | void    *valloc(size_t);                        /* obsoleted by malloc() */
+ 0:04.29       |          ^
+ 0:04.29 In file included from Unified_cpp_memory_build0.cpp:47:
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/mozjemalloc.cpp:5207:4: error: "Interposing malloc is unsafe on this system without libc malloc hooks."
+ 0:04.29  5207 | #  error \
+ 0:04.29       |    ^
+ 0:04.29 In file included from Unified_cpp_memory_build0.cpp:56:
+ 0:04.29 In file included from /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.cpp:18:
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:63:1: error: exception specification in declaration does not match previous declaration
+ 0:04.29    63 | NOTHROW_MALLOC_DECL(free, void, void*)
+ 0:04.29       | ^
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.cpp:14:30: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:04.29    14 |   MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:04.29       |                              ^
+ 0:04.29 <scratch space>:93:1: note: expanded from here
+ 0:04.29    93 | free_impl
+ 0:04.29       | ^
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.h:147:38: note: expanded from macro 'free_impl'
+ 0:04.29   147 | #define free_impl mozmem_malloc_impl(free)
+ 0:04.29       |                                      ^
+ 0:04.29 /usr/include/stdlib.h:96:7: note: previous declaration is here
+ 0:04.29    96 | void     free(void *);
+ 0:04.29       |          ^
+ 0:04.29 In file included from Unified_cpp_memory_build0.cpp:56:
+ 0:04.29 In file included from /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.cpp:18:
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:67:1: error: exception specification in declaration does not match previous declaration
+ 0:04.29    67 | NOTHROW_MALLOC_DECL(posix_memalign, int, void**, size_t, size_t)
+ 0:04.29       | ^
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.cpp:14:30: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:04.29    14 |   MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:04.29       |                              ^
+ 0:04.29 <scratch space>:95:1: note: expanded from here
+ 0:04.29    95 | posix_memalign_impl
+ 0:04.29       | ^
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.h:143:48: note: expanded from macro 'posix_memalign_impl'
+ 0:04.29   143 | #define posix_memalign_impl mozmem_malloc_impl(posix_memalign)
+ 0:04.29       |                                                ^
+ 0:04.29 /usr/local/llvm19/lib/clang/19/include/mm_malloc.h:25:16: note: previous declaration is here
+ 0:04.29    25 | extern "C" int posix_memalign(void **__memptr, size_t __alignment, size_t __size);
+ 0:04.29       |                ^
+ 0:04.29 In file included from Unified_cpp_memory_build0.cpp:56:
+ 0:04.29 In file included from /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.cpp:18:
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:68:1: error: exception specification in declaration does not match previous declaration
+ 0:04.29    68 | NOTHROW_MALLOC_DECL(aligned_alloc, void*, size_t, size_t)
+ 0:04.29       | ^
+ 0:04.29 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.cpp:14:30: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:04.29    14 |   MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:04.29       |                              ^
+ 0:04.30 <scratch space>:96:1: note: expanded from here
+ 0:04.30    96 | aligned_alloc_impl
+ 0:04.30       | ^
+ 0:04.30 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.h:144:47: note: expanded from macro 'aligned_alloc_impl'
+ 0:04.30   144 | #define aligned_alloc_impl mozmem_malloc_impl(aligned_alloc)
+ 0:04.30       |                                               ^
+ 0:04.30 /usr/include/stdlib.h:164:8: note: previous declaration is here
+ 0:04.30   164 | void *  aligned_alloc(size_t, size_t) __malloc_like __alloc_align(1)
+ 0:04.30       |         ^
+ 0:04.30 In file included from Unified_cpp_memory_build0.cpp:56:
+ 0:04.30 In file included from /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.cpp:18:
+ 0:04.30 /home/berke/workdir/www/zen-browser/work/memory/build/malloc_decls.h:69:1: error: exception specification in declaration does not match previous declaration
+ 0:04.30    69 | NOTHROW_MALLOC_DECL(valloc, void*, size_t)
+ 0:04.30       | ^
+ 0:04.30 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.cpp:14:30: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:04.30    14 |   MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:04.30       |                              ^
+ 0:04.30 <scratch space>:97:1: note: expanded from here
+ 0:04.30    97 | valloc_impl
+ 0:04.30       | ^
+ 0:04.30 /home/berke/workdir/www/zen-browser/work/memory/build/mozmemory_wrap.h:149:40: note: expanded from macro 'valloc_impl'
+ 0:04.30   149 | #define valloc_impl mozmem_malloc_impl(valloc)
+ 0:04.30       |                                        ^
+ 0:04.30 /usr/include/unistd.h:595:7: note: previous declaration is here
+ 0:04.30   595 | void    *valloc(size_t);                        /* obsoleted by malloc() */
+ 0:04.30       |          ^
+ 0:04.57 9 errors generated.
+ 0:04.59 gmake[5]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:670: Unified_cpp_memory_build0.o] Error 1
+ 0:04.59 gmake[4]: *** [/home/berke/workdir/www/zen-browser/work/config/recurse.mk:72: memory/build/target-objects] Error 2
+ 0:05.85 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/baseprofiler/core/shared-libraries-linux.cc:7:
+ 0:05.85 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/SharedLibraries.h:10:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/BaseProfiler.h:27:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/BaseProfilerCounts.h:23:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Atomics.h:24:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/atomic:68:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:05.86 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:63:1: error: exception specification in declaration does not match previous declaration
+ 0:05.86    63 | NOTHROW_MALLOC_DECL(free, void, void*)
+ 0:05.86       | ^
+ 0:05.86 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:05.86    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:05.86       |                                ^
+ 0:05.86 <scratch space>:171:1: note: expanded from here
+ 0:05.86   171 | free_impl
+ 0:05.86       | ^
+ 0:05.86 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:147:38: note: expanded from macro 'free_impl'
+ 0:05.86   147 | #define free_impl mozmem_malloc_impl(free)
+ 0:05.86       |                                      ^
+ 0:05.86 /usr/include/stdlib.h:96:7: note: previous declaration is here
+ 0:05.86    96 | void     free(void *);
+ 0:05.86       |          ^
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/baseprofiler/core/shared-libraries-linux.cc:7:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/SharedLibraries.h:10:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/BaseProfiler.h:27:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/BaseProfilerCounts.h:23:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Atomics.h:24:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/atomic:68:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:05.86 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:67:1: error: exception specification in declaration does not match previous declaration
+ 0:05.86    67 | NOTHROW_MALLOC_DECL(posix_memalign, int, void**, size_t, size_t)
+ 0:05.86       | ^
+ 0:05.86 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:05.86    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:05.86       |                                ^
+ 0:05.86 <scratch space>:173:1: note: expanded from here
+ 0:05.86   173 | posix_memalign_impl
+ 0:05.86       | ^
+ 0:05.86 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:143:48: note: expanded from macro 'posix_memalign_impl'
+ 0:05.86   143 | #define posix_memalign_impl mozmem_malloc_impl(posix_memalign)
+ 0:05.86       |                                                ^
+ 0:05.86 /usr/include/stdlib.h:180:6: note: previous declaration is here
+ 0:05.86   180 | int      posix_memalign(void **, size_t, size_t); /* (ADV) */
+ 0:05.86       |          ^
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/baseprofiler/core/shared-libraries-linux.cc:7:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/SharedLibraries.h:10:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/BaseProfiler.h:27:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/BaseProfilerCounts.h:23:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Atomics.h:24:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/atomic:68:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:05.86 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:68:1: error: exception specification in declaration does not match previous declaration
+ 0:05.86    68 | NOTHROW_MALLOC_DECL(aligned_alloc, void*, size_t, size_t)
+ 0:05.86       | ^
+ 0:05.86 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:05.86    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:05.86       |                                ^
+ 0:05.86 <scratch space>:174:1: note: expanded from here
+ 0:05.86   174 | aligned_alloc_impl
+ 0:05.86       | ^
+ 0:05.86 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:144:47: note: expanded from macro 'aligned_alloc_impl'
+ 0:05.86   144 | #define aligned_alloc_impl mozmem_malloc_impl(aligned_alloc)
+ 0:05.86       |                                               ^
+ 0:05.86 /usr/include/stdlib.h:164:8: note: previous declaration is here
+ 0:05.86   164 | void *  aligned_alloc(size_t, size_t) __malloc_like __alloc_align(1)
+ 0:05.86       |         ^
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/baseprofiler/core/shared-libraries-linux.cc:7:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/SharedLibraries.h:10:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/BaseProfiler.h:27:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/BaseProfilerCounts.h:23:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Atomics.h:24:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/atomic:68:
+ 0:05.86 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:05.86 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:69:1: error: exception specification in declaration does not match previous declaration
+ 0:05.86    69 | NOTHROW_MALLOC_DECL(valloc, void*, size_t)
+ 0:05.86       | ^
+ 0:05.86 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:05.86    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:05.86       |                                ^
+ 0:05.86 <scratch space>:175:1: note: expanded from here
+ 0:05.86   175 | valloc_impl
+ 0:05.86       | ^
+ 0:05.86 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:149:40: note: expanded from macro 'valloc_impl'
+ 0:05.86   149 | #define valloc_impl mozmem_malloc_impl(valloc)
+ 0:05.86       |                                        ^
+ 0:05.86 /usr/include/unistd.h:595:7: note: previous declaration is here
+ 0:05.86   595 | void    *valloc(size_t);                        /* obsoleted by malloc() */
+ 0:05.86       |          ^
+ 0:05.86 4 errors generated.
+ 0:05.86 gmake[5]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:670: shared-libraries-linux.o] Error 1
+ 0:05.86 gmake[5]: *** Waiting for unfinished jobs....
+ 0:06.75 In file included from Unified_cpp_mozglue_baseprofiler0.cpp:2:
+ 0:06.75 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/baseprofiler/core/BaseAndGeckoProfilerDetail.cpp:7:
+ 0:06.75 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/BaseAndGeckoProfilerDetail.h:17:
+ 0:06.75 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Span.h:25:
+ 0:06.75 In file included from /usr/include/c++/v1/array:114:
+ 0:06.75 In file included from /usr/include/c++/v1/__algorithm/equal.h:20:
+ 0:06.75 In file included from /usr/include/c++/v1/__string/constexpr_c_functions.h:14:
+ 0:06.75 In file included from /usr/include/c++/v1/__memory/construct_at.h:23:
+ 0:06.75 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/new:68:
+ 0:06.75 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:06.75 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:63:1: error: exception specification in declaration does not match previous declaration
+ 0:06.75    63 | NOTHROW_MALLOC_DECL(free, void, void*)
+ 0:06.75       | ^
+ 0:06.75 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:06.75    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:06.75       |                                ^
+ 0:06.75 <scratch space>:179:1: note: expanded from here
+ 0:06.76   179 | free_impl
+ 0:06.76       | ^
+ 0:06.76 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:147:38: note: expanded from macro 'free_impl'
+ 0:06.76   147 | #define free_impl mozmem_malloc_impl(free)
+ 0:06.76       |                                      ^
+ 0:06.76 /usr/include/stdlib.h:96:7: note: previous declaration is here
+ 0:06.76    96 | void     free(void *);
+ 0:06.76       |          ^
+ 0:06.76 In file included from Unified_cpp_mozglue_baseprofiler0.cpp:2:
+ 0:06.76 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/baseprofiler/core/BaseAndGeckoProfilerDetail.cpp:7:
+ 0:06.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/BaseAndGeckoProfilerDetail.h:17:
+ 0:06.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Span.h:25:
+ 0:06.76 In file included from /usr/include/c++/v1/array:114:
+ 0:06.76 In file included from /usr/include/c++/v1/__algorithm/equal.h:20:
+ 0:06.76 In file included from /usr/include/c++/v1/__string/constexpr_c_functions.h:14:
+ 0:06.76 In file included from /usr/include/c++/v1/__memory/construct_at.h:23:
+ 0:06.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/new:68:
+ 0:06.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:06.76 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:67:1: error: exception specification in declaration does not match previous declaration
+ 0:06.76    67 | NOTHROW_MALLOC_DECL(posix_memalign, int, void**, size_t, size_t)
+ 0:06.76       | ^
+ 0:06.76 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:06.76    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:06.76       |                                ^
+ 0:06.76 <scratch space>:181:1: note: expanded from here
+ 0:06.76   181 | posix_memalign_impl
+ 0:06.76       | ^
+ 0:06.76 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:143:48: note: expanded from macro 'posix_memalign_impl'
+ 0:06.76   143 | #define posix_memalign_impl mozmem_malloc_impl(posix_memalign)
+ 0:06.76       |                                                ^
+ 0:06.76 /usr/include/stdlib.h:180:6: note: previous declaration is here
+ 0:06.76   180 | int      posix_memalign(void **, size_t, size_t); /* (ADV) */
+ 0:06.76       |          ^
+ 0:06.76 In file included from Unified_cpp_mozglue_baseprofiler0.cpp:2:
+ 0:06.76 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/baseprofiler/core/BaseAndGeckoProfilerDetail.cpp:7:
+ 0:06.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/BaseAndGeckoProfilerDetail.h:17:
+ 0:06.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Span.h:25:
+ 0:06.76 In file included from /usr/include/c++/v1/array:114:
+ 0:06.76 In file included from /usr/include/c++/v1/__algorithm/equal.h:20:
+ 0:06.76 In file included from /usr/include/c++/v1/__string/constexpr_c_functions.h:14:
+ 0:06.76 In file included from /usr/include/c++/v1/__memory/construct_at.h:23:
+ 0:06.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/new:68:
+ 0:06.76 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:06.76 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:68:1: error: exception specification in declaration does not match previous declaration
+ 0:06.76    68 | NOTHROW_MALLOC_DECL(aligned_alloc, void*, size_t, size_t)
+ 0:06.76       | ^
+ 0:06.76 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:06.76    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:06.76       |                                ^
+ 0:06.76 <scratch space>:182:1: note: expanded from here
+ 0:06.76   182 | aligned_alloc_impl
+ 0:06.76       | ^
+ 0:06.76 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:144:47: note: expanded from macro 'aligned_alloc_impl'
+ 0:06.77   144 | #define aligned_alloc_impl mozmem_malloc_impl(aligned_alloc)
+ 0:06.77       |                                               ^
+ 0:06.77 /usr/include/stdlib.h:164:8: note: previous declaration is here
+ 0:06.77   164 | void *  aligned_alloc(size_t, size_t) __malloc_like __alloc_align(1)
+ 0:06.77       |         ^
+ 0:06.77 In file included from Unified_cpp_mozglue_baseprofiler0.cpp:2:
+ 0:06.77 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/baseprofiler/core/BaseAndGeckoProfilerDetail.cpp:7:
+ 0:06.78 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/BaseAndGeckoProfilerDetail.h:17:
+ 0:06.78 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Span.h:25:
+ 0:06.78 In file included from /usr/include/c++/v1/array:114:
+ 0:06.78 In file included from /usr/include/c++/v1/__algorithm/equal.h:20:
+ 0:06.78 In file included from /usr/include/c++/v1/__string/constexpr_c_functions.h:14:
+ 0:06.78 In file included from /usr/include/c++/v1/__memory/construct_at.h:23:
+ 0:06.78 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/stl_wrappers/new:68:
+ 0:06.78 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:38:
+ 0:06.78 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:69:1: error: exception specification in declaration does not match previous declaration
+ 0:06.78    69 | NOTHROW_MALLOC_DECL(valloc, void*, size_t)
+ 0:06.78       | ^
+ 0:06.78 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:06.78    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:06.78       |                                ^
+ 0:06.78 <scratch space>:183:1: note: expanded from here
+ 0:06.78   183 | valloc_impl
+ 0:06.78       | ^
+ 0:06.78 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:149:40: note: expanded from macro 'valloc_impl'
+ 0:06.78   149 | #define valloc_impl mozmem_malloc_impl(valloc)
+ 0:06.78       |                                        ^
+ 0:06.78 /usr/include/unistd.h:595:7: note: previous declaration is here
+ 0:06.78   595 | void    *valloc(size_t);                        /* obsoleted by malloc() */
+ 0:06.78       |          ^
+ 0:06.78 In file included from Unified_cpp_mozglue_baseprofiler0.cpp:20:
+ 0:06.78 In file included from /home/berke/workdir/www/zen-browser/work/mozglue/baseprofiler/core/PageInformation.cpp:9:
+ 0:06.78 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/BaseProfiler.h:29:
+ 0:06.78 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/BaseProfilerMarkers.h:34:
+ 0:06.78 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/BaseProfilerMarkersDetail.h:14:
+ 0:06.78 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/BaseProfilerMarkersPrerequisites.h:27:
+ 0:06.78 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/BaseProfileJSONWriter.h:11:
+ 0:06.78 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/HashTable.h:80:
+ 0:06.78 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/AllocPolicy.h:116:5: error: call to 'free' is ambiguous
+ 0:06.78   116 |     free(aPtr);
+ 0:06.78       |     ^~~~
+ 0:06.78 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/Vector.h:1010:11: note: in instantiation of function template specialization 'mozilla::MallocAllocPolicy::free_<RefPtr<mozilla::baseprofiler::PageInformation>>' requested here
+ 0:06.78  1010 |     this->free_(beginNoCheck(), mTail.mCapacity);
+ 0:06.78       |           ^
+ 0:06.78 /home/berke/workdir/www/zen-browser/work/mozglue/baseprofiler/core/platform.cpp:291:3: note: in instantiation of member function 'mozilla::Vector<RefPtr<mozilla::baseprofiler::PageInformation>>::~Vector' requested here
+ 0:06.78   291 |   CorePS() : mProcessStartTime(TimeStamp::ProcessCreation()) {}
+ 0:06.78       |   ^
+ 0:06.78 /usr/include/stdlib.h:96:7: note: candidate function
+ 0:06.78    96 | void     free(void *);
+ 0:06.78       |          ^
+ 0:06.78 /home/berke/workdir/www/zen-browser/work/.build/dist/include/malloc_decls.h:63:1: note: candidate function
+ 0:06.78    63 | NOTHROW_MALLOC_DECL(free, void, void*)
+ 0:06.78       | ^
+ 0:06.78 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/mozalloc.h:35:32: note: expanded from macro 'NOTHROW_MALLOC_DECL'
+ 0:06.78    35 |     MOZ_MEMORY_API return_type name##_impl(__VA_ARGS__) noexcept(true);
+ 0:06.78       |                                ^
+ 0:06.78 <scratch space>:179:1: note: expanded from here
+ 0:06.78   179 | free_impl
+ 0:06.78       | ^
+ 0:06.79 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozmemory_wrap.h:147:38: note: expanded from macro 'free_impl'
+ 0:06.79   147 | #define free_impl mozmem_malloc_impl(free)
+ 0:06.79       |                                      ^
+ 0:06.79 5 errors generated.
+ 0:06.79 gmake[5]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:670: Unified_cpp_mozglue_baseprofiler0.o] Error 1
+ 0:06.79 gmake[4]: *** [/home/berke/workdir/www/zen-browser/work/config/recurse.mk:72: mozglue/baseprofiler/target-objects] Error 2
+ 0:11.30 /home/berke/workdir/www/zen-browser/work/browser/components/shell/nsGNOMEShellService.cpp:436:22: warning: 'gdk_color_parse' is deprecated: Use 'gdk_rgba_parse' instead [-Wdeprecated-declarations]
+ 0:11.30   436 |   gboolean success = gdk_color_parse(background.get(), &color);
+ 0:11.30       |                      ^
+ 0:11.30 /usr/local/include/gtk-3.0/gdk/deprecated/gdkcolor.h:78:1: note: 'gdk_color_parse' has been explicitly marked deprecated here
+ 0:11.30    78 | GDK_DEPRECATED_IN_3_14_FOR(gdk_rgba_parse)
+ 0:11.30       | ^
+ 0:11.30 /usr/local/include/gtk-3.0/gdk/gdkversionmacros.h:357:47: note: expanded from macro 'GDK_DEPRECATED_IN_3_14_FOR'
+ 0:11.30   357 | # define GDK_DEPRECATED_IN_3_14_FOR(f)        GDK_DEPRECATED_FOR(f)
+ 0:11.30       |                                               ^
+ 0:11.30 /usr/local/include/gtk-3.0/gdk/gdkversionmacros.h:49:31: note: expanded from macro 'GDK_DEPRECATED_FOR'
+ 0:11.30    49 | #define GDK_DEPRECATED_FOR(f) G_DEPRECATED_FOR(f) _GDK_EXTERN
+ 0:11.30       |                               ^
+ 0:11.30 /usr/local/include/glib-2.0/glib/gmacros.h:1277:44: note: expanded from macro 'G_DEPRECATED_FOR'
+ 0:11.30  1277 | #define G_DEPRECATED_FOR(f) __attribute__((__deprecated__("Use '" #f "' instead")))
+ 0:11.30       |                                            ^
+ 0:11.30 1 warning generated.
+ 0:17.48 In file included from /home/berke/workdir/www/zen-browser/work/browser/components/about/AboutRedirector.cpp:17:
+ 0:17.48 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/dom/ContentChild.h:16:
+ 0:17.48 In file included from /home/berke/workdir/www/zen-browser/work/.build/ipc/ipdl/_ipdlheaders/mozilla/dom/PContentChild.h:33:
+ 0:17.48 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/RemoteMediaManagerChild.h:11:
+ 0:17.48 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/GPUVideoImage.h:12:
+ 0:17.48 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/layers/GPUVideoTextureClient.h:10:
+ 0:17.48 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/layers/TextureClient.h:24:
+ 0:17.48 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/gfx/CriticalSection.h:55:3: warning: mutex 'mMutex' is still held at the end of function [-Wthread-safety-analysis]
+ 0:17.48    55 |   }
+ 0:17.48       |   ^
+ 0:17.48 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/gfx/CriticalSection.h:53:26: note: mutex acquired here
+ 0:17.48    53 |     DebugOnly<int> err = pthread_mutex_lock(&mMutex);
+ 0:17.48       |                          ^
+ 0:17.48 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/gfx/CriticalSection.h:58:26: warning: releasing mutex 'mMutex' that was not held [-Wthread-safety-analysis]
+ 0:17.48    58 |     DebugOnly<int> err = pthread_mutex_unlock(&mMutex);
+ 0:17.48       |                          ^
+ 0:17.48 2 warnings generated.
+ 0:22.79 In file included from Unified_cpp_caps0.cpp:11:
+ 0:22.79 In file included from /home/berke/workdir/www/zen-browser/work/caps/DomainPolicy.cpp:8:
+ 0:22.79 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/dom/ContentParent.h:29:
+ 0:22.79 In file included from /home/berke/workdir/www/zen-browser/work/.build/ipc/ipdl/_ipdlheaders/mozilla/dom/PContentParent.h:35:
+ 0:22.79 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/RemoteMediaManagerChild.h:11:
+ 0:22.79 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/GPUVideoImage.h:12:
+ 0:22.79 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/layers/GPUVideoTextureClient.h:10:
+ 0:22.79 In file included from /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/layers/TextureClient.h:24:
+ 0:22.79 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/gfx/CriticalSection.h:55:3: warning: mutex 'mMutex' is still held at the end of function [-Wthread-safety-analysis]
+ 0:22.79    55 |   }
+ 0:22.79       |   ^
+ 0:22.79 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/gfx/CriticalSection.h:53:26: note: mutex acquired here
+ 0:22.79    53 |     DebugOnly<int> err = pthread_mutex_lock(&mMutex);
+ 0:22.79       |                          ^
+ 0:22.79 /home/berke/workdir/www/zen-browser/work/.build/dist/include/mozilla/gfx/CriticalSection.h:58:26: warning: releasing mutex 'mMutex' that was not held [-Wthread-safety-analysis]
+ 0:22.79    58 |     DebugOnly<int> err = pthread_mutex_unlock(&mMutex);
+ 0:22.79       |                          ^
+ 0:22.79 2 warnings generated.
+ 0:22.81 gmake[3]: *** [/home/berke/workdir/www/zen-browser/work/config/recurse.mk:34: compile] Error 2
+ 0:22.81 gmake[2]: *** [/home/berke/workdir/www/zen-browser/work/config/rules.mk:359: default] Error 2
+ 0:22.81 gmake[1]: *** [client.mk:60: build] Error 2
+ 0:22.91 W 44 compiler warnings present.
+*** Error code 2
 
 Stop.
-make: stopped making "all" in /home/berke/workdir/www/zen-browser
+make: stopped making "build" in /home/berke/workdir/www/zen-browser
