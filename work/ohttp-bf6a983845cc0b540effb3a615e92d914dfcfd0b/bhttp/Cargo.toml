@@ -1,0 +1,29 @@
+[package]
+name = "bhttp"
+description = "Binary HTTP messages (RFC 9292)"
+authors.workspace = true
+homepage.workspace = true
+repository.workspace = true
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+keywords.workspace = true
+categories.workspace = true
+readme.workspace = true
+
+[features]
+default = ["bhttp"]
+bhttp = ["read-bhttp", "write-bhttp"]
+http = ["read-http", "write-http"]
+read-bhttp = []
+write-bhttp = []
+read-http = ["url"]
+write-http = []
+
+[dependencies]
+thiserror = "1"
+url = {version = "2", optional = true}
+
+[dev-dependencies]
+hex = "0.4"
