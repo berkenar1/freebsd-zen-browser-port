@@ -1,7 +1,42 @@
-[package]
-name = "zen-browser-rust"
-version = "0.1.0"
-edition = "2021"
+#[workspace]
+#members = [
+#    ".",
+#    "work/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/bhttp",
+#    "work/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/bhttp-convert",
+#    "work/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/ohttp-server",
+#    "work/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/ohttp-client",
+#    "work/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/ohttp",
+#    "work/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/ohttp-client-cli",
+#    "work/browser/app/nmhproxy",
+#    "work/testing/geckodriver/marionette",
+#    "work/testing/geckodriver",
+#    "work/testing/webdriver",
+#    "work/testing/mozbase/rust/mozprofile/fuzz",
+#    "work/testing/mozbase/rust/mozprofile",
+#    "work/testing/mozbase/rust/mozversion",
+#    "work/testing/mozbase/rust/mozdevice",
+#    "work/testing/mozbase/rust/mozrunner",
+#    "work/xpcom/rust/malloc_size_of_derive",
+#    "work/xpcom/rust/gecko_logger",
+#    "work/xpcom/rust/xpcom",
+#    "work/xpcom/rust/xpcom/xpcom_macros",
+#    "work/mp4parse-rust-f955be5d2a04a631c0f1777d6f35370ea1a99e2d/mp4parse",
+#    "work/mp4parse-rust-f955be5d2a04a631c0f1777d6f35370ea1a99e2d/mp4parse_capi",
+#    "work/rust-bindgen-9366e0af8da529c958b4cd4fcbe492d951c86f5c/bindgen",
+#]
+
+#[workspace.package]
+#authors = ["Your Name <your.email@example.com>"]
+#edition = "2021"
+#rust-version = "1.70"
+#license = "MPL-2.0"
+#repository = "https://github.com/zen-browser/zen-browser"
+#homepage = "https://www.zen-browser.com"
+
+#[package]
+#name = "zen-browser-rust"
+#version = "0.1.0"
+#edition = "2021"
 
 [workspace.dependencies]
 jemalloc-sys = "0.5"
