@@ -1,6 +1,6 @@
 # Portname block
 PORTNAME=		zen-browser
-DISTVERSION=		1.17.12b
+DISTVERSION=		1.17.15b
 CATEGORIES=		www wayland
 PORTREVISION=		0
 PORTEPOCH=		1

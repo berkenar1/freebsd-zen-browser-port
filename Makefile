@@ -2,9 +2,9 @@
 # BASIC PORT IDENTIFICATION (strict order required)
 # ============================================================================
 PORTNAME=		zen-browser
-PORTVERSION=		1.17.12
+PORTVERSION=		1.17.15
 #DISTVERSIONPREFIX=
-DISTVERSION=		1.17.12b
+DISTVERSION=		1.17.15b
 #DISTVERSIONSUFFIX=
 PORTREVISION=		1
 PORTEPOCH=		1
@@ -28,6 +28,32 @@ WWW=			https://zen-browser.app
 # ============================================================================
 LICENSE=		MPL20
 LICENSE_FILE=   ${WRKSRC}/LICENSE
+
+
+LIB_DEPENS= 	libnspr4.so:devel/nspr \
+		libnss3.so:security/nss \
+		libgtk-3.so.0:x11-toolkits/gtk30 \
+		libcairo.so.2:graphics/cairo \
+		libpango-1.0.so.0:x11-toolkits/pango \
+		libwayland-client.so.0:graphics/wayland \
+		libfontconfig.so.1:x11-fonts/fontconfig \
+		libfreetype.so.6:print/freetype2 \
+		libharfbuzz.so.0:print/harfbuzz \
+		libdbus-1.so.3:devel/dbus \
+		libicu*.so:devel/icu \
+		libpng16.so.16:graphics/png \
+		libjpeg.so.*:graphics/jpeg-turbo \
+		libsqlite3.so:databases/sqlite3 \
+		libpipewire-0.3.so.0:audio/pipewire \
+		libzstd.so:archivers/zstd \
+                libdav1d.so:multimedia/dav1d \
+                libaom.so:multimedia/aom \
+                libjxl.so:graphics/jpeg-xl \
+                libsrtp.so:net/libsrtp \
+                libepoxy.so:graphics/libepoxy \
+                libcups.so:print/cups \
+
+
 
 
 CARGO_CARGO_BIN=        ${HOME}/.cargo/bin/cargo
@@ -60,9 +86,6 @@ BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 		${LOCALBASE}/share/wasi-sysroot/lib/wasm32-wasi/libc.a:devel/wasi-libc@20 \
 		wasi-compiler-rt20>0:devel/wasi-compiler-rt20
 
-
-LIB_DEPENDS=		libsqlite3.so:databases/sqlite3 \
-			libpipewire-0.3.so.0:audio/pipewire
 
 # ============================================================================
 # BUILD FRAMEWORK
@@ -153,8 +176,45 @@ ZEN_ICON_SRC=		${PREFIX}/lib/${PORTNAME}/browser/chrome/icons/default/default48.
 # ============================================================================
 # BUILD TARGETS
 # ============================================================================
+#post-extract:
+#	@${FIND} ${WRKSRC} -name "Cargo.toml" -exec ${SED} -i '' \
+		-e 's/edition\.workspace = true/edition = "2021"/g' \
+		-e 's/version\.workspace = true/version = "0.1.0"/g' \
+		-e 's/authors\.workspace = true/authors = ["Mozilla"]/g' \
+		-e 's/license\.workspace = true/license = "MPL-2.0"/g' \
+		-e 's/homepage\.workspace = true/homepage = "https:\/\/www.mozilla.org"/g' \
+		-e 's/repository\.workspace = true/repository = "https:\/\/github.com\/mozilla\/gecko-dev"/g' \
+		-e 's/description\.workspace = true/description = "Mozilla Firefox"/g' \
+		-e 's/keywords\.workspace = true/keywords = ["mozilla", "firefox", "browser"]/g' \
+		-e 's/categories\.workspace = true/categories = ["web-browsers"]/g' \
+		-e 's/rust-version\.workspace = true/rust-version = "1.70"/g' \
+		{} \;
+#
+#
+
+
+post-extract:
+	@${RM} -r ${WRKSRC}/third_party/sqlite3 \
+	         ${WRKSRC}/third_party/zstd \
+	         ${WRKSRC}/third_party/dav1d \
+	         ${WRKSRC}/third_party/aom \
+	         ${WRKSRC}/third_party/jpeg-xl \
+	         ${WRKSRC}/third_party/libsrtp \
+	         ${WRKSRC}/third_party/libepoxy
+
+
+
+CONFIGURE_ENV+= PKG_CONFIG_PATH=${LOCALBASE}/libdata/pkgconfig
+CPPFLAGS+=     -I${LOCALBASE}/include
+LDFLAGS+=      -L${LOCALBASE}/lib
+
+
+
+
 do-configure:
-	cd ${WRKSRC} && \
+
+
+cd ${WRKSRC} && \
 	${ECHO} "ac_add_options --without-wasm-sandboxed-libraries" > .mozconfig && \
 	${ECHO} "ac_add_options --with-wasi-sysroot=${WASI_SYSROOT}" >> .mozconfig && \
 	${SETENV} ${CONFIGURE_ENV} ${MAKE_ENV} \

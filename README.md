@@ -229,7 +229,8 @@ This FreeBSD port is provided under the Mozilla Public License 2.0 (MPL 2.0), co
 
 ## Version
 
-- **Port Version**: 1.17.12b
+- **Port Version**: 1.17.15b
+- **Release Date**: 2025-12-20
 - **FreeBSD**: 13.x and later
 - **Gecko Version**: Based on Firefox 100+
 
