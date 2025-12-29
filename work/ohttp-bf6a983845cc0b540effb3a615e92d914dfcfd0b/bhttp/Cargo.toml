@@ -1,16 +1,16 @@
 [package]
 name = "bhttp"
 description = "Binary HTTP messages (RFC 9292)"
-authors.workspace = true
-homepage.workspace = true
-repository.workspace = true
-version.workspace = true
-edition.workspace = true
-rust-version.workspace = true
-license.workspace = true
-keywords.workspace = true
-categories.workspace = true
-readme.workspace = true
+authors = ["Unknown <no-reply@local>"]
+homepage = "https://example.invalid"
+repository = "https://example.invalid"
+version = "0.0.0"
+edition = "2021"
+rust-version = "0.0.0"
+license = "MIT OR Apache-2.0"
+keywords = []
+categories = []
+readme = "README.md"
 
 [features]
 default = ["bhttp"]
