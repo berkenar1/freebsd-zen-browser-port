@@ -91,6 +91,14 @@ CPPFLAGS += -I${FILESDIR}
 | `patch-memory_mozalloc_mozalloc.cpp` | Provide memalign() for non-jemalloc builds |
 | `patch-memory_mozalloc_mozalloc.h` | Remove noexcept from mozalloc API |
 
+### Cargo Workspace Patch (`files/patch-Cargo.toml`)
+
+| Patch | Purpose |
+|-------|---------|
+| `patch-Cargo.toml` | Template for fixing cargo crate version mismatches at workspace root level |
+
+**Important:** Cargo crate version mismatches must be fixed in the **root** `Cargo.toml`, not in subdirectory `Cargo.toml` files. Changes made inside the work directory subdirectories are ineffective because Cargo resolves all dependencies from the workspace root. See [files/README.md](files/README.md) for details.
+
 ### Other Patches (`files/patch-*`)
 
 Additional patches for:

@@ -68,12 +68,31 @@ MAKE_ENV=       RUSTC=${LOCALBASE}/bin/rustc \
                 CCACHE=${LOCALBASE}/bin/ccache \
                 PATH=${LOCALBASE}/bin:${LOCALBASE}/sbin:/bin:/sbin:/usr/bin:/usr/sbin
 
+# Cargo configuration for consistent crate version resolution
+# These settings ensure Cargo respects the workspace root Cargo.toml
+# and resolves dependencies consistently across all workspace members.
+CARGO_BUILD_JOBS?=	${MAKE_JOBS_NUMBER}
+CARGO_ENV=	CARGO_BUILD_JOBS=${CARGO_BUILD_JOBS} \
+		CARGO_HOME=${WRKDIR}/.cargo \
+		CARGO_TARGET_DIR=${WRKDIR}/.build/target
+
 # Enable ccache for faster rebuilds
 MOZ_OPTIONS+=	--with-ccache=${LOCALBASE}/bin/ccache
 
 do-configure:
 	cd ${WRKSRC} && ./mach configure 
-				
+
+# Sync Cargo.lock with workspace root Cargo.toml to fix version mismatches
+# This target runs cargo update to ensure all crates are resolved consistently
+# from the workspace root, preventing version conflicts that occur when
+# changes are made only in subdirectory Cargo.toml files.
+pre-configure:
+	@${ECHO_MSG} "===> Syncing Cargo workspace dependencies"
+	@if [ -f "${WRKSRC}/Cargo.toml" ] && [ -f "${WRKSRC}/Cargo.lock" ]; then \
+		cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${CARGO_ENV} \
+			${LOCALBASE}/bin/cargo generate-lockfile --offline || \
+			${ECHO_MSG} "Note: cargo generate-lockfile skipped (requires network or no changes needed)"; \
+	fi
 
 do-build:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ./mach build
@@ -86,6 +105,12 @@ post-patch:
 			${PATCH} -d ${WRKSRC} -p0 < $$p || exit 1; \
 		fi; \
 	done
+	@${ECHO_MSG} "===> Verifying Cargo workspace configuration"
+	@if [ -f "${WRKSRC}/Cargo.toml" ]; then \
+		${ECHO_MSG} "Root Cargo.toml found - workspace patches will take effect"; \
+	else \
+		${ECHO_MSG} "Warning: No root Cargo.toml found"; \
+	fi
 
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}

@@ -1,11 +1,12 @@
-# Memory Allocation Patch Reference
+# Memory Allocation and Cargo Workspace Patch Reference
 
-This document provides a detailed reference for each memory allocation patch in the FreeBSD Zen Browser port.
+This document provides a detailed reference for each patch in the FreeBSD Zen Browser port.
 
 ## Patch Overview
 
 | Patch File | Target | Purpose |
 |------------|--------|---------|
+| `patch-Cargo.toml` | `Cargo.toml` (workspace root) | Fix cargo crate version mismatches at workspace level |
 | `patch-memory_build_Fallback.cpp` | `memory/build/Fallback.cpp` | Include malloc_np.h and define HAVE_MEMALIGN |
 | `patch-memory_build_mozjemalloc.cpp` | `memory/build/mozjemalloc.cpp` | Remove noexcept(true) and disable RTLD_DEEPBIND |
 | `patch-memory_build_mozmemory.h` | `memory/build/mozmemory.h` | Conditional noexcept removal |
@@ -13,7 +14,39 @@ This document provides a detailed reference for each memory allocation patch in 
 | `patch-memory_mozalloc_mozalloc.cpp` | `memory/mozalloc/mozalloc.cpp` | Provide memalign() for non-jemalloc builds |
 | `patch-memory_mozalloc_mozalloc.h` | `memory/mozalloc/mozalloc.h` | Remove noexcept from mozalloc API |
 
-## Detailed Patch Analysis
+## Cargo Workspace Patches
+
+### patch-Cargo.toml
+
+**Purpose:** Fix cargo crate version mismatches at the workspace root level
+
+**Problem:** Mozilla/Zen Browser uses a Cargo workspace with a root `Cargo.toml` that controls all Rust crate dependencies. When crate version mismatches occur:
+- Editing individual `Cargo.toml` files in subdirectories is **ineffective**
+- Cargo resolves all dependencies from the **workspace root**
+- The `Cargo.lock` file is shared across the entire workspace
+
+**Solution:** This patch provides a template for adding version overrides to the root `Cargo.toml`:
+
+```toml
+[patch.crates-io]
+# Pin a crate to a specific version
+semver = { version = "1.0.16" }
+
+# Use a local patched crate
+problematic-crate = { path = "third_party/rust/problematic-crate" }
+```
+
+**Rationale:**
+- The `[patch]` section in Cargo.toml overrides crate versions workspace-wide
+- This is the only effective way to fix version mismatches in Mozilla workspaces
+- Patches applied to subdirectory `Cargo.toml` files are ignored by Cargo
+
+**Usage:**
+1. Edit `files/patch-Cargo.toml` to add specific version overrides
+2. The patch is applied during the `post-patch` phase
+3. The `pre-configure` target syncs the `Cargo.lock` file
+
+## Detailed Memory Patch Analysis
 
 ### patch-memory_build_Fallback.cpp
 

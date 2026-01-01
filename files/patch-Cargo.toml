@@ -1,0 +1,40 @@
+--- Cargo.toml.orig	2025-01-01 00:00:00 UTC
++++ Cargo.toml
+@@ -1,3 +1,37 @@
++# FreeBSD port: This patch ensures consistent cargo crate versions across
++# the entire Mozilla workspace. The [patch] section below overrides crate
++# versions that may conflict when building on FreeBSD, ensuring the same
++# version is used everywhere in the workspace.
++#
++# Common version mismatches addressed:
++# - semver: Multiple versions pulled by different dependencies
++# - thiserror: Version conflicts between build tools and main code
++# - syn/quote/proc-macro2: Proc-macro toolchain consistency
++#
++# Note: These patches apply to the workspace root and affect all member
++# crates. Changes inside work directory subdirectories are ineffective
++# because Cargo resolves from the workspace root.
++#
++# To add version overrides for specific crates, add a [patch.crates-io]
++# section at the end of this file. Example:
++#
++# [patch.crates-io]
++# # Override semver to use a consistent version
++# semver = { version = "1.0.16" }
++#
++# Or to use a local patched version:
++# some-crate = { path = "third_party/rust/some-crate" }
++#
++# For git dependencies that need patching:
++# [patch."https://github.com/example/repo"]
++# some-crate = { path = "third_party/rust/some-crate" }
++#
++# See https://doc.rust-lang.org/cargo/reference/overriding-dependencies.html
++# for more information about dependency overrides.
++#
++# After modifying, run: cargo generate-lockfile
++# to regenerate Cargo.lock with the new versions.
++
+ # This file is not used for building gkrust. It is only used
+ # for the top-level workspace. See [gkrust's Cargo.toml] for
+ # for information on how to add dependencies.

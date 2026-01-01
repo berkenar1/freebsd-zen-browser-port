@@ -121,8 +121,61 @@ make configure
 make build
 ```
 
+## Cargo Workspace Version Handling
+
+### The Problem
+
+Mozilla/Zen Browser uses a Cargo workspace with a root `Cargo.toml` that controls all Rust crate dependencies. When you try to fix crate version mismatches by editing individual `Cargo.toml` files in subdirectories of the work directory, these changes are ineffective because:
+
+1. Cargo resolves all dependencies from the **workspace root** `Cargo.toml`
+2. The `Cargo.lock` file is shared across the entire workspace
+3. Individual crate `Cargo.toml` files inherit version constraints from the root
+
+### The Solution
+
+The port now includes:
+
+1. **`patch-Cargo.toml`** - A patch template for the root Cargo.toml that:
+   - Documents how to add version overrides using `[patch.crates-io]`
+   - Explains the workspace dependency resolution mechanism
+   - Provides examples for common override patterns
+
+2. **Makefile `pre-configure` target** - Automatically syncs the Cargo.lock file with the workspace root configuration before building.
+
+3. **`CARGO_ENV` variables** - Ensure consistent Cargo behavior:
+   - `CARGO_HOME` - Set to a local directory to avoid polluting system cargo
+   - `CARGO_TARGET_DIR` - Keep build artifacts in the work directory
+   - `CARGO_BUILD_JOBS` - Respect the port's job count setting
+
+### Adding Version Overrides
+
+To fix a specific crate version mismatch, add a `[patch.crates-io]` section to the root `Cargo.toml` patch:
+
+```toml
+[patch.crates-io]
+# Pin semver to a specific version
+semver = { version = "1.0.16" }
+
+# Use a local patched crate
+problematic-crate = { path = "third_party/rust/problematic-crate" }
+```
+
+For git dependencies:
+
+```toml
+[patch."https://github.com/example/repo"]
+some-crate = { path = "third_party/rust/some-crate" }
+```
+
+After modifying, regenerate the lockfile:
+```bash
+cd ${WRKSRC} && cargo generate-lockfile
+```
+
 ## References
 
 - FreeBSD malloc_np.h: Non-portable malloc extensions
 - Mozilla jemalloc: memory/build/
 - POSIX memalign: https://pubs.opengroup.org/onlinepubs/9699919799/functions/posix_memalign.html
+- Cargo Dependency Overrides: https://doc.rust-lang.org/cargo/reference/overriding-dependencies.html
+- Cargo Workspaces: https://doc.rust-lang.org/cargo/reference/workspaces.html
