@@ -1,0 +1,36 @@
+name: CI - Tests
+
+on:
+  pull_request:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install cargo fmt & clippy
+        run: |
+          rustup component add rustfmt clippy || true
+      - name: Build
+        run: |
+          make build
+      - name: Run format check
+        run: |
+          cd work && cargo fmt --all -- --check
+      - name: Run clippy (non-strict on CI)
+        run: |
+          cd work && cargo clippy --workspace --all-features || true
+      - name: Run tests
+        run: |
+          cd work && cargo test --workspace --all-features --verbose
