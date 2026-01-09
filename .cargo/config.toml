@@ -1,0 +1,4 @@
+[source.cargo]
+directory = '/home/berke/workdir/www/zen-browser/work//cargo-crates'
+[source.crates-io]
+replace-with = 'cargo'
