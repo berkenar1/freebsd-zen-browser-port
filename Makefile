@@ -42,21 +42,15 @@ LIB_DEPENDS=	libnspr4.so:devel/nspr \
 		libpng16.so.16:graphics/png \
 		libjpeg.so:graphics/jpeg-turbo \
 		libsqlite3.so:databases/sqlite3 \
-		libpipewire-0.3.so.0:audio/pipewire \
+		libpipewire-0.3.so.0:multimedia/pipewire \
 		libzstd.so:archivers/zstd \
                 libdav1d.so:multimedia/dav1d \
                 libaom.so:multimedia/aom \
-                libjxl.so:graphics/jpeg-xl \
-                libsrtp2.so:net/libsrtp \
+                libjxl.so:graphics/libjxl \
+                libsrtp2.so:net/libsrtp2 \
                 libepoxy.so:graphics/libepoxy \
-                libcups.so:print/cups \
+                libcups.so:print/cups
 
-
-
-
-CARGO_CARGOLOCK=        ${WRKSRC}/Cargo.lock
-
-.include "Makefile.crates"
 
 LLVM_VERSION=	20
 # ============================================================================
@@ -88,8 +82,7 @@ BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 
 
 
-USES=		cargo \
-		tar:zst \
+USES=		tar:zst \
 		gmake \
 		python:3.11,build \
 		compiler:c++17-lang \
@@ -124,10 +117,16 @@ CPPFLAGS+=		-I${FILESDIR} \
 # BUILD ENVIRONMENT & TOOLS
 # ============================================================================
 MAKE_ENV+=		PATH=${HOME}/.cargo/bin:${PATH} \
-			CCACHE_DIR=/var/cache/ccache
-CONFIGURE_ENV+=		PATH=${HOME}/.cargo/bin:${PATH} \
-			BINDGEN_CFLAGS="-I${LOCALBASE}/include" \
-			CCACHE_DIR=/var/cache/ccache
+			CCACHE_DIR=/var/cache/ccache \
+		LIBCLANG_PATH=/usr/local/llvm20/lib \
+		WASM_CC=/usr/local/llvm20/bin/clang \
+		WASM_CXX=/usr/local/llvm20/bin/clang++
+CONFIGURE_ENV+=	PATH=${HOME}/.cargo/bin:${PATH} \
+		BINDGEN_CFLAGS="-I${LOCALBASE}/include" \
+		CCACHE_DIR=/var/cache/ccache \
+		LIBCLANG_PATH=/usr/local/llvm20/lib \
+		WASM_CC=/usr/local/llvm20/bin/clang \
+		WASM_CXX=/usr/local/llvm20/bin/clang++
 
 CARGO=		${HOME}/.cargo/bin/cargo
 RUSTC=		${HOME}/.cargo/bin/rustc
@@ -137,6 +136,7 @@ MAKE_ENV+=	RUSTUP_TOOLCHAIN=stable
 CONFIGURE_ENV+=	RUSTUP_TOOLCHAIN=stable
 
 MAKE_ENV+=	CARGO=${CARGO} RUSTC=${RUSTC}
+MAKE_ENV+=	PIP=/usr/local/bin/pip-3.11
 CONFIGURE_ENV+=	CARGO=${CARGO} RUSTC=${RUSTC}
 
 WASI_SYSROOT=           /usr/local/share/wasi-sysroot
@@ -148,11 +148,7 @@ MOZ_OPTIONS+=		--with-system-sqlite \
 			--enable-pipewire \
 			--enable-jemalloc \
 			--disable-lto \
-			--without-wasm-sandboxed-libraries  \
-                        --with-wasi-sysroot=${WASI_SYSROOT}
-
-
-CONFIGURE_ENV+=         WASI_SYSROOT=${WASI_SYSROOT}
+			--with-wasi-sysroot=${WASI_SYSROOT}
 
 
 CONFIGURE_ARGS+=	--with-system-sqlite \
@@ -181,9 +177,9 @@ LDFLAGS+=      -L${LOCALBASE}/lib
 
 do-configure:
 	cd ${WRKSRC} && \
-	${ECHO} "ac_add_options --without-wasm-sandboxed-libraries" > .mozconfig && \
-	${ECHO} "ac_add_options --with-wasi-sysroot=${WASI_SYSROOT}" >> .mozconfig && \
-	${SETENV} ${CONFIGURE_ENV} ${MAKE_ENV} CC=cc CXX=c++ \
+	${ECHO} "ac_add_options --with-wasi-sysroot=${WASI_SYSROOT}" > .mozconfig && \
+	${ECHO} "ac_add_options --with-libclang-path=/usr/local/llvm20/lib" >> .mozconfig && \
+	${SETENV} PATH=/usr/local/llvm20/bin:${PATH} WASM_CC=/usr/local/llvm20/bin/clang WASM_CXX=/usr/local/llvm20/bin/clang++ ${CONFIGURE_ENV} ${MAKE_ENV} CC=cc CXX=c++ \
 	./mach configure
 
 
