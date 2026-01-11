@@ -7,5 +7,7 @@ work/
 *.o
 *.so
 
+work-py311/
+
 # FreeBSD ports artifacts
 .makesum
