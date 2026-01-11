@@ -145,6 +145,18 @@ Note on build parallelism: to avoid passing problematic MAKEFLAGS into GNU make,
     cd work && env MAKEFLAGS='-j12' ./mach build
 
 (We intentionally avoid forwarding arbitrary MAKEFLAGS to gmake to keep builds reproducible and safe.)
+
+Parallel builds (default):
+
+- Builds are parallel by default using `MAKE_JOBS` threads. To force a serial build set:
+
+    PARALLEL_BUILD=no sudo make build
+
+- If you need manual control, you can also run a parallel build inside the work tree:
+
+    cd work && env MAKEFLAGS='-j12' ./mach build
+
+We intentionally avoid forwarding arbitrary external `MAKEFLAGS` to `gmake` to keep builds reproducible and prevent invalid or malformed flags (like uppercase `-J`) from causing failures.
 - **Wrapper Injection**: `CPPFLAGS += -I${FILESDIR}`
 - **Patch Application**: Automatic during `post-patch` phase
 

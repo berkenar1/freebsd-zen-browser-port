@@ -201,8 +201,8 @@ USE_GNOME=	cairo gdkpixbuf2 gtk30
 # ============================================================================
 # PARALLEL JOBS
 # ============================================================================
-MAKE_JOBS=		2
-
+MAKE_JOBS=		2# Parallel build control: by default builds run parallel; set PARALLEL_BUILD=no to force serial
+PARALLEL_BUILD?=	yes
 # ============================================================================
 # INSTALLATION METADATA
 # ============================================================================
@@ -246,11 +246,16 @@ do-configure:
 				
 
 do-build:
-	# Run build with a clean MAKEFLAGS to avoid passing broken flags (-J variants).
-	# Intentional: we clear MAKEFLAGS so builds are performed serially by default
-	# to prevent GNU make from receiving invalid uppercase -J flags from the
-	# environment (useful for reproducible/clean ports builds).
-	cd ${WRKSRC} && env MAKEFLAGS= ${SETENV} ${MAKE_ENV} ./mach build
+	# Opt-in parallel build: set PARALLEL_BUILD=yes to enable parallel build with
+	# MAKE_JOBS threads; otherwise builds are serial by default to avoid
+	# forwarding arbitrary MAKEFLAGS (like invalid -J) to gmake.
+	if [ "${PARALLEL_BUILD}" = "yes" ]; then \
+		echo "Running parallel build (-j${MAKE_JOBS})"; \
+		cd ${WRKSRC} && env MAKEFLAGS="-j${MAKE_JOBS}" ${SETENV} ${MAKE_ENV} ./mach build; \
+	else \
+		echo "Running serial build (MAKEFLAGS cleared)"; \
+		cd ${WRKSRC} && env MAKEFLAGS= ${SETENV} ${MAKE_ENV} ./mach build; \
+	fi
 
 post-patch:
 	@${ECHO_MSG} "===> Applying FreeBSD patches automatically"
