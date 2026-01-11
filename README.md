@@ -130,6 +130,15 @@ The FreeBSD port uses standard FreeBSD Ports Makefile conventions:
 
 - **USES**: `tar:zst gmake python:3.11,build compiler:c17-lang desktop-file-utils gl gnome localbase:ldflags pkgconfig`
 - **Mozilla Options**: `--without-wasm-sandboxed-libraries --enable-jemalloc --with-ccache`
+
+## Port automation (rust vendoring)
+
+To make builds reproducible the port now automates Rust vendoring and small Cargo.toml fixes before configure:
+
+- `files/patch_rust_manifests.sh` — replaces `edition.workspace = true` usages with `edition = "2021"` where needed.
+- `make cargo-crates` (run by `do-configure`) vendors crates and generates `Makefile.crates`.
+
+These steps are idempotent and run during `make configure`. If you modify Cargo.toml or `Cargo.lock`, re-run `make cargo-crates` and `make makesum`.
 - **Wrapper Injection**: `CPPFLAGS += -I${FILESDIR}`
 - **Patch Application**: Automatic during `post-patch` phase
 
