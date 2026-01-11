@@ -227,6 +227,7 @@ MAKE_ENV= 	RUSTC=${LOCALBASE}/bin/rustc \
 
 # Enable ccache for faster rebuilds (use per-tree cache to avoid global /var/cache conflicts)
 
+
 do-configure:
 	${MKDIR} ${.CURDIR}/ccache || true
 	@${ECHO_MSG} "===> Vendoring Rust dependencies via mach"
@@ -260,24 +261,21 @@ do-build:
 post-patch:
 	@${ECHO_MSG} "===> Applying FreeBSD patches automatically"
 	@${MKDIR} ${WRKDIR}/patch-rejects || true
-	@cd ${FILESDIR} && \
+	@cd ${FILESDIR} && ${SETENV} ${MAKE_ENV} ${SH} -c '\
 		for p in patch-*; do \
 			if [ -f "$$p" ]; then \
 				${ECHO_MSG} "  -> Applying $$p"; \
-				# Send rejects to a controlled location to avoid permission and backup issues
 				if ${PATCH} -d ${WRKSRC} -p0 -N -E -r ${WRKDIR}/patch-rejects/$$p.rej < "$$p" > /dev/null 2>&1; then \
 					${ECHO_MSG} "     [OK]"; \
 				else \
 					${ECHO_MSG} "     [SKIPPED - patch failed or already applied; rejects saved to ${WRKDIR}/patch-rejects/$$p.rej]"; \
-					# Move any stray .rej files from WRKSRC to the rejects dir for inspection
 					if ${FIND} ${WRKSRC} -name '*.rej' -print -quit >/dev/null 2>&1; then \
-
 						${ECHO_MSG} "     [INFO] Moving stray .rej files to ${WRKDIR}/patch-rejects"; \
 						${FIND} ${WRKSRC} -name '*.rej' -exec ${MV} {} ${WRKDIR}/patch-rejects/ \; 2>/dev/null || true; \
 					fi; \
 				fi; \
 			fi; \
-		done
+		done'
 	@${ECHO_MSG} "===> All patches processed"
 	@${ECHO_MSG} "===> Running idempotent manifest fixes"
 	@${SETENV} ${MAKE_ENV} ${SH} ${FILESDIR}/patch_rust_manifests.sh ${WRKSRC} || true
