@@ -1,0 +1,718 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+"use strict";
+
+// This is loaded into chrome windows with the subscript loader. Wrap in
+// a block to prevent accidentally leaking globals onto `window`.
+{
+  const { TabMetrics } = ChromeUtils.importESModule(
+    "moz-src:///browser/components/tabbrowser/TabMetrics.sys.mjs"
+  );
+
+  class MozTabbrowserTabGroup extends MozXULElement {
+    static markup = `
+      <vbox class="tab-group-label-container" pack="center">
+          <label class="tab-group-label" role="button" />
+      </vbox>
+      <html:div class="tab-group-container">
+        <html:div class="zen-tab-group-start"/>
+      </html:div>
+      <vbox class="tab-group-overflow-count-container" pack="center">
+        <label class="tab-group-overflow-count" role="button" />
+      </vbox>
+      `;
+
+    /** @type {string} */
+    #defaultGroupName = "";
+
+    /** @type {string} */
+    #label;
+
+    /** @type {MozTextLabel} */
+    #labelElement;
+
+    /** @type {MozXULElement} */
+    #labelContainerElement;
+
+    /** @type {MozTextLabel} */
+    #overflowCountLabel;
+
+    /** @type {MozXULElement} */
+    overflowContainer;
+
+    /** @type {string} */
+    #colorCode;
+
+    /** @type {MutationObserver} */
+    #tabChangeObserver;
+
+    /** @type {boolean} */
+    #wasCreatedByAdoption = false;
+
+    constructor() {
+      super();
+
+      XPCOMUtils.defineLazyPreferenceGetter(
+        this,
+        "_showTabGroupHoverPreview",
+        "browser.tabs.groups.hoverPreview.enabled",
+        false
+      );
+    }
+
+    static get inheritedAttributes() {
+      return {
+        ".tab-group-label": "text=label,tooltiptext=data-tooltip",
+      };
+    }
+
+    connectedCallback() {
+      if (this._lastGroup && this._lastGroup !== this.group) {
+        this._lastGroup.dispatchEvent(
+          new CustomEvent("FolderUngrouped", {
+            bubbles: true,
+            detail: this,
+          })
+        );
+      }
+      if (this.group && this._lastGroup != this.group) {
+        this._lastGroup = this.group;
+        this.group.dispatchEvent(
+          new CustomEvent("FolderGrouped", {
+            bubbles: true,
+            detail: this,
+          })
+        );
+      } else if (!this.group) {
+        this._lastGroup = null;
+      }
+      // Always set the mutation observer to listen for tab change events, even
+      // if we are already initialized.
+      // This is needed to ensure events continue to fire even if the tab group is
+      // moved from the horizontal to vertical tab layout or vice-versa, which
+      // causes the component to be repositioned in the DOM.
+
+      // Similar to above, always set up TabSelect listener, as this gets
+      // removed in disconnectedCallback
+      this.ownerGlobal.addEventListener("TabSelect", this);
+
+      if (!this._initialized) {
+
+      this._initialized = true;
+      this.saveOnWindowClose = true;
+
+      this.textContent = "";
+      this.appendChild(this.constructor.fragment);
+      this.initializeAttributeInheritance();
+
+      Services.obs.addObserver(
+        this.resetDefaultGroupName,
+        "intl:app-locales-changed"
+      );
+      window.addEventListener("unload", () => {
+        Services.obs.removeObserver(
+          this.resetDefaultGroupName,
+          "intl:app-locales-changed"
+        );
+      });
+
+      this.addEventListener("click", this);
+
+      this.#labelElement = this.querySelector(".tab-group-label");
+      this.#labelContainerElement = this.querySelector(
+        ".tab-group-label-container"
+      );
+      // Mirroring MozTabbrowserTab
+      this.#labelElement.container = gBrowser.tabContainer;
+      this.#labelElement.group = this;
+
+      this.#labelContainerElement.addEventListener("mouseover", this);
+      this.#labelContainerElement.addEventListener("mouseout", this);
+      this.appendChild = function (child) {
+        this.querySelector(".tab-group-container").appendChild(child);
+        for (let tab of this.tabs) {
+          if (tab.hasAttribute("zen-empty-tab") && tab.group === this) {
+            this.querySelector(".zen-tab-group-start").after(tab);
+          }
+        }
+      };
+
+      this.#updateLabelAriaAttributes();
+
+      this.overflowContainer = this.querySelector(
+        ".tab-group-overflow-count-container"
+      );
+      this.#overflowCountLabel = this.overflowContainer.querySelector(
+        ".tab-group-overflow-count"
+      );
+
+      let tabGroupCreateDetail = this.#wasCreatedByAdoption
+        ? { isAdoptingGroup: true }
+        : {};
+      this.dispatchEvent(
+        new CustomEvent("TabGroupCreate", {
+          bubbles: true,
+          detail: tabGroupCreateDetail,
+        })
+      );
+      // Reset `wasCreatedByAdoption` to default of false so that we only
+      // claim that a tab group was created by adoption the first time it
+      // mounts after getting created by `Tabbrowser.adoptTabGroup`.
+      this.#wasCreatedByAdoption = false;
+    }
+      this.#observeTabChanges();
+    }
+
+    resetDefaultGroupName = () => {
+      this.#defaultGroupName = "";
+      this.#updateLabelAriaAttributes();
+      this.#updateTooltip();
+    };
+
+    disconnectedCallback() {
+      this.ownerGlobal.removeEventListener("TabSelect", this);
+      this.#tabChangeObserver?.disconnect();
+    }
+
+    appendChild(node) {
+      return this.insertBefore(node, this.overflowContainer);
+    }
+
+    #observeTabChanges() {
+      if (!this.#tabChangeObserver) {
+        this.#tabChangeObserver = new window.MutationObserver(mutations => {
+          if (!this.tabs.length) {
+            this.dispatchEvent(
+              new CustomEvent("TabGroupRemoved", { bubbles: true })
+            );
+            this.remove();
+            Services.obs.notifyObservers(
+              this,
+              "browser-tabgroup-removed-from-dom"
+            );
+          } else {
+            let tabs = this.tabs;
+            let tabCount = tabs.length;
+            let hasActiveTab = false;
+            tabs.forEach((tab, index) => {
+              if (tab.selected) {
+                hasActiveTab = true;
+              }
+
+              // Renumber tabs so that a11y tools can tell users that a given
+              // tab is "2 of 7" in the group, for example.
+              tab.setAttribute("aria-posinset", index + 1);
+              tab.setAttribute("aria-setsize", tabCount);
+            });
+            this.hasActiveTab = hasActiveTab;
+
+            // When a group containing the active tab is collapsed,
+            // the overflow count displays the number of additional tabs
+            // in the group adjacent to the active tab.
+            let overflowCountLabel = this.overflowContainer.querySelector(
+              ".tab-group-overflow-count"
+            );
+            if (tabCount > 1) {
+              gBrowser.tabLocalization
+                .formatValue("tab-group-overflow-count", {
+                  tabCount: tabCount - 1,
+                })
+                .then(result => (overflowCountLabel.textContent = result));
+              gBrowser.tabLocalization
+                .formatValue("tab-group-overflow-count-tooltip", {
+                  tabCount: tabCount - 1,
+                })
+                .then(result => {
+                  overflowCountLabel.setAttribute("tooltiptext", result);
+                  overflowCountLabel.setAttribute("aria-description", result);
+                });
+              this.toggleAttribute("hasmultipletabs", true);
+            } else {
+              overflowCountLabel.textContent = "";
+              this.toggleAttribute("hasmultipletabs", false);
+            }
+          }
+          for (const mutation of mutations) {
+            for (const addedNode of mutation.addedNodes) {
+              if (addedNode.tagName == "tab") {
+                this.#updateTabAriaHidden(addedNode);
+              }
+            }
+            for (const removedNode of mutation.removedNodes) {
+              if (removedNode.tagName == "tab") {
+                this.#updateTabAriaHidden(removedNode);
+              }
+            }
+          }
+        });
+      }
+      const container = this.querySelector(".tab-group-container");
+      if (container) {
+        this.#tabChangeObserver.observe(container, { childList: true });
+      }
+    }
+
+    get color() {
+      return this.#colorCode;
+    }
+
+    set color(code) {
+      let diff = code !== this.#colorCode;
+      this.#colorCode = code;
+      this.style.setProperty(
+        "--tab-group-color",
+        `var(--tab-group-color-${code})`
+      );
+      this.style.setProperty(
+        "--tab-group-color-invert",
+        `var(--tab-group-color-${code}-invert)`
+      );
+      this.style.setProperty(
+        "--tab-group-color-pale",
+        `var(--tab-group-color-${code}-pale)`
+      );
+      if (diff) {
+        this.dispatchEvent(
+          new CustomEvent("TabGroupUpdate", { bubbles: true })
+        );
+      }
+    }
+
+    get defaultGroupName() {
+      if (!this.#defaultGroupName) {
+        this.#defaultGroupName = gBrowser.tabLocalization.formatValueSync(
+          "tab-group-name-default"
+        );
+      }
+      return this.#defaultGroupName;
+    }
+
+    get id() {
+      return this.getAttribute("id");
+    }
+
+    set id(val) {
+      this.setAttribute("id", val);
+    }
+
+    /**
+     * @returns {boolean}
+     */
+    get hasActiveTab() {
+      return this.hasAttribute("hasactivetab");
+    }
+
+    /**
+     * @param {boolean} val
+     */
+    set hasActiveTab(val) {
+      this.toggleAttribute("hasactivetab", val);
+    }
+
+    get label() {
+      return this.#label;
+    }
+
+    set label(val) {
+      let diff = val !== this.#label;
+      this.#label = val;
+
+      // If the group name is empty, use a zero width space so we
+      // always create a text node and get consistent layout.
+      this.setAttribute("label", val || "\u200b");
+      this.#updateLabelAriaAttributes();
+      this.#updateTooltip();
+      if (diff) {
+        this.dispatchEvent(
+          new CustomEvent("TabGroupUpdate", { bubbles: true })
+        );
+      }
+    }
+
+    // alias for label
+    get name() {
+      return this.label;
+    }
+
+    set name(newName) {
+      this.label = newName;
+    }
+
+    get collapsed() {
+      return this.hasAttribute("collapsed");
+    }
+
+    set collapsed(val) {
+      if (this.hasAttribute("split-view-group")) {
+        return;
+      }
+      if (!!val == this.collapsed) {
+        return;
+      }
+      if (val) {
+        for (let tab of this.tabs) {
+          // Unlock tab sizes.
+          tab.style.maxWidth = "";
+        }
+      }
+      this.toggleAttribute("collapsed", val);
+      this.#updateLabelAriaAttributes();
+      this.#updateTooltip();
+      for (const tab of this.tabs) {
+        this.#updateTabAriaHidden(tab);
+      }
+      gBrowser.tabContainer.previewPanel?.deactivate(this, { force: true });
+      const eventName = val ? "TabGroupCollapse" : "TabGroupExpand";
+      this.dispatchEvent(new CustomEvent(eventName, { bubbles: true }));
+
+      let pendingAnimationPromises = this.tabs.flatMap(tab =>
+        tab
+          .getAnimations()
+          .filter(anim =>
+            ["min-width", "max-width"].includes(anim.transitionProperty)
+          )
+          .map(anim => anim.finished)
+      );
+      Promise.allSettled(pendingAnimationPromises).then(() => {
+        this.dispatchEvent(
+          new CustomEvent("TabGroupAnimationComplete", { bubbles: true })
+        );
+      });
+    }
+
+    #lastAddedTo = 0;
+    get lastSeenActive() {
+      return Math.max(
+        this.#lastAddedTo,
+        ...this.tabs.map(t => t.lastSeenActive)
+      );
+    }
+
+    async #updateLabelAriaAttributes() {
+      let tabGroupName = this.#label || this.defaultGroupName;
+
+      this.#labelElement?.setAttribute("aria-label", tabGroupName);
+      this.#labelElement?.setAttribute("aria-level", 1);
+
+      let tabGroupDescriptionL10nID;
+      if (this.collapsed) {
+        this.#labelElement?.setAttribute("aria-haspopup", "menu");
+        this.#labelElement?.setAttribute("aria-expanded", "false");
+        tabGroupDescriptionL10nID = this.hasAttribute("previewpanelactive")
+          ? "tab-group-preview-open-description"
+          : "tab-group-preview-closed-description";
+      } else {
+        this.#labelElement?.removeAttribute("aria-haspopup");
+        this.#labelElement?.setAttribute("aria-expanded", "true");
+        tabGroupDescriptionL10nID = "tab-group-description";
+      }
+      let tabGroupDescription = await gBrowser.tabLocalization.formatValue(
+        tabGroupDescriptionL10nID,
+        {
+          tabGroupName,
+        }
+      );
+      this.#labelElement?.setAttribute("aria-description", tabGroupDescription);
+    }
+
+    async #updateTooltip() {
+      // Disable the tooltip for collapsed groups when tab group hover preview is enabled
+      if (this._showTabGroupHoverPreview && this.collapsed) {
+        delete this.dataset.tooltip;
+        return;
+      }
+
+      let tabGroupName = this.#label || this.defaultGroupName;
+      let tooltipKey = this.collapsed
+        ? "tab-group-label-tooltip-collapsed"
+        : "tab-group-label-tooltip-expanded";
+      await gBrowser.tabLocalization
+        .formatValue(tooltipKey, {
+          tabGroupName,
+        })
+        .then(result => {
+        });
+    }
+
+    /**
+     * @param {MozTabbrowserTab} tab
+     */
+    #updateTabAriaHidden(tab) {
+      if (tab.group?.collapsed && !tab.selected) {
+        tab.setAttribute("aria-hidden", "true");
+      } else {
+        tab.removeAttribute("aria-hidden");
+      }
+    }
+
+    /**
+     * @returns {MozTabbrowserTab[]}
+     */
+    get tabs() {
+      // add other group tabs if they are under this group
+      let childs = Array.from(this.querySelector(".tab-group-container")?.children ?? []);
+      const tabsCollect = [];
+      for (let item of childs) {
+        tabsCollect.push(item);
+        if (gBrowser.isTabGroup(item)) {
+          tabsCollect.push(...item.tabs);
+        }
+      }
+      return tabsCollect.filter(node => node.matches("tab"));
+    }
+
+    get childGroupsAndTabs() {
+      const result = [];
+      const container = this.querySelector(".tab-group-container");
+
+      for (const item of Array.from(container.children)) {
+        if (gBrowser.isTab(item)) {
+          result.push(item);
+        } else if (gBrowser.isTabGroup(item)) {
+          const labelContainer = item.labelElement;
+          labelContainer.visible = item.visible;
+          if (gBrowser.isTabGroupLabel(labelContainer)) {
+            result.push(labelContainer);
+          }
+          result.push(...item.childGroupsAndTabs);
+        }
+      }
+      return result;
+    }
+
+    get group() {
+      if (gBrowser.isTabGroup(this.parentElement?.parentElement)) {
+        return this.parentElement.parentElement;
+      }
+      return null;
+    }
+
+    get visible() {
+      let currentGroup = this;
+      while (currentGroup?.group) {
+        currentGroup = currentGroup?.group;
+        if (currentGroup.collapsed) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    get level() {
+      return this.group?.level + 1 || 0;
+    }
+
+    /**
+     * @param {MozTabbrowserTab} tab
+     * @returns {boolean}
+     */
+    isTabVisibleInGroup(tab) {
+      if (this.isBeingDragged) {
+        return false;
+      }
+      if (this.collapsed && !tab.selected && !tab.multiselected) {
+        return false;
+      }
+      return true;
+    }
+
+    /**
+     * @returns {MozTextLabel}
+     */
+    get labelElement() {
+      return this.#labelElement;
+    }
+
+    /**
+     * @returns {MozXULElement}
+     */
+    get labelContainerElement() {
+      return this.#labelContainerElement;
+    }
+
+    get overflowCountLabel() {
+      return this.#overflowCountLabel;
+    }
+
+    /**
+     * @param {boolean} value
+     */
+    set wasCreatedByAdoption(value) {
+      this.#wasCreatedByAdoption = value;
+    }
+
+    /**
+     * @returns {boolean}
+     */
+    get isBeingDragged() {
+      return this.hasAttribute("movingtabgroup");
+    }
+
+    /**
+     * @param {boolean} val
+     */
+    set isBeingDragged(val) {
+      this.toggleAttribute("movingtabgroup", val);
+    }
+
+    /**
+     * @returns {boolean}
+     */
+    get hoverPreviewPanelActive() {
+      return this.hasAttribute("previewpanelactive");
+    }
+
+    /**
+     * @param {boolean} val
+     */
+    set hoverPreviewPanelActive(val) {
+      this.toggleAttribute("previewpanelactive", val);
+      this.#updateLabelAriaAttributes();
+    }
+
+    /**
+     * add tabs to the group
+     *
+     * @param {MozTabbrowserTab[]} tabs
+     * @param {TabMetricsContext} [metricsContext]
+     *   Optional context to record for metrics purposes.
+     */
+    addTabs(tabs, metricsContext) {
+      for (let tab of tabs) {
+        if (tab.pinned) {
+        }
+        let tabToMove =
+          this.ownerGlobal === tab.ownerGlobal
+            ? tab
+            : gBrowser.adoptTab(tab, {
+                tabIndex: gBrowser.tabs.at(-1)._tPos + 1,
+                selectTab: tab.selected,
+              });
+        gBrowser.moveTabToGroup(tabToMove, this, metricsContext);
+      }
+      this.#lastAddedTo = Date.now();
+    }
+
+    /**
+     * Remove all tabs from the group and delete the group.
+     * @param {TabMetricsContext} [metricsContext]
+     */
+    ungroupTabs(
+      metricsContext = {
+        isUserTriggered: false,
+        telemetrySource: TabMetrics.METRIC_SOURCE.UNKNOWN,
+      }
+    ) {
+      this.dispatchEvent(
+        new CustomEvent("TabGroupUngroup", {
+          bubbles: true,
+          detail: metricsContext,
+        })
+      );
+      for (let i = this.tabs.length - 1; i >= 0; i--) {
+        gBrowser.ungroupTab(this.tabs[i]);
+      }
+    }
+
+    /**
+     * Save group data to session store.
+     *
+     * @param {object} [options]
+     * @param {boolean} [options.isUserTriggered]
+     *   Whether or not the save operation was explicitly called by the user.
+     *   Used for telemetry. Default is false.
+     */
+    save({ isUserTriggered = false } = {}) {
+      SessionStore.addSavedTabGroup(this);
+      this.dispatchEvent(
+        new CustomEvent("TabGroupSaved", {
+          bubbles: true,
+          detail: { isUserTriggered },
+        })
+      );
+    }
+
+    saveAndClose({ isUserTriggered } = {}) {
+      this.save({ isUserTriggered });
+      gBrowser.removeTabGroup(this);
+    }
+
+    /**
+     * @param {PointerEvent} event
+     */
+    on_click(event) {
+      let isToggleElement =
+        this.labelElement.parentElement.contains(event.target) ||
+        event.target === this.#overflowCountLabel;
+      if (isToggleElement && event.button === 0) {
+        event.preventDefault();
+        this.collapsed = !this.collapsed;
+        gBrowser.tabGroupMenu.close();
+
+        /** @type {GleanCounter} */
+        let interactionMetric = this.collapsed
+          ? Glean.tabgroup.groupInteractions.collapse
+          : Glean.tabgroup.groupInteractions.expand;
+        interactionMetric.add(1);
+      }
+    }
+
+    /**
+     * @param {CustomEvent} event
+     */
+    on_mouseover(event) {
+      // Only fire the event if we are entering the tab group label.
+      // mouseover also fires events when moving between elements inside the tab group.
+      if (!this.#labelContainerElement.contains(event.relatedTarget)) {
+        this.#labelElement.dispatchEvent(
+          new CustomEvent("TabGroupLabelHoverStart", { bubbles: true })
+        );
+      }
+    }
+
+    /**
+     * @param {CustomEvent} event
+     */
+    on_mouseout(event) {
+      // Only fire the event if we are leaving the tab group label.
+      // mouseout also fires events when moving between elements inside the tab group.
+      if (!this.#labelContainerElement.contains(event.relatedTarget)) {
+        this.#labelElement.dispatchEvent(
+          new CustomEvent("TabGroupLabelHoverEnd", { bubbles: true })
+        );
+      }
+    }
+
+    /**
+     * @param {CustomEvent} event
+     */
+    on_TabSelect(event) {
+      const { previousTab } = event.detail;
+      this.hasActiveTab = event.target.group === this;
+      if (this.hasActiveTab) {
+        this.#updateTabAriaHidden(event.target);
+      }
+      if (previousTab.group === this) {
+        this.#updateTabAriaHidden(previousTab);
+      }
+    }
+
+    /**
+     * If one of this group's tabs is the selected tab, this will do nothing.
+     * Otherwise, it will expand the group if collapsed, and select the first
+     * tab in its list.
+     */
+    select() {
+      this.collapsed = false;
+      if (gBrowser.selectedTab.group == this) {
+        return;
+      }
+      gBrowser.selectedTab = this.tabs[0];
+    }
+  }
+
+  window.MozTabbrowserTabGroup = MozTabbrowserTabGroup;
+  customElements.define("tab-group", MozTabbrowserTabGroup);
+}

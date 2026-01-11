@@ -1,0 +1,14 @@
+[package]
+name = "init_rust_components"
+version = "0.1.0"
+edition = "2021"
+authors = ["Johannes Schmidt <joschmidt@mozilla.com>"]
+license = "MPL-2.0"
+exclude = ["/android"]
+
+[features]
+keydb = ["nss/keydb"]
+
+[dependencies]
+uniffi = { version = "0.29.0" }
+nss = { path = "../support/rc_crypto/nss" }

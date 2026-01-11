@@ -1,0 +1,76 @@
+website/build
+target
+/.cli-data
+logins.jwk
+*-engine.json
+*.db
+.*.swp
+*.db-shm
+*.db-wal
+*~
+.vscode/
+credentials.json
+.venv
+
+# Android stuff.
+*.iml
+.gradle
+local.properties
+.idea
+build
+.DS_Store
+captures
+.externalNativeBuild
+.lastAutoPublishContentsHash
+
+# iOS stuff.
+xcuserdata
+
+# Protobuf Swift
+*.pb.swift
+
+# UniFFI generated artifacts
+components/**/ios/Generated
+
+# We don't car about Cargo.lock for our tests.
+testing/sync-test/Cargo.lock
+
+# Carthage generated artifacts
+# We no longer use Carthage, but those
+# artifacts may still live in local envirionments.
+Carthage
+MozillaAppServices.framework.zip
+
+# Xcode generated logs
+raw_xcodebuild.log
+raw_xcodetest.log
+# Generated debug symbols
+crashreporter-symbols*
+automation/symbols-generation/bin/
+
+# Python
+__pycache__
+*.py[cod]
+.Python
+
+# Generated mdbook documentation files
+build/docs/*
+docs/book
+
+# Generated rustdocs
+docs/rust-docs
+
+# UniFFI files
+cirrus.py
+fml.py
+*.dylib
+*.so
+
+# Build static website files
+automation/swift-components-docs/.build
+automation/swift-components-docs/docs
+automation/swift-components-docs/Sources
+automation/kotlin-components-docs/.gradle
+automation/kotlin-components-docs/build
+automation/kotlin-components-docs/src
+
