@@ -142,7 +142,7 @@ Caused by: `workspace.package.authors` was not defined
 +authors = ["Mozilla Contributors"]
 +edition = "2021"
 +license = "MPL-2.0"
-+repository = "https://github.com/mozilla/gecko-dev"
++repository = "https://github.com/zen-browser/desktop"
 ```
 
 **Rationale:**

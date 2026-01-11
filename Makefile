@@ -32,6 +32,17 @@ BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 		zip:archivers/zip \
 		alsa-lib>=1.2.14:audio/alsa-lib
 
+LIB_DEPENDS=	libnspr4.so:devel/nspr \
+		libnss3.so:security/nss \
+		libicuuc.so:devel/icu \
+		libevent.so:devel/libevent \
+		libharfbuzz.so:print/harfbuzz \
+		libgraphite2.so:graphics/graphite2 \
+		libpng.so:graphics/png \
+		libdav1d.so:multimedia/dav1d \
+		libvpx.so:multimedia/libvpx \
+		libasound.so:audio/alsa-lib
+
 USE_GECKO=	gecko
 USE_MOZILLA=	-sqlite
 
