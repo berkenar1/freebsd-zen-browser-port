@@ -270,7 +270,8 @@ post-patch:
 				else \
 					${ECHO_MSG} "     [SKIPPED - patch failed or already applied; rejects saved to ${WRKDIR}/patch-rejects/$$p.rej]"; \
 					# Move any stray .rej files from WRKSRC to the rejects dir for inspection
-					if [ -n "$$(${FIND} ${WRKSRC} -name '*.rej' -print -quit 2>/dev/null)" ]; then \
+					if ${FIND} ${WRKSRC} -name '*.rej' -print -quit >/dev/null 2>&1; then \
+
 						${ECHO_MSG} "     [INFO] Moving stray .rej files to ${WRKDIR}/patch-rejects"; \
 						${FIND} ${WRKSRC} -name '*.rej' -exec ${MV} {} ${WRKDIR}/patch-rejects/ \; 2>/dev/null || true; \
 					fi; \
