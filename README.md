@@ -139,6 +139,12 @@ To make builds reproducible the port now automates Rust vendoring and small Carg
 - `make cargo-crates` (run by `do-configure`) vendors crates and generates `Makefile.crates`.
 
 These steps are idempotent and run during `make configure`. If you modify Cargo.toml or `Cargo.lock`, re-run `make cargo-crates` and `make makesum`.
+
+Note on build parallelism: to avoid passing problematic MAKEFLAGS into GNU make, the port clears MAKEFLAGS for the child build and therefore builds run serially by default. To run a parallel build manually, change into the work directory and run the build with MAKEFLAGS set, for example:
+
+    cd work && env MAKEFLAGS='-j12' ./mach build
+
+(We intentionally avoid forwarding arbitrary MAKEFLAGS to gmake to keep builds reproducible and safe.)
 - **Wrapper Injection**: `CPPFLAGS += -I${FILESDIR}`
 - **Patch Application**: Automatic during `post-patch` phase
 

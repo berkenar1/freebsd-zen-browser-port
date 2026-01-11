@@ -246,7 +246,11 @@ do-configure:
 				
 
 do-build:
-	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ./mach build
+	# Run build with a clean MAKEFLAGS to avoid passing broken flags (-J variants).
+	# Intentional: we clear MAKEFLAGS so builds are performed serially by default
+	# to prevent GNU make from receiving invalid uppercase -J flags from the
+	# environment (useful for reproducible/clean ports builds).
+	cd ${WRKSRC} && env MAKEFLAGS= ${SETENV} ${MAKE_ENV} ./mach build
 
 post-patch:
 	@${ECHO_MSG} "===> Applying FreeBSD patches automatically"
