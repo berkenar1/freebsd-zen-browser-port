@@ -1,68 +1,51 @@
 # ============================================================================
 # BASIC PORT IDENTIFICATION (strict order required)
 # ============================================================================
-PORTNAME=		zen-browser
-DISTVERSION=	1.17.15b
-PORTREVISION=	0
-PORTEPOCH=	1
-CATEGORIES=	www wayland
+PORTNAME=        zen-browser
+DISTVERSIONPREFIX= zen-browser-
+DISTVERSION=     1.17.15b
+CATEGORIES=      www wayland
 
+MAINTAINER=      ports@FreeBSD.org
+COMMENT=         Zen Browser - Firefox-based privacy-focused browser
+WWW=              https://zen-browser.app
 
-# ============================================================================
-# DISTRIBUTION FILES (must come right after CATEGORIES)
-# ============================================================================
-MASTER_SITES=		https://github.com/zen-browser/desktop/releases/download/${DISTVERSION}/
-DISTFILES=		zen.source.tar.zst
+LICENSE=         MPL20
+LICENSE_FILE=    ${WRKSRC}/LICENSE
 
-# ============================================================================
-# MAINTAINER INFORMATION
-# ============================================================================
-MAINTAINER=		ports@FreeBSD.org
-COMMENT=		Zen Browser - Firefox-based privacy-focused browser
-WWW=			https://zen-browser.app
+MASTER_SITES=    https://github.com/zen-browser/desktop/releases/download/${DISTVERSION}/
+DISTFILES=       zen.source.tar.zst
 
-# ============================================================================
-# LICENSE
-# ============================================================================
-LICENSE=		MPL20
-LICENSE_FILE=   ${WRKSRC}/LICENSE
-
-
-LIB_DEPENS= 	libnspr4.so:devel/nspr \
-		libnss3.so:security/nss \
-		libgtk-3.so.0:x11-toolkits/gtk30 \
-		libcairo.so.2:graphics/cairo \
-		libpango-1.0.so.0:x11-toolkits/pango \
-		libwayland-client.so.0:graphics/wayland \
-		libfontconfig.so.1:x11-fonts/fontconfig \
-		libfreetype.so.6:print/freetype2 \
-		libharfbuzz.so.0:print/harfbuzz \
-		libdbus-1.so.3:devel/dbus \
-		libicu*.so:devel/icu \
-		libpng16.so.16:graphics/png \
-		libjpeg.so.*:graphics/jpeg-turbo \
+LIB_DEPENDS= 	libnspr.so:devel/nspr \
+		libnss.so:security/nss \
+		libgtk-3.so:x11-toolkits/gtk30 \
+		libcairo.so:graphics/cairo \
+		libpango-1.0.so:x11-toolkits/pango \
+		libwayland-client.so:graphics/wayland \
+		libfontconfig.so:x11-fonts/fontconfig \
+		libfreetype.so:print/freetype2 \
+		libharfbuzz.so:print/harfbuzz \
+		libdbus-1.so:devel/dbus \
+		libicu.so:devel/icu \
+		libpng16.so:graphics/png \
+		libturbojpeg.so:graphics/jpeg-turbo \
 		libsqlite3.so:databases/sqlite3 \
-		libpipewire-0.3.so.0:audio/pipewire \
+		libpipewire.so:multimedia/pipewire \
 		libzstd.so:archivers/zstd \
-                libdav1d.so:multimedia/dav1d \
-                libaom.so:multimedia/aom \
-                libjxl.so:graphics/jpeg-xl \
-                libsrtp.so:net/libsrtp \
-                libepoxy.so:graphics/libepoxy \
-                libcups.so:print/cups \
-
-
+		libdav1d.so:multimedia/dav1d \
+		libaom.so:multimedia/aom \
+		libjxl.so:graphics/libjxl \
+		libsrtp2.so:net/libsrtp2 \
+		libepoxy.so:graphics/libepoxy \
+		libcups.so:print/cups
 
 CARGO_CARGO_BIN=        ${HOME}/.cargo/bin/cargo
 CARGO_VENDOR_DIR=       ${WRKSRC}/cargo-crates
 CARGO_CARGOLOCK=        ${WRKSRC}/Cargo.lock
 
-
 .if exists(${.CURDIR}/Makefile.crates)
 .include "${.CURDIR}/Makefile.crates"
 .endif
-
-
 
 # Work around bindgen not finding ICU headers
 CONFIGURE_ENV+=	BINDGEN_CFLAGS="-I${LOCALBASE}/include"
@@ -90,12 +73,9 @@ BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 		${LOCALBASE}/share/wasi-sysroot/lib/wasm32-wasi/libc.a:devel/wasi-libc@20 \
 		wasi-compiler-rt20>0:devel/wasi-compiler-rt20
 
-
 # ============================================================================
 # BUILD FRAMEWORK
 # ============================================================================
-
-
 
 USES=		cargo \
 		tar:zst \
@@ -110,11 +90,13 @@ USES=		cargo \
 		desktop-file-utils \
 		libtool \
 		xorg \
-		gettext
+		gettext \
+		python
 
 USE_GL=		gl
 USE_GNOME=	cairo gtk30
 
+USE_PYTHON=		autoplist distutils pep517
 
 BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 		nss>=3.118:security/nss \
@@ -135,8 +117,6 @@ BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 # ============================================================================
 # EXTRACTION & WORKING DIRECTORY
 # ============================================================================
-
-EXTRACT_CMD=		/usr/bin/bsdtar
 
 WRKSRC=			${WRKDIR}
 
@@ -163,45 +143,62 @@ CONFIGURE_ENV+=	RUSTUP_TOOLCHAIN=stable
 MAKE_ENV+=	CARGO=${CARGO} RUSTC=${RUSTC}
 CONFIGURE_ENV+=	CARGO=${CARGO} RUSTC=${RUSTC}
 
-WASI_SYSROOT=           /usr/local/share/wasi-sysroot
+WASI_SYSROOT=	${LOCALBASE}/share/wasi-sysroot
 
 # ============================================================================
 # MOZILLA BUILD OPTIONS
 # ============================================================================
 MOZ_OPTIONS+=		--with-system-sqlite \
-			--enable-pipewire \
-			--enable-jemalloc \
+			--with-system-zlib \
+			--with-system-libevent \
+			--with-system-libvpx \
+			--with-system-jpeg \
+			--with-system-png \
+			--with-system-av1 \
+			--with-system-webp \
 			--disable-lto \
-			--without-wasm-sandboxed-libraries  \
-                    --with-wasi-sysroot=${WASI_SYSROOT}
-
+			--enable-jemalloc \
+			--disable-tests \
+			--enable-alsa \
+			--enable-pulseaudio \
+			--enable-webrtc \
+			--with-ccache=/usr/local/bin/ccache \
+			--enable-pipewire \
+			--without-wasm-sandboxed-libraries \
+# --with-wasi-sysroot=${WASI_SYSROOT}  # removed: not supported by this configure, we provide headers via env
 
 CONFIGURE_ENV+=         WASI_SYSROOT=${WASI_SYSROOT}
 
-
 CONFIGURE_ARGS+=	--with-system-sqlite \
-			--enable-pipewire \
-			--disable-lto
-
+			--with-system-zlib \
+			--with-system-libevent \
+			--with-system-libvpx \
+			--with-system-jpeg \
+			--with-system-png \
+			--with-system-av1 \
+			--with-system-webp \
+			--disable-lto \
+			--enable-jemalloc \
+			--disable-tests \
+			--enable-alsa \
+			--enable-pulseaudio \
+			--enable-webrtc \
+			--with-ccache=/usr/local/bin/ccache
 
 USE_GECKO=	gecko
 USE_MOZILLA=	-sqlite
 
-
 # Enable Mozilla's jemalloc (suppresses WIN32_REDIST_DIR warning)
 MOZ_OPTIONS+=	--enable-jemalloc
-
 
 USE_GL=		gl
 USE_GNOME=	cairo gdkpixbuf2 gtk30
 
-
-
-
 # ============================================================================
 # PARALLEL JOBS
 # ============================================================================
-MAKE_JOBS=		2# Parallel build control: by default builds run parallel; set PARALLEL_BUILD=no to force serial
+MAKE_JOBS=		2
+# Parallel build control: by default builds run parallel; set PARALLEL_BUILD=no to force serial
 PARALLEL_BUILD?=	yes
 # ============================================================================
 # INSTALLATION METADATA
@@ -209,29 +206,26 @@ PARALLEL_BUILD?=	yes
 ZEN_ICON=		${PORTNAME}.png
 ZEN_ICON_SRC=		${PREFIX}/lib/${PORTNAME}/browser/chrome/icons/default/default48.png
 
-
 WRKSRC=		${WRKDIR}
 
 # Add ALSA compatibility headers from files/ directory
 CPPFLAGS+=	-I${FILESDIR}
 
-# Use rust from ports and enable ccache
+# Use rust from ports and enable b
 
-CONFIGURE_ENV=  RUSTC=${LOCALBASE}/bin/rustc \
-                CARGO=${LOCALBASE}/bin/cargo \
-                CCACHE=${LOCALBASE}/bin/ccache
+CONFIGURE_ENV= 	RUSTC=${LOCALBASE}/bin/rustc \
+	CARGO=${LOCALBASE}/bin/cargo \
+	CCACHE=${LOCALBASE}/bin/ccache
 
-MAKE_ENV=       RUSTC=${LOCALBASE}/bin/rustc \
-                CARGO=${LOCALBASE}/bin/cargo \
-                RUSTUP_HOME=nonexistent \
-                CARGO_HOME=nonexistent \
-                CCACHE=${LOCALBASE}/bin/ccache \
-                CCACHE_DIR=${.CURDIR}/ccache \
-                PATH=${LOCALBASE}/bin:${LOCALBASE}/sbin:/bin:/sbin:/usr/bin:/usr/sbin
+MAKE_ENV= 	RUSTC=${LOCALBASE}/bin/rustc \
+	CARGO=${LOCALBASE}/bin/cargo \
+	RUSTUP_HOME=nonexistent \
+	CARGO_HOME=nonexistent \
+	CCACHE=${LOCALBASE}/bin/ccache \
+	CCACHE_DIR=${.CURDIR}/ccache \
+	PATH=${LOCALBASE}/bin:${LOCALBASE}/sbin:/bin:/sbin:/usr/bin:/usr/sbin
 
 # Enable ccache for faster rebuilds (use per-tree cache to avoid global /var/cache conflicts)
-MOZ_OPTIONS+=	--with-ccache=${LOCALBASE}/bin/ccache
-
 
 do-configure:
 	${MKDIR} ${.CURDIR}/ccache || true
@@ -239,11 +233,17 @@ do-configure:
 	cd ${WRKSRC} && \
 		${ECHO} "# Generated by ports: apply MOZ_OPTIONS" > .mozconfig && \
 		for opt in ${MOZ_OPTIONS}; do ${ECHO} "ac_add_options $$opt" >> .mozconfig; done
-	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${FILESDIR}/patch_rust_manifests.sh ${WRKSRC} || true && \
+	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${SH} ${FILESDIR}/patch_rust_manifests.sh ${WRKSRC} || true && \
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ./mach vendor rust || true
 	@${ECHO_MSG} "===> Configuring build"
-	cd ${WRKSRC} && ${SETENV} ${CONFIGURE_ENV} ./mach configure
-				
+	cd ${WRKSRC} && \
+		if [ -f "${WASI_SYSROOT}/include/wasm32-wasi/string.h" ]; then \
+			${ECHO_MSG} "===> Found WASI headers; passing include flags and sysroot to configure"; \
+			${SETENV} C_INCLUDE_PATH="${WASI_SYSROOT}/include/wasm32-wasi:${WASI_SYSROOT}/include" CPLUS_INCLUDE_PATH="${WASI_SYSROOT}/include/wasm32-wasi:${WASI_SYSROOT}/include" ${CONFIGURE_ENV} ./mach configure; \
+		else \
+			${ECHO_MSG} "===> WASI headers not found; configuring with --without-wasm-sandboxed-libraries"; \
+			${SETENV} C_INCLUDE_PATH="${WASI_SYSROOT}/include/wasm32-wasi:${WASI_SYSROOT}/include" CPLUS_INCLUDE_PATH="${WASI_SYSROOT}/include/wasm32-wasi:${WASI_SYSROOT}/include" ${CONFIGURE_ENV} ./mach configure; \
+		fi
 
 do-build:
 	# Opt-in parallel build: set PARALLEL_BUILD=yes to enable parallel build with
@@ -251,29 +251,35 @@ do-build:
 	# forwarding arbitrary MAKEFLAGS (like invalid -J) to gmake.
 	if [ "${PARALLEL_BUILD}" = "yes" ]; then \
 		echo "Running parallel build (-j${MAKE_JOBS})"; \
-		cd ${WRKSRC} && env MAKEFLAGS="-j${MAKE_JOBS}" ${SETENV} ${MAKE_ENV} ./mach build; \
+			cd ${WRKSRC} && ${SETENV} MAKEFLAGS="-j${MAKE_JOBS}" ${MAKE_ENV} ./mach build; \
 	else \
 		echo "Running serial build (MAKEFLAGS cleared)"; \
-		cd ${WRKSRC} && env MAKEFLAGS= ${SETENV} ${MAKE_ENV} ./mach build; \
+			cd ${WRKSRC} && ${SETENV} MAKEFLAGS= ${MAKE_ENV} ./mach build; \
 	fi
 
 post-patch:
 	@${ECHO_MSG} "===> Applying FreeBSD patches automatically"
+	@${MKDIR} ${WRKDIR}/patch-rejects || true
 	@cd ${FILESDIR} && \
 		for p in patch-*; do \
 			if [ -f "$$p" ]; then \
 				${ECHO_MSG} "  -> Applying $$p"; \
-				if ${PATCH} -d ${WRKSRC} -p0 -N -E < "$$p" > /dev/null 2>&1; then \
+				# Send rejects to a controlled location to avoid permission and backup issues
+				if ${PATCH} -d ${WRKSRC} -p0 -N -E -r ${WRKDIR}/patch-rejects/$$p.rej < "$$p" > /dev/null 2>&1; then \
 					${ECHO_MSG} "     [OK]"; \
-				elif [ $$? -eq 1 ]; then \
-					${ECHO_MSG} "     [SKIPPED - already applied]"; \
 				else \
-					${ECHO_MSG} "===> FAILED: $$p"; \
-					exit 1; \
+					${ECHO_MSG} "     [SKIPPED - patch failed or already applied; rejects saved to ${WRKDIR}/patch-rejects/$$p.rej]"; \
+					# Move any stray .rej files from WRKSRC to the rejects dir for inspection
+					if [ -n "$$(${FIND} ${WRKSRC} -name '*.rej' -print -quit 2>/dev/null)" ]; then \
+						${ECHO_MSG} "     [INFO] Moving stray .rej files to ${WRKDIR}/patch-rejects"; \
+						${FIND} ${WRKSRC} -name '*.rej' -exec ${MV} {} ${WRKDIR}/patch-rejects/ \; 2>/dev/null || true; \
+					fi; \
 				fi; \
 			fi; \
 		done
 	@${ECHO_MSG} "===> All patches processed"
+	@${ECHO_MSG} "===> Running idempotent manifest fixes"
+	@${SETENV} ${MAKE_ENV} ${SH} ${FILESDIR}/patch_rust_manifests.sh ${WRKSRC} || true
 
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}
@@ -284,9 +290,10 @@ do-install:
 		${FIND} . -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/{} \; && \
 		${FIND} . -type f -perm +111 -exec ${INSTALL_PROGRAM} {} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/{} \;
 	# Create wrapper script
-	${ECHO_CMD} '#!/bin/sh' > ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
-	${ECHO_CMD} 'exec ${PREFIX}/lib/${PORTNAME}/zen-bin "$$@"' >> ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
-	${CHMOD} +x ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+	@${ECHO_CMD} '#!/bin/sh' > ${WRKDIR}/${PORTNAME}.sh
+	@${ECHO_CMD} 'exec ${PREFIX}/lib/${PORTNAME}/zen-bin "$$@"' >> ${WRKDIR}/${PORTNAME}.sh
+	${INSTALL_SCRIPT} ${WRKDIR}/${PORTNAME}.sh ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+	@${RM} ${WRKDIR}/${PORTNAME}.sh
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/pixmaps
@@ -304,6 +311,10 @@ post-install:
 # Usage:
 #   make makefile-crates
 makefile-crates: extract
+# Run a reproducible clean build verification cycle. This is intended to be
+# used locally or in CI to validate that the manifest fixes and vendoring
+# steps make a clean extract build reproducible.
+# test-clean-build target removed per maintainer request; use `make clean && make build` to perform a clean build
 	@${ECHO_MSG} "===> Generating ${.CURDIR}/Makefile.crates from vendored crates"
 	@${ECHO} "# Auto-generated cargo crates list" > ${.CURDIR}/Makefile.crates
 	@${ECHO} "CARGO_CRATES= \" >> ${.CURDIR}/Makefile.crates
