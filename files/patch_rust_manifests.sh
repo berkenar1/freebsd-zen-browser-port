@@ -129,6 +129,20 @@ if [ -f "$TOP" ]; then
             echo "edition already present in $TOP"
         fi
 
+        if ! grep -q "^[[:space:]]*version[[:space:]]*=" "$TOP"; then
+            echo "Adding version = \"0.0.0\" to $TOP (under [workspace.package])"
+            if [ "$APPLY" = true ]; then
+                awk '1{print; if($0 ~ /\[workspace.package\]/ && !x){print "version = \"0.0.0\""; x=1}}' "$TOP" > "$TOP.tmp"
+                apply_edit "$TOP"
+            else
+                echo "--- preview (insert version = \"0.0.0\" in $TOP) ---"
+                awk '1{print; if($0 ~ /\[workspace.package\]/ && !x){print "version = \"0.0.0\""; x=1}}' "$TOP" | sed -n '1,120p'
+                echo "--- end preview ---"
+            fi
+        else
+            echo "version already present in $TOP"
+        fi
+
         if ! grep -q "^[[:space:]]*authors[[:space:]]*=" "$TOP"; then
             echo "Adding authors = [] to $TOP (under [workspace.package])"
             if [ "$APPLY" = true ]; then

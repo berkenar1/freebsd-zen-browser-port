@@ -3,5 +3,6 @@
 @@
  [workspace.package]
 +edition = "2021"
++version = "0.0.0"
 +authors = []
 *** End Patch
