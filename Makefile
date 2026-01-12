@@ -1,21 +1,61 @@
-PORTNAME=	zen-browser
-DISTVERSION=	1.17.12b
-PORTREVISION=	0
-PORTEPOCH=	1
-CATEGORIES=	www wayland
+# ============================================================================
+# BASIC PORT IDENTIFICATION (strict order required)
+# ============================================================================
+PORTNAME=		zen-browser
+PORTVERSION=		1.17.15
+DISTVERSION=		1.17.15b
+PORTREVISION=		1
+PORTEPOCH=		1
+CATEGORIES=		www wayland
 
-MAINTAINER=	ports@FreeBSD.org
-COMMENT=	Zen Browser - Firefox-based privacy-focused browser
-WWW=		https://zen-browser.app
+# ============================================================================
+# DISTRIBUTION FILES (must come right after CATEGORIES)
+# ============================================================================
+MASTER_SITES=		https://github.com/zen-browser/desktop/releases/download/${DISTVERSION}/
+DISTFILES=		zen.source.tar.zst
 
-MASTER_SITES=	https://github.com/zen-browser/desktop/releases/download/${DISTVERSION}/
-DISTFILES=	zen.source.tar.zst
+# ============================================================================
+# MAINTAINER INFORMATION
+# ============================================================================
+MAINTAINER=		ports@FreeBSD.org
+COMMENT=		Zen Browser - Firefox-based privacy-focused browser
+WWW=			https://zen-browser.app
 
-LICENSE=	MPL20
+# ============================================================================
+# LICENSE
+# ============================================================================
+LICENSE=		MPL20
+LICENSE_FILE=   ${WRKSRC}/LICENSE
 
-# Work around bindgen not finding ICU headers
-CONFIGURE_ENV+=	BINDGEN_CFLAGS="-I${LOCALBASE}/include"
 
+LIB_DEPENDS=	libnspr4.so:devel/nspr \
+		libnss3.so:security/nss \
+		libgtk-3.so.0:x11-toolkits/gtk30 \
+		libcairo.so.2:graphics/cairo \
+		libpango-1.0.so.0:x11-toolkits/pango \
+		libwayland-client.so.0:graphics/wayland \
+		libfontconfig.so.1:x11-fonts/fontconfig \
+		libfreetype.so.6:print/freetype2 \
+		libharfbuzz.so.0:print/harfbuzz \
+		libdbus-1.so.3:devel/dbus \
+		libicuuc.so:devel/icu \
+		libpng16.so.16:graphics/png \
+		libjpeg.so:graphics/jpeg-turbo \
+		libsqlite3.so:databases/sqlite3 \
+		libpipewire-0.3.so.0:multimedia/pipewire \
+		libzstd.so:archivers/zstd \
+                libdav1d.so:multimedia/dav1d \
+                libaom.so:multimedia/aom \
+                libjxl.so:graphics/libjxl \
+                libsrtp2.so:net/libsrtp2 \
+                libepoxy.so:graphics/libepoxy \
+                libcups.so:print/cups
+
+
+LLVM_VERSION=	20
+# ============================================================================
+# DEPENDENCIES (must appear before USES)
+# ============================================================================
 BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 		nss>=3.118:security/nss \
 		icu>=76.1:devel/icu \
@@ -30,61 +70,118 @@ BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 		nasm:devel/nasm \
 		yasm:devel/yasm \
 		zip:archivers/zip \
-		alsa-lib>=1.2.14:audio/alsa-lib
+		alsa-lib>=1.2.14:audio/alsa-lib \
+		${LOCALBASE}/share/wasi-sysroot/lib/wasm32-wasi/libc++abi.a:devel/wasi-libcxx20 \
+		${LOCALBASE}/share/wasi-sysroot/lib/wasm32-wasi/libc.a:devel/wasi-libc@20 \
+		wasi-compiler-rt20>0:devel/wasi-compiler-rt20
 
-LIB_DEPENDS=	libnspr4.so:devel/nspr \
-		libnss3.so:security/nss \
-		libicuuc.so:devel/icu \
-		libevent.so:devel/libevent \
-		libharfbuzz.so:print/harfbuzz \
-		libgraphite2.so:graphics/graphite2 \
-		libpng.so:graphics/png \
-		libdav1d.so:multimedia/dav1d \
-		libvpx.so:multimedia/libvpx \
-		libasound.so:audio/alsa-lib
 
-USE_GECKO=	gecko
-USE_MOZILLA=	-sqlite
+# ============================================================================
+# BUILD FRAMEWORK
+# ============================================================================
 
-# Disable WASM sandboxing (wasi-sysroot not present on FreeBSD)
-MOZ_OPTIONS+=	--without-wasm-sandboxed-libraries
 
-# Enable Mozilla's jemalloc (suppresses WIN32_REDIST_DIR warning)
-MOZ_OPTIONS+=	--enable-jemalloc
 
-USES=		tar:zst gmake python:3.11,build compiler:c17-lang \
-		desktop-file-utils gl gnome localbase:ldflags pkgconfig
+USES=		tar:zst \
+		gmake \
+		python:3.11,build \
+		compiler:c++17-lang \
+		cmake:noninja \
+		pkgconfig \
+		localbase:ldflags \
+		gl \
+		gnome \
+		desktop-file-utils \
+		libtool \
+		xorg \
+		gettext
+
 
 USE_GL=		gl
-USE_GNOME=	cairo gdkpixbuf2 gtk30
+USE_GNOME=	cairo gtk30
 
+# ============================================================================
+# EXTRACTION & WORKING DIRECTORY
+# ============================================================================
+
+
+WRKSRC=			${WRKDIR}
+
+# ============================================================================
+# COMPILER & BUILD FLAGS
+# ============================================================================
+CPPFLAGS+=		-I${FILESDIR} \
+			-I${LOCALBASE}/include
+
+# ============================================================================
+# BUILD ENVIRONMENT & TOOLS
+# ============================================================================
+MAKE_ENV+=		PATH=${HOME}/.cargo/bin:${PATH} \
+			CCACHE_DIR=/var/cache/ccache \
+		LIBCLANG_PATH=/usr/local/llvm20/lib \
+		WASM_CC=/usr/local/llvm20/bin/clang \
+		WASM_CXX=/usr/local/llvm20/bin/clang++
+CONFIGURE_ENV+=	PATH=${HOME}/.cargo/bin:${PATH} \
+		BINDGEN_CFLAGS="-I${LOCALBASE}/include" \
+		CCACHE_DIR=/var/cache/ccache \
+		LIBCLANG_PATH=/usr/local/llvm20/lib \
+		WASM_CC=/usr/local/llvm20/bin/clang \
+		WASM_CXX=/usr/local/llvm20/bin/clang++
+
+CARGO=		${HOME}/.cargo/bin/cargo
+RUSTC=		${HOME}/.cargo/bin/rustc
+
+CARGO_ENV+=	RUSTUP_TOOLCHAIN=stable
+MAKE_ENV+=	RUSTUP_TOOLCHAIN=stable
+CONFIGURE_ENV+=	RUSTUP_TOOLCHAIN=stable
+
+MAKE_ENV+=	CARGO=${CARGO} RUSTC=${RUSTC}
+MAKE_ENV+=	PIP=/usr/local/bin/pip-3.11
+CONFIGURE_ENV+=	CARGO=${CARGO} RUSTC=${RUSTC}
+
+WASI_SYSROOT=           /usr/local/share/wasi-sysroot
+
+# ============================================================================
+# MOZILLA BUILD OPTIONS
+# ============================================================================
+MOZ_OPTIONS+=		--with-system-sqlite \
+			--enable-pipewire \
+			--enable-jemalloc \
+			--disable-lto \
+			--with-wasi-sysroot=${WASI_SYSROOT}
+
+
+CONFIGURE_ARGS+=	--with-system-sqlite \
+			--enable-pipewire \
+			--disable-lto
+
+# ============================================================================
+# PARALLEL JOBS
+# ============================================================================
+MAKE_JOBS=		2
+
+# ============================================================================
+# INSTALLATION METADATA
+# ============================================================================
 ZEN_ICON=		${PORTNAME}.png
-ZEN_ICON_SRC=	${PREFIX}/lib/${PORTNAME}/browser/chrome/icons/default/default48.png
+ZEN_ICON_SRC=		${PREFIX}/lib/${PORTNAME}/browser/chrome/icons/default/default48.png
 
-WRKSRC=		${WRKDIR}
 
-# Add ALSA compatibility headers from files/ directory
-CPPFLAGS+=	-I${FILESDIR}
 
-# Use rust from ports and enable ccache
+CONFIGURE_ENV+= PKG_CONFIG_PATH=${LOCALBASE}/libdata/pkgconfig
+CPPFLAGS+=     -I${LOCALBASE}/include
+LDFLAGS+=      -L${LOCALBASE}/lib
 
-CONFIGURE_ENV=  RUSTC=${LOCALBASE}/bin/rustc \
-                CARGO=${LOCALBASE}/bin/cargo \
-                CCACHE=${LOCALBASE}/bin/ccache
 
-MAKE_ENV=       RUSTC=${LOCALBASE}/bin/rustc \
-                CARGO=${LOCALBASE}/bin/cargo \
-                RUSTUP_HOME=nonexistent \
-                CARGO_HOME=nonexistent \
-                CCACHE=${LOCALBASE}/bin/ccache \
-                PATH=${LOCALBASE}/bin:${LOCALBASE}/sbin:/bin:/sbin:/usr/bin:/usr/sbin
 
-# Enable ccache for faster rebuilds
-MOZ_OPTIONS+=	--with-ccache=${LOCALBASE}/bin/ccache
 
 do-configure:
-	cd ${WRKSRC} && ./mach configure 
-				
+	cd ${WRKSRC} && \
+	${ECHO} "ac_add_options --with-wasi-sysroot=${WASI_SYSROOT}" > .mozconfig && \
+	${ECHO} "ac_add_options --with-libclang-path=/usr/local/llvm20/lib" >> .mozconfig && \
+	${SETENV} PATH=/usr/local/llvm20/bin:${PATH} WASM_CC=/usr/local/llvm20/bin/clang WASM_CXX=/usr/local/llvm20/bin/clang++ ${CONFIGURE_ENV} ${MAKE_ENV} CC=cc CXX=c++ \
+	./mach configure
+
 
 do-build:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ./mach build
@@ -101,12 +198,10 @@ post-patch:
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}
 	${MKDIR} ${STAGEDIR}${PREFIX}/bin
-	# Copy built application to staging directory
 	cd ${WRKSRC}/obj-*/dist/bin && \
 		${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/{} \; && \
 		${FIND} . -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/{} \; && \
 		${FIND} . -type f -perm +111 -exec ${INSTALL_PROGRAM} {} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/{} \;
-	# Create wrapper script
 	${ECHO_CMD} '#!/bin/sh' > ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 	${ECHO_CMD} 'exec ${PREFIX}/lib/${PORTNAME}/zen-bin "$$@"' >> ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 	${CHMOD} +x ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
