@@ -110,11 +110,30 @@ find "$ROOT" -path "*/wgpu-*/wgpu-core/platform-deps/*/Cargo.toml" -print | whil
     fi
 done
 
-# 5) Ensure top-level workspace has annotate-snippets in [workspace.dependencies]
+# 5) Ensure top-level workspace has an explicit edition and annotate-snippets in [workspace.dependencies]
 TOP="$ROOT/Cargo.toml"
 if [ -f "$TOP" ]; then
+    # Ensure [workspace.package] has an edition defined so crates that inherit edition.workspace succeed
+    if grep -q "\[workspace.package\]" "$TOP"; then
+        if ! grep -q "^[[:space:]]*edition[[:space:]]*=" "$TOP"; then
+            echo "Adding edition = \"2021\" to $TOP (under [workspace.package])"
+            if [ "$APPLY" = true ]; then
+                awk '1{print; if($0 ~ /\[workspace.package\]/ && !x){print "edition = \"2021\""; x=1}}' "$TOP" > "$TOP.tmp"
+                apply_edit "$TOP"
+            else
+                echo "--- preview (insert edition in $TOP) ---"
+                awk '1{print; if($0 ~ /\[workspace.package\]/ && !x){print "edition = \"2021\""; x=1}}' "$TOP" | sed -n '1,120p'
+                echo "--- end preview ---"
+            fi
+        else
+            echo "edition already present in $TOP"
+        fi
+    else
+        echo "No [workspace.package] in $TOP, skipping edition insertion"
+    fi
+
     if grep -q "\[workspace.dependencies\]" "$TOP"; then
-        if ! grep -q "^\s*annotate-snippets\s*=" "$TOP"; then
+        if ! grep -q "^[[:space:]]*annotate-snippets[[:space:]]*=" "$TOP"; then
             echo "Adding annotate-snippets = \"0.11.4\" to $TOP"
             # Insert it right after the workspace.dependencies header
             if [ "$APPLY" = true ]; then
@@ -133,7 +152,23 @@ if [ -f "$TOP" ]; then
     fi
 fi
 
-# 6) Tidy: where a dependency line includes trailing commas left by replacements, remove duplicate commas
+# 6) Fix ohttp bhttp crates which use "edition.workspace = true" -> make explicit edition
+# This targets ohttp's bhttp crates which previously failed cargo metadata due to missing
+# [workspace.package].edition in the workspace root.
+find "$ROOT" -type f -path "*/ohttp-*/bhttp/Cargo.toml" -print | while read -r F; do
+    if grep -q "edition.workspace" "$F" 2>/dev/null; then
+        echo "Will replace edition.workspace in $F"
+        if [ "$APPLY" = true ]; then
+            awk '{ if($0 ~ /^[[:space:]]*edition[[:space:]]*\.workspace[[:space:]]*=.*/){ sub(/edition[[:space:]]*\.workspace[[:space:]]*=.*/, "edition = \"2021\""); print; } else { print } }' "$F" > "$F.tmp" && apply_edit "$F"
+        else
+            echo "--- preview (replace edition.workspace in $F) ---"
+            awk '{ if($0 ~ /^[[:space:]]*edition[[:space:]]*\.workspace[[:space:]]*=.*/){ sub(/edition[[:space:]]*\.workspace[[:space:]]*=.*/, "edition = \"2021\""); print; } else { print } }' "$F" | sed -n '1,120p'
+            echo "--- end preview ---"
+        fi
+    fi
+done
+
+# 7) Tidy: where a dependency line includes trailing commas left by replacements, remove duplicate commas
 find "$ROOT" -type f -name Cargo.toml | while read -r f; do
     if grep -q ",," "$f"; then
         echo "Tidying double-commas in: $f"
