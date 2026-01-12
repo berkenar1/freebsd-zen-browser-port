@@ -1,10 +1,3 @@
-commit 9f34111f6f4e2ebefd878a3c256fc012826e6936
-Author: Christoph Moench-Tegeder <cmt@FreeBSD.org>
-
-    FreeBSD does not know asm-generic/ioctl.h
-
-diff --git a/third_party/libwebrtc/modules/portal/pipewire_utils.h b/third_party/libwebrtc/modules/portal/pipewire_utils.h
-index c3d4f347a8cd..14a36260c292 100644
 --- third_party/libwebrtc/modules/portal/pipewire_utils.h
 +++ third_party/libwebrtc/modules/portal/pipewire_utils.h
 @@ -11,6 +11,9 @@

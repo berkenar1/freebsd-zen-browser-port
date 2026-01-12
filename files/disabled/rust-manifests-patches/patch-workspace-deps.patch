@@ -1,0 +1,3144 @@
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++dir=self.workspace, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++<html:div = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++engine_preference="services.sync.engine.workspaces"> = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++framework["yml_path"], = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.workspace_dir, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.taskgraph = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++let = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++root_manifest_path = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++= = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.workspace_root.join("Cargo.toml"); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++preference="services.sync.engine.workspaces" = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++preference="zen.workspaces.separate-essentials"/> = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++const = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspacePinnedContainer = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++gZenWorkspaces.workspaceElement( = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++.filter(|&p| = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.workspace_default_members.contains(&p.id)) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.workspace_members.contains(&p.id)) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++.strip_prefix(&metadata.workspace_root) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"logdir": = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.workspace = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++or = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++os.getcwd(), = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"Using = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++for = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++temporary = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++data: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++f'"{self.workspace_path}"' = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++assert = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++name = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++not = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++in = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.workspaceMembersByName = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++container = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++desc_path = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pathlib.Path(self.workspace_dir, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++desc) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++kwargs["workspace"] = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.workspace_path = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"testing", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"talos", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"talos.json") = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++preference="zen.workspaces.force-container-workspace"/> = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++preference="zen.workspaces.hide-default-container-indicator"/> = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.gecko_log = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++os.path.join(self.workspace_path = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"gecko.log") = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++str(pathlib.Path(self.workspace_dir, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++".hg")), = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++suite_name = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++str(path.parent).replace(str(self.workspace_dir), = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"") = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++tab.setAttribute('zen-workspace-id', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++folderData.workspaceId); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspace_root: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++metadata.workspace_root, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspace_uuid: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pin.workspaceUuid = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++|| = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++null, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaceId: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++folderData.workspaceId, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pin.workspaceUuid, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++!workspaces.workspaces.find((workspace) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++=> = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspace.uuid = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++=== = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaceID)) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++!workspaces.workspaces.some( = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++.workspaceElement(workspace.uuid) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++clonedEssentials[clonedEssentials.length = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++- = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++1].workspaces.push(workspace); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++defaultSelectedContainer = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.workspaceElement( = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pinnedContainer = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.workspaceElement(this.activeWorkspace).querySelector( = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++echo = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"LD_LIBRARY_PATH=${{ = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++github.workspace = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++}}/dist/Debug/lib" = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++>> = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"$GITHUB_ENV" = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++if = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(folderData.workspaceId) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(Services.prefs.getBoolPref("zen.workspaces.continue-where-left-off")) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++newTab.setAttribute('zen-workspace-id', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pin.workspaceUuid); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++NSS_DB_PATH: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++}}/neqo/test-fixture/db = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++NSS_DIR: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++}}/libs/desktop/darwin-aarch64/nss = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++}}/libs/desktop/linux-x86-64/nss = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaceToSwitch = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._workspaceCache.workspaces.find( = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++!browser.gZenWorkspaces.workspaceEnabled = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++.workspace_members = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++&metadata.workspace_root, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++`, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++...workspacesToRemove]); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++assert_eq!(&*meta.workspace_default_members, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++&meta.workspace_members); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++await = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.updateBookmarkWorkspaces(this._guid, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._newState.workspaces); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.workspaceBookmarks(); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.workspaceElement(workspace.uuid); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++essentialsWorkspaces = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++cloned.workspaces; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++firstIndex = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces.findIndex( = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++firstWorkspaceIndex = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++lastIndex = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++lastWorkspaceIndex = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaceElement = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++browser.gZenWorkspaces.workspaceElement(windowWorkspace.uuid); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.workspaceElement(workspaceId); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._workspaceCache.workspaces.filter( = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(const = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++of = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++oldWorkspaces.workspaces) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++list(pathlib.Path(self.workspace_dir).rglob("perftest.toml")): = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pathlib.Path(self.workspace_dir).rglob("perfdocs"): = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++gZenWorkspaces.getWorkspaceFromId(this.workspaceUuid) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(!browser.gZenWorkspaces.workspaceElement(workspace.uuid)) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(pin.workspaceUuid) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(this._hasAlreadyInitializedZenSessionStore = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++!gZenWorkspaces.workspaceEnabled) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.workspace: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++default_packages = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++metadata.workspace_default_packages(); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++}}/nss = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pkgInfo = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.pkgInfoById[self.workspaceMembersByName[name]] = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self._manifest_path = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++yaml_content["manifest"]) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.assertIn(self.workspace, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.profile_path) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.assertNotIn(self.workspace, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self.marionette.instance.workspace = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++None = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++serde_json::from_value::<WorkspaceMetadata>(meta.workspace_metadata.clone()).unwrap(), = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++shutil.rmtree(self.workspace, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++ignore_errors=True) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++target: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.workspaceElement(workspaceData.uuid).pinnedTabsContainer, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.#contextMenuData.workspaceId = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++!== = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.activeWorkspace); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.activeWorkspace = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._workspaceCache.workspaces[0]?.uuid; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++WORKSPACE: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++}} = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++inputs.workspaces = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspacesIds.push(...workspaces.map((w) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++w.uuid)); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++!Services.prefs.getBoolPref('zen.workspaces.continue-where-left-off') = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++!this.workspaceEnabled = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++.setAttribute('disabled', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces.length = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++<= = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++1); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++'zen.workspaces.force-container-workspace', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++'zen.workspaces.natural-scroll', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++'zen.workspaces.open-new-tab-if-last-unpinned-tab-is-closed', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++'zen.workspaces.scroll-modifier-key', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++'zen.workspaces.separate-essentials', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++'zen.workspaces.wrap-around-navigation', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(await = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++gZenWorkspaces._workspaces()).workspaces.length, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(this.#contextMenuData.workspaceId = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++&& = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(this.#contextMenuData?.workspaceId = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.activeWorkspace) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++aWindow.moveToWorkspace(winData.workspaceID); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++CARGO_HOME: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++}}/cargo = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.workspaceElement(otherWorkspace.uuid); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++element = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++elementWorkspaceIndex = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++matchingWorkspaces = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++newTransform = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++-(workspaceIndex = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces.indexOf(otherWorkspace)) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++-.o = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++ccache = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++distinfo = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++files = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++Makefile = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++Makefile.crates = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++MEMORY_ALLOCATION.md = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pkg-descr = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pkg-plist = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++QUICKSTART.md = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++README.md = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++work = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++work-py311 = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++zsh.core = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++100; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++nextWorkspace = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces[workspaceIndex = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
+++ = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(offsetPixels = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++0 = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++? = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++-1 = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++1)]; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaceContainer = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.workspaceElement(workspaceID); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaceIndicator = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.workspaceElement(workspace.uuid)?.indicator; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++[...gZenWorkspaces._workspaceCache.workspaces].reverse()) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++[...this._workspaceCache.workspaces].reverse()) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(!tab.hasAttribute('zen-workspace-id') = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(changedPosition = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++changedTabGroup = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(previousTabState.workspaceId = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++currentTabState.workspaceId)) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(gZenWorkspaces.workspaceEnabled = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++gZenWorkspaces.getActiveWorkspaceFromCache().uuid) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(gZenWorkspaces.workspaceEnabled) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(oldWorkspaces.workspaces) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++Array.from(this._workspaceCache?.workspaces = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++MOZBUILD_STATE_PATH: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++}}/mozbuild = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++ownerGlobal.gZenWorkspaces.changeWorkspaceWithID(payload.workspaceId); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++return = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._workspaceCache.workspaces.find((workspace) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++window.gZenWorkspaces._workspaceCache.workspaces.length = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++1; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++Services.prefs.getBoolPref('zen.workspaces.container-specific-essentials-enabled', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++false) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++Services.prefs.getBoolPref('zen.workspaces.swipe-actions', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++Services.prefs.removeObserver('zen.workspaces.separate-essentials', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++tabsUnloaderPrefListener); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++targetIndex = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(targetIndex = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces.length) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++% = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces.length; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++Math.max(0, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++Math.min(workspaces.workspaces.length = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++1, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++targetIndex)); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._log.debug(`Moving = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++window = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++to = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++${winData.workspaceID}`); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.activeWorkspace; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.getWorkspaceFromId(this.#contextMenuData.workspaceId); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++fill: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++red = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++assert_eq!(meta.workspace_members.len(), = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++assert_eq!(meta.workspace_metadata, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++serde_json::Value::Null); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++assert_eq!(meta.workspace_root, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"/foo"); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++assert_eq!(meta.workspace_root.file_name().unwrap(), = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"all"); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++assert!(!meta.workspace_default_members.is_available()); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++assert!(!meta.workspace_default_members.is_missing()); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++assert!(meta.workspace_default_members.is_available()); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++assert!(meta.workspace_default_members.is_missing()); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++assert!(meta.workspace_members[0].to_string().contains("all")); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++browser.gZenWorkspaces.workspaceBookmarks(); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++gZenWorkspaces.removeWorkspace(this.workspaceId); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.updateWorkspaceIndicator(workspace, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.workspaceIndicator); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++currentWorkspaceStrip = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.workspaceElement(this.activeWorkspace); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++firstWorkspace = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces[0]; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++newWorkspaceIndex = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces.findIndex((w) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++w.uuid = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++newWorkspace.uuid); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++parent = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.workspaceIcons; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++previousWorkspaceIndex = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++secondWorkspace = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces[1]; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++gZenWorkspaces.workspaceElement(workspaceId); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspacePinned = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._workspaces()).workspaces; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++window.gZenWorkspaces._workspaceCache?.workspaces; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces[index]; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++currentWorkspaceUUID = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces[1].uuid, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++folder.setAttribute('zen-workspace-id', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++options.workspaceId = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++gZenWorkspaces.activeWorkspace); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++otherWorkspace = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._workspaceCache.workspaces) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(let = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++'zen.workspaces.continue-where-left-off', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++'zen.workspaces.hide-default-container-indicator', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(!this.#contextMenuData.workspaceId) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(!this.workspaceEnabled = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++!this._hasInitializedTabsStrip) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++!this._hoveringSidebar) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++!this._swipeState?.isGestureActive) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++return; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++isEssential) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.__contextIsDelete = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._removedByStartupPage) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._inChangingWorkspace = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._isClosingWindow) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(!this.workspaceEnabled) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(!workspaces.workspaces.length) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(gZenUIManager.testingEnabled = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(gZenWorkspaces.workspaceHasIcon(workspace)) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(index = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++>= = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++0) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(payload.workspaceId) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(this.#contextMenuData?.workspaceId) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(this.workspaceHasIcon(currentWorkspace)) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(this.workspaceHasIcon(workspace)) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(winData.workspaceID = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++lazy.gRestoreWindowsToVirtualDesktop) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++1) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++metadata.workspace_default_members.is_available() = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++_ = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++&*meta.workspace_default_members; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces[targetIndex]; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++context.workspaceRoot; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces.find( = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspace_packages = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++metadata.workspace_packages(); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaceData = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this.workspaceUuid); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspaces.workspaces.indexOf(activeWorkspace); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++gZenWorkspaces._workspaces()).workspaces; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++ok(workspaces.workspaces.length = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++2, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++'Two = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++should = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++exist.'); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++Preferences::GetBool("widget.workspace-management"); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++Services.prefs.addObserver('zen.workspaces.separate-essentials', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++Services.prefs.setStringPref('zen.workspaces.active', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++value); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._activeWorkspace = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++Services.prefs.getStringPref('zen.workspaces.active', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++''); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._newState.workspaces = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._workspaceCache.workspaces = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this._workspaceCache.workspaces.sort( = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"services.sync.engine.workspaces", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++type: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"bool" = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++}, = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++#canDebug = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++Services.prefs.getBoolPref('zen.workspaces.debug', = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++false); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++gZenWorkspaces.changeWorkspace(workspaces.workspaces[0]); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++gZenWorkspaces.changeWorkspace(workspaces.workspaces[1]); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++(Preferences::HasUserValue("widget.workspace-management")) = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++ok(workspacesAfterRemove.workspaces.length = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++'One = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pref: = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++github.workspace}} = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++.workspace-dropdown = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++.workspace-trigger = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++[bans.workspace-dependencies] = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++[package.metadata.workspaces] = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++@media = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++-moz-pref('zen.workspaces.hide-default-container-indicator') = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++actualPin = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++anyhow = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++approx = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++argh = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++arrayvec = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++bit-set = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++bit-vec = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++block = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++bytemuck = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++cargo_metadata = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++cc = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++cexpr = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++cfg_aliases = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++cfg-if = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++clap = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++cloned = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++clonedEssentials = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++console_error_panic_hook = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++console_log = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++criterion = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++ctor = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++deno_console = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++deno_core = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++deno_error = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++deno_features = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++deno_unsync = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++deno_url = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++deno_web = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++deno_webgpu = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++deno_webidl = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++diff = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++diplomat_core = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++document-features = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++env_logger = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++fern = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++fluent-bundle = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++fluent-langneg = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++fluent-syntax = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++flume = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++futures = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++futures-lite = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++glam = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++glob = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++groupPin = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++gZenWorkspaces = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++hashbrown = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++heck = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++hlsl-snapshots = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++iai = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++image = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++include = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++indexmap = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++indicatif = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++intl_pluralrules = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++intl-memoizer = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++jobserver = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++ktx2 = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++libfuzzer-sys = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++libloading = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++libtest-mimic = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++license-file = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++lints = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++meta = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++naga = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++naga-test = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++nanorand = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++nanoserde = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++newWorkspaceEssentialsContainer = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++noise = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++num_cpus = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++num-traits = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++nv-flip = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++obj = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++once_cell = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++options = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++owo-colors = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++parking_lot = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pico-args = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pin = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pinObject = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++png = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pollster = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++portable-atomic = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pref("services.sync.engine.workspaces", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pref("zen.workspaces.continue-where-left-off", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pref("zen.workspaces.debug", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++true); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pref("zen.workspaces.force-container-workspace", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pref("zen.workspaces.hide-default-container-indicator", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pref("zen.workspaces.natural-scroll", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pref("zen.workspaces.open-new-tab-if-last-unpinned-tab-is-closed", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pref("zen.workspaces.scroll-modifier-key", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++"ctrl"); = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pref("zen.workspaces.separate-essentials", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pref("zen.workspaces.swipe-actions", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++pref("zen.workspaces.wrap-around-navigation", = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++prefs = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++proc-macro2 = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++profiling = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++publish = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++quickcheck = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++quote = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++raw-window-handle = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++rayon = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++regex = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++regex-lite = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++ron = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++rspirv = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++rwh_05 = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++self = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++serde_json = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++shell-words = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++shlex = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++smallvec = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++static_assertions = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++syn = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++tempfile = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++termcolor = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++this = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++toml = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++trybuild = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++unic-langid = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++walkdir = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++wasm-bindgen-futures = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++wasm-bindgen-test = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++web-time = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++wgpu = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++wgpu-hal = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++wgpu-macros = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++wgpu-test = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++wgpu-types = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++which = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++winData = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++winit = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++WORKSPACE_ROOT=$(cd = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++$CRATE_PATH; = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++--format-version = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++--no-deps = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++--locked = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++2> = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++/dev/null = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++jq = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++-r = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspacesAfterRemove = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++workspacesData = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++xshell = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++context = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++currentTabState = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++folderData = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++github = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++inputs = "*"
+*** End Patch
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++oldWorkspaces = "*"
+*** End Patch

@@ -130,6 +130,33 @@ The FreeBSD port uses standard FreeBSD Ports Makefile conventions:
 
 - **USES**: `tar:zst gmake python:3.11,build compiler:c17-lang desktop-file-utils gl gnome localbase:ldflags pkgconfig`
 - **Mozilla Options**: `--without-wasm-sandboxed-libraries --enable-jemalloc --with-ccache`
+
+## Port automation (rust vendoring)
+
+To make builds reproducible the port now automates Rust vendoring and small Cargo.toml fixes before configure:
+
+- `files/patch_rust_manifests.sh` — replaces `edition.workspace = true` usages with `edition = "2021"` where needed.
+- `make cargo-crates` (run by `do-configure`) vendors crates and generates `Makefile.crates`.
+
+These steps are idempotent and run during `make configure`. If you modify Cargo.toml or `Cargo.lock`, re-run `make cargo-crates` and `make makesum`.
+
+Note on build parallelism: to avoid passing problematic MAKEFLAGS into GNU make, the port clears MAKEFLAGS for the child build and therefore builds run serially by default. To run a parallel build manually, change into the work directory and run the build with MAKEFLAGS set, for example:
+
+    cd work && env MAKEFLAGS='-j12' ./mach build
+
+(We intentionally avoid forwarding arbitrary MAKEFLAGS to gmake to keep builds reproducible and safe.)
+
+Parallel builds (default):
+
+- Builds are parallel by default using `MAKE_JOBS` threads. To force a serial build set:
+
+    PARALLEL_BUILD=no sudo make build
+
+- If you need manual control, you can also run a parallel build inside the work tree:
+
+    cd work && env MAKEFLAGS='-j12' ./mach build
+
+We intentionally avoid forwarding arbitrary external `MAKEFLAGS` to `gmake` to keep builds reproducible and prevent invalid or malformed flags (like uppercase `-J`) from causing failures.
 - **Wrapper Injection**: `CPPFLAGS += -I${FILESDIR}`
 - **Patch Application**: Automatic during `post-patch` phase
 

@@ -1,4 +1,4 @@
---- media/libcubeb/src/cubeb_alsa.c.orig
+--- media/libcubeb/src/cubeb_alsa.c
 +++ media/libcubeb/src/cubeb_alsa.c
 @@ -4,6 +4,18 @@
   * This program is made available under an ISC-style license.  See the

@@ -1,0 +1,12 @@
+*** Begin Patch
+*** Update File: ohttp-*/bhttp/Cargo.toml
+@@
+-[package]
+-name = "bhttp"
+-version.workspace = true
+-edition.workspace = true
++[package]
++name = "bhttp"
++version.workspace = true
++edition = "2021"
+*** End Patch

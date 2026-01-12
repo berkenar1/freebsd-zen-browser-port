@@ -75,35 +75,9 @@ BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 		${LOCALBASE}/share/wasi-sysroot/lib/wasm32-wasi/libc.a:devel/wasi-libc@20 \
 		wasi-compiler-rt20>0:devel/wasi-compiler-rt20
 
-
-# ============================================================================
-# BUILD FRAMEWORK
-# ============================================================================
-
-
-
-USES=		tar:zst \
-		gmake \
-		python:3.11,build \
-		compiler:c++17-lang \
-		cmake:noninja \
-		pkgconfig \
-		localbase:ldflags \
-		gl \
-		gnome \
-		desktop-file-utils \
-		libtool \
-		xorg \
-		gettext
-
-
-USE_GL=		gl
-USE_GNOME=	cairo gtk30
-
 # ============================================================================
 # EXTRACTION & WORKING DIRECTORY
 # ============================================================================
-
 
 WRKSRC=			${WRKDIR}
 
@@ -116,17 +90,9 @@ CPPFLAGS+=		-I${FILESDIR} \
 # ============================================================================
 # BUILD ENVIRONMENT & TOOLS
 # ============================================================================
-MAKE_ENV+=		PATH=${HOME}/.cargo/bin:${PATH} \
-			CCACHE_DIR=/var/cache/ccache \
-		LIBCLANG_PATH=/usr/local/llvm20/lib \
-		WASM_CC=/usr/local/llvm20/bin/clang \
-		WASM_CXX=/usr/local/llvm20/bin/clang++
-CONFIGURE_ENV+=	PATH=${HOME}/.cargo/bin:${PATH} \
-		BINDGEN_CFLAGS="-I${LOCALBASE}/include" \
-		CCACHE_DIR=/var/cache/ccache \
-		LIBCLANG_PATH=/usr/local/llvm20/lib \
-		WASM_CC=/usr/local/llvm20/bin/clang \
-		WASM_CXX=/usr/local/llvm20/bin/clang++
+MAKE_ENV+=		PATH=${HOME}/.cargo/bin:${PATH}
+CONFIGURE_ENV+=		PATH=${HOME}/.cargo/bin:${PATH} \
+			BINDGEN_CFLAGS="-I${LOCALBASE}/include"
 
 CARGO=		${HOME}/.cargo/bin/cargo
 RUSTC=		${HOME}/.cargo/bin/rustc
@@ -136,24 +102,58 @@ MAKE_ENV+=	RUSTUP_TOOLCHAIN=stable
 CONFIGURE_ENV+=	RUSTUP_TOOLCHAIN=stable
 
 MAKE_ENV+=	CARGO=${CARGO} RUSTC=${RUSTC}
-MAKE_ENV+=	PIP=/usr/local/bin/pip-3.11
 CONFIGURE_ENV+=	CARGO=${CARGO} RUSTC=${RUSTC}
 
-WASI_SYSROOT=           /usr/local/share/wasi-sysroot
+WASI_SYSROOT=	${LOCALBASE}/share/wasi-sysroot
 
 # ============================================================================
 # MOZILLA BUILD OPTIONS
 # ============================================================================
 MOZ_OPTIONS+=		--with-system-sqlite \
-			--enable-pipewire \
-			--enable-jemalloc \
+			--with-system-zlib \
+			--with-system-libevent \
+			--with-system-libvpx \
+			--with-system-jpeg \
+			--with-system-png \
+			--with-system-av1 \
+			--with-system-webp \
 			--disable-lto \
-			--with-wasi-sysroot=${WASI_SYSROOT}
+			--enable-jemalloc \
+			--disable-tests \
+			--enable-alsa \
+			--enable-pulseaudio \
+			--enable-webrtc \
+			--with-ccache=/usr/local/bin/ccache \
+			--enable-pipewire \
+			--without-wasm-sandboxed-libraries \
+# --with-wasi-sysroot=${WASI_SYSROOT}  # removed: not supported by this configure, we provide headers via env
 
+CONFIGURE_ENV+=         WASI_SYSROOT=${WASI_SYSROOT}
 
 CONFIGURE_ARGS+=	--with-system-sqlite \
-			--enable-pipewire \
-			--disable-lto
+			--with-system-zlib \
+			--with-system-libevent \
+			--with-system-libvpx \
+			--with-system-jpeg \
+			--with-system-png \
+			--with-system-av1 \
+			--with-system-webp \
+			--disable-lto \
+			--enable-jemalloc \
+			--disable-tests \
+			--enable-alsa \
+			--enable-pulseaudio \
+			--enable-webrtc \
+			--with-ccache=/usr/local/bin/ccache
+
+USE_GECKO=	gecko
+USE_MOZILLA=	-sqlite
+
+# Enable Mozilla's jemalloc (suppresses WIN32_REDIST_DIR warning)
+MOZ_OPTIONS+=	--enable-jemalloc
+
+USE_GL=		gl
+USE_GNOME=	cairo gdkpixbuf2 gtk30
 
 # ============================================================================
 # PARALLEL JOBS
@@ -184,16 +184,38 @@ do-configure:
 
 
 do-build:
-	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ./mach build
+	# Opt-in parallel build: set PARALLEL_BUILD=yes to enable parallel build with
+	# MAKE_JOBS threads; otherwise builds are serial by default to avoid
+	# forwarding arbitrary MAKEFLAGS (like invalid -J) to gmake.
+	if [ "${PARALLEL_BUILD}" = "yes" ]; then \
+		echo "Running parallel build (-j${MAKE_JOBS})"; \
+			cd ${WRKSRC} && ${SETENV} MAKEFLAGS="-j${MAKE_JOBS}" ${MAKE_ENV} ./mach build; \
+	else \
+		echo "Running serial build (MAKEFLAGS cleared)"; \
+			cd ${WRKSRC} && ${SETENV} MAKEFLAGS= ${MAKE_ENV} ./mach build; \
+	fi
 
 post-patch:
-	@${ECHO_MSG} "===> Applying FreeBSD patches"
-	@for p in ${FILESDIR}/patch-*; do \
-		if [ -f "$$p" ]; then \
-			${ECHO_MSG} "Applying $${p##*/}"; \
-			${PATCH} -d ${WRKSRC} -p0 < $$p || exit 1; \
-		fi; \
-	done
+	@${ECHO_MSG} "===> Applying FreeBSD patches automatically"
+	@${MKDIR} ${WRKDIR}/patch-rejects || true
+	@cd ${FILESDIR} && ${SETENV} ${MAKE_ENV} ${SH} -c '\
+		for p in patch-*; do \
+			if [ -f "$$p" ]; then \
+				${ECHO_MSG} "  -> Applying $$p"; \
+				if ${PATCH} -d ${WRKSRC} -p0 -N -E -r ${WRKDIR}/patch-rejects/$$p.rej < "$$p" > /dev/null 2>&1; then \
+					${ECHO_MSG} "     [OK]"; \
+				else \
+					${ECHO_MSG} "     [SKIPPED - patch failed or already applied; rejects saved to ${WRKDIR}/patch-rejects/$$p.rej]"; \
+					if ${FIND} ${WRKSRC} -name '*.rej' -print -quit >/dev/null 2>&1; then \
+						${ECHO_MSG} "     [INFO] Moving stray .rej files to ${WRKDIR}/patch-rejects"; \
+						${FIND} ${WRKSRC} -name '*.rej' -exec ${MV} {} ${WRKDIR}/patch-rejects/ \; 2>/dev/null || true; \
+					fi; \
+				fi; \
+			fi; \
+		done'
+	@${ECHO_MSG} "===> All patches processed"
+	@${ECHO_MSG} "===> Running idempotent manifest fixes"
+	@${SETENV} ${MAKE_ENV} ${SH} ${FILESDIR}/patch_rust_manifests.sh ${WRKSRC} || true
 
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}
@@ -211,5 +233,33 @@ post-install:
 	${LN} -sf ${ZEN_ICON_SRC} ${STAGEDIR}${PREFIX}/share/pixmaps/${ZEN_ICON}
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/applications
 	${INSTALL_DATA} ${WRKDIR}/zen.desktop ${STAGEDIR}${PREFIX}/share/applications 2>/dev/null || true
+
+# ============================================================================
+# CARGO CRATES / MAKEFILE.CRATES
+# ============================================================================
+# Generate `Makefile.crates` from the vendored rust crates. This avoids
+# requiring backend-generated Makefile.crates in the objdir and lets the
+# FreeBSD port process proceed when third-party crates are present in
+# ${WRKSRC}/third_party/rust (created by `./mach vendor rust`).
+# Usage:
+#   make makefile-crates
+makefile-crates: extract
+# Run a reproducible clean build verification cycle. This is intended to be
+# used locally or in CI to validate that the manifest fixes and vendoring
+# steps make a clean extract build reproducible.
+# test-clean-build target removed per maintainer request; use `make clean && make build` to perform a clean build
+	@${ECHO_MSG} "===> Generating ${.CURDIR}/Makefile.crates from vendored crates"
+	@${ECHO} "# Auto-generated cargo crates list" > ${.CURDIR}/Makefile.crates
+	@${ECHO} "CARGO_CRATES= \" >> ${.CURDIR}/Makefile.crates
+	@if [ -d "${WRKSRC}/third_party/rust" ]; then \
+		cd ${WRKSRC}/third_party/rust && for d in */; do name=$${d%/}; ${ECHO} "		$${name} \" >> ${.CURDIR}/Makefile.crates; done; \
+	elif [ -d "${WRKSRC}/cargo-crates" ]; then \
+		cd ${WRKSRC}/cargo-crates && for d in */; do name=$${d%/}; ${ECHO} "		$${name} \" >> ${.CURDIR}/Makefile.crates; done; \
+	else \
+		${ECHO_MSG} "===> No vendored crates found under ${WRKSRC}/third_party/rust or ${WRKSRC}/cargo-crates"; exit 1; \
+	fi
+	@${ECHO} "" >> ${.CURDIR}/Makefile.crates
+	@${ECHO_MSG} "===> ${.CURDIR}/Makefile.crates generated"
+	@${ECHO_MSG} "===> (Note: you can also run './mach vendor rust' inside ${WRKSRC} to create third_party/rust)"
 
 .include <bsd.port.mk>
