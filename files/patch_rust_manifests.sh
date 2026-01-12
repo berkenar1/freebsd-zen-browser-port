@@ -36,9 +36,7 @@ find "$ROOT" -type f -name Cargo.toml | while read -r f; do
         echo "Found dependency-version=0.1.0 (candidate) in: $f"
         # Create a candidate transformation into workspace=true within the braces
         if [ "$APPLY" = true ]; then
-            if perl -0777 -pe '\
-                s/\{([^}]*)\bversion\s*=\s*\"0\.1\.0\"([^}]*)\}/\{\1workspace = true\2\}/msg;\
-            ' "$f" > "$f.tmp"; then
+            if perl -0777 -pe 's/\{([^}]*)\bversion\s*=\s*"0\.1\.0"([^}]*)\}/\{\1workspace = true\2\}/msg' "$f" > "$f.tmp"; then
                 apply_edit "$f"
             else
                 echo "perl substitution failed for $f; skipping"
@@ -46,9 +44,7 @@ find "$ROOT" -type f -name Cargo.toml | while read -r f; do
             fi
         else
             echo "--- preview (first 120 lines of transformed output) ---"
-            if ! perl -0777 -pe '\
-                s/\{([^}]*)\bversion\s*=\s*\"0\.1\.0\"([^}]*)\}/\{\1workspace = true\2\}/msg;\
-            ' "$f" | sed -n '1,120p'; then
+            if ! perl -0777 -pe 's/\{([^}]*)\bversion\s*=\s*"0\.1\.0"([^}]*)\}/\{\1workspace = true\2\}/msg' "$f" | sed -n '1,120p'; then
                 echo "perl preview failed for $f"
             fi
             echo "--- end preview ---"
@@ -250,8 +246,10 @@ if [ -f "$TOP" ]; then
 done
 
     # 9) Add placeholder entries into [workspace.dependencies] for crates that reference dependency.workspace = true
-    echo "Scanning for dependency.workspace usages to populate [workspace.dependencies] with placeholders"
-    dep_names=$(grep -R -h -E "\.[[:space:]]*workspace|\.workspace" "$ROOT" | sed -E 's/^[[:space:]]*([a-zA-Z0-9_-]+)\.workspace.*/\1/' | sort -u || true)
+    echo "Scanning Cargo.toml files for dependency.workspace usages to populate [workspace.dependencies] with placeholders"
+    dep_names=$(grep -R --include='*/Cargo.toml' -h -n -E '^[[:space:]]*[a-zA-Z0-9_-]+\.workspace' "$ROOT" | sed -E 's/^[[:space:]]*([a-zA-Z0-9_-]+)\.workspace.*/\1/' | sort -u || true)
+    # Only keep simple crate-like names (letters, digits, hyphen, underscore)
+    dep_names=$(printf "%s\n" "$dep_names" | grep -E '^[A-Za-z0-9_-]+$' || true)
     for dep in $dep_names; do
         # skip obvious package-keys
         case "$dep" in
@@ -285,6 +283,28 @@ EOF
             fi
         fi
 done
+
+    # Sanitize top-level [workspace.dependencies] to remove any invalid keys that may have been added from non-Cargo files
+    if [ "$APPLY" = true ]; then
+        echo "Cleaning invalid keys from $TOP [workspace.dependencies]"
+        awk 'BEGIN{in=0} /^\[workspace\.dependencies\]/{print; in=1; next} /^\[/{ if(in){in=0}; print; next } { if(!in) print; else { if($0 ~ /^[[:space:]]*[A-Za-z0-9_-]+[[:space:]]*=/) print } }' "$TOP" > "$TOP.tmp" && apply_edit "$TOP"
+
+        # Rebuild a sanitized patch file from the resulting [workspace.dependencies]
+        PATCHFILE="files/patch-rust-manifests/patch-workspace-deps.patch"
+        mkdir -p "$(dirname "$PATCHFILE")"
+        echo "*** Begin Patch" > "$PATCHFILE.tmp"
+        echo "*** Update File: Cargo.toml" >> "$PATCHFILE.tmp"
+        echo "@@" >> "$PATCHFILE.tmp"
+        echo " [workspace.dependencies]" >> "$PATCHFILE.tmp"
+        awk 'BEGIN{in=0} /^\[workspace\.dependencies\]/{in=1; next} /^\[/{ if(in){in=0}; next } { if(in && $0 ~ /^[[:space:]]*[A-Za-z0-9_-]+[[:space:]]*=/) print "+" $0 }' "$TOP" >> "$PATCHFILE.tmp"
+        echo "*** End Patch" >> "$PATCHFILE.tmp"
+        mv "$PATCHFILE.tmp" "$PATCHFILE"
+        echo "Rewrote $PATCHFILE with sanitized dependency placeholders"
+    else
+        echo "--- preview (cleanup invalid keys in $TOP [workspace.dependencies]) ---"
+        awk 'BEGIN{in=0} /^\[workspace\.dependencies\]/{print; in=1; next} /^\[/{ if(in){in=0}; print; next } { if(!in) print; else { if($0 ~ /^[[:space:]]*[A-Za-z0-9_-]+[[:space:]]*=/) print } }' "$TOP" | sed -n '1,200p'
+        echo "--- end preview ---"
+    fi
 fi
 
 # 6) Fix ohttp bhttp crates which use "edition.workspace = true" -> make explicit edition
