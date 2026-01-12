@@ -121,8 +121,38 @@ make configure
 make build
 ```
 
+## Rust Cargo Workspace Patches
+
+### patch-Cargo.toml
+
+**Purpose:** Add missing `workspace.package` fields to the root Cargo.toml
+
+**Problem:** Third-party Rust crates like neqo's sub-crates (e.g., `mtu`) inherit metadata fields (like `authors`) from the workspace root using `authors.workspace = true`. When these crates are patched to use local paths, they fail to build because the Zen Browser root `Cargo.toml` doesn't define `[workspace.package]` fields.
+
+**Error:**
+```
+error: failed to load source for dependency `mtu`
+Caused by: error inheriting `authors` from workspace root manifest's `workspace.package.authors`
+Caused by: `workspace.package.authors` was not defined
+```
+
+**Changes:**
+```toml
++[workspace.package]
++authors = ["Mozilla Contributors"]
++edition = "2021"
++license = "MPL-2.0"
++repository = "https://github.com/zen-browser/desktop"
+```
+
+**Rationale:**
+- Allows third-party crates that use workspace inheritance to compile correctly
+- Provides default values for `authors`, `edition`, `license`, and `repository`
+- Fixes build failures when patching crates like neqo, wgpu, or mp4parse to use local paths
+
 ## References
 
 - FreeBSD malloc_np.h: Non-portable malloc extensions
 - Mozilla jemalloc: memory/build/
 - POSIX memalign: https://pubs.opengroup.org/onlinepubs/9699919799/functions/posix_memalign.html
+- Cargo Workspace Inheritance: https://doc.rust-lang.org/cargo/reference/workspaces.html#the-package-table

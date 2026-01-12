@@ -1,54 +1,56 @@
 # ============================================================================
 # BASIC PORT IDENTIFICATION (strict order required)
 # ============================================================================
-PORTNAME=        zen-browser
-DISTVERSIONPREFIX= zen-browser-
-DISTVERSION=     1.17.15b
-CATEGORIES=      www wayland
+PORTNAME=		zen-browser
+PORTVERSION=		1.17.15
+DISTVERSION=		1.17.15b
+PORTREVISION=		1
+PORTEPOCH=		1
+CATEGORIES=		www wayland
 
-MAINTAINER=      ports@FreeBSD.org
-COMMENT=         Zen Browser - Firefox-based privacy-focused browser
-WWW=              https://zen-browser.app
+# ============================================================================
+# DISTRIBUTION FILES (must come right after CATEGORIES)
+# ============================================================================
+MASTER_SITES=		https://github.com/zen-browser/desktop/releases/download/${DISTVERSION}/
+DISTFILES=		zen.source.tar.zst
 
-LICENSE=         MPL20
-LICENSE_FILE=    ${WRKSRC}/LICENSE
+# ============================================================================
+# MAINTAINER INFORMATION
+# ============================================================================
+MAINTAINER=		ports@FreeBSD.org
+COMMENT=		Zen Browser - Firefox-based privacy-focused browser
+WWW=			https://zen-browser.app
 
-MASTER_SITES=    https://github.com/zen-browser/desktop/releases/download/${DISTVERSION}/
-DISTFILES=       zen.source.tar.zst
+# ============================================================================
+# LICENSE
+# ============================================================================
+LICENSE=		MPL20
+LICENSE_FILE=   ${WRKSRC}/LICENSE
 
-LIB_DEPENDS= 	libnspr.so:devel/nspr \
-		libnss.so:security/nss \
-		libgtk-3.so:x11-toolkits/gtk30 \
-		libcairo.so:graphics/cairo \
-		libpango-1.0.so:x11-toolkits/pango \
-		libwayland-client.so:graphics/wayland \
-		libfontconfig.so:x11-fonts/fontconfig \
-		libfreetype.so:print/freetype2 \
-		libharfbuzz.so:print/harfbuzz \
-		libdbus-1.so:devel/dbus \
-		libicu.so:devel/icu \
-		libpng16.so:graphics/png \
-		libturbojpeg.so:graphics/jpeg-turbo \
+
+LIB_DEPENDS=	libnspr4.so:devel/nspr \
+		libnss3.so:security/nss \
+		libgtk-3.so.0:x11-toolkits/gtk30 \
+		libcairo.so.2:graphics/cairo \
+		libpango-1.0.so.0:x11-toolkits/pango \
+		libwayland-client.so.0:graphics/wayland \
+		libfontconfig.so.1:x11-fonts/fontconfig \
+		libfreetype.so.6:print/freetype2 \
+		libharfbuzz.so.0:print/harfbuzz \
+		libdbus-1.so.3:devel/dbus \
+		libicuuc.so:devel/icu \
+		libpng16.so.16:graphics/png \
+		libjpeg.so:graphics/jpeg-turbo \
 		libsqlite3.so:databases/sqlite3 \
-		libpipewire.so:multimedia/pipewire \
+		libpipewire-0.3.so.0:multimedia/pipewire \
 		libzstd.so:archivers/zstd \
-		libdav1d.so:multimedia/dav1d \
-		libaom.so:multimedia/aom \
-		libjxl.so:graphics/libjxl \
-		libsrtp2.so:net/libsrtp2 \
-		libepoxy.so:graphics/libepoxy \
-		libcups.so:print/cups
+                libdav1d.so:multimedia/dav1d \
+                libaom.so:multimedia/aom \
+                libjxl.so:graphics/libjxl \
+                libsrtp2.so:net/libsrtp2 \
+                libepoxy.so:graphics/libepoxy \
+                libcups.so:print/cups
 
-CARGO_CARGO_BIN=        ${HOME}/.cargo/bin/cargo
-CARGO_VENDOR_DIR=       ${WRKSRC}/cargo-crates
-CARGO_CARGOLOCK=        ${WRKSRC}/Cargo.lock
-
-.if exists(${.CURDIR}/Makefile.crates)
-.include "${.CURDIR}/Makefile.crates"
-.endif
-
-# Work around bindgen not finding ICU headers
-CONFIGURE_ENV+=	BINDGEN_CFLAGS="-I${LOCALBASE}/include"
 
 LLVM_VERSION=	20
 # ============================================================================
@@ -72,47 +74,6 @@ BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
 		${LOCALBASE}/share/wasi-sysroot/lib/wasm32-wasi/libc++abi.a:devel/wasi-libcxx20 \
 		${LOCALBASE}/share/wasi-sysroot/lib/wasm32-wasi/libc.a:devel/wasi-libc@20 \
 		wasi-compiler-rt20>0:devel/wasi-compiler-rt20
-
-# ============================================================================
-# BUILD FRAMEWORK
-# ============================================================================
-
-USES=		cargo \
-		tar:zst \
-		gmake \
-		python:3.11,build \
-		compiler:c++17-lang \
-		cmake:noninja \
-		pkgconfig \
-		localbase:ldflags \
-		gl \
-		gnome \
-		desktop-file-utils \
-		libtool \
-		xorg \
-		gettext \
-		python
-
-USE_GL=		gl
-USE_GNOME=	cairo gtk30
-
-USE_PYTHON=		autoplist distutils pep517
-
-BUILD_DEPENDS=	nspr>=4.32:devel/nspr \
-		nss>=3.118:security/nss \
-		icu>=76.1:devel/icu \
-		libevent>=2.1.8:devel/libevent \
-		harfbuzz>=10.1.0:print/harfbuzz \
-		graphite2>=1.3.14:graphics/graphite2 \
-		png>=1.6.45:graphics/png \
-		dav1d>=1.0.0:multimedia/dav1d \
-		libvpx>=1.15.0:multimedia/libvpx \
-		${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
-		v4l_compat>0:multimedia/v4l_compat \
-		nasm:devel/nasm \
-		yasm:devel/yasm \
-		zip:archivers/zip \
-		alsa-lib>=1.2.14:audio/alsa-lib
 
 # ============================================================================
 # EXTRACTION & WORKING DIRECTORY
@@ -198,53 +159,29 @@ USE_GNOME=	cairo gdkpixbuf2 gtk30
 # PARALLEL JOBS
 # ============================================================================
 MAKE_JOBS=		2
-# Parallel build control: by default builds run parallel; set PARALLEL_BUILD=no to force serial
-PARALLEL_BUILD?=	yes
+
 # ============================================================================
 # INSTALLATION METADATA
 # ============================================================================
 ZEN_ICON=		${PORTNAME}.png
 ZEN_ICON_SRC=		${PREFIX}/lib/${PORTNAME}/browser/chrome/icons/default/default48.png
 
-WRKSRC=		${WRKDIR}
 
-# Add ALSA compatibility headers from files/ directory
-CPPFLAGS+=	-I${FILESDIR}
 
-# Use rust from ports and enable b
+CONFIGURE_ENV+= PKG_CONFIG_PATH=${LOCALBASE}/libdata/pkgconfig
+CPPFLAGS+=     -I${LOCALBASE}/include
+LDFLAGS+=      -L${LOCALBASE}/lib
 
-CONFIGURE_ENV= 	RUSTC=${LOCALBASE}/bin/rustc \
-	CARGO=${LOCALBASE}/bin/cargo \
-	CCACHE=${LOCALBASE}/bin/ccache
 
-MAKE_ENV= 	RUSTC=${LOCALBASE}/bin/rustc \
-	CARGO=${LOCALBASE}/bin/cargo \
-	RUSTUP_HOME=nonexistent \
-	CARGO_HOME=nonexistent \
-	CCACHE=${LOCALBASE}/bin/ccache \
-	CCACHE_DIR=${.CURDIR}/ccache \
-	PATH=${LOCALBASE}/bin:${LOCALBASE}/sbin:/bin:/sbin:/usr/bin:/usr/sbin
-
-# Enable ccache for faster rebuilds (use per-tree cache to avoid global /var/cache conflicts)
 
 
 do-configure:
-	${MKDIR} ${.CURDIR}/ccache || true
-	@${ECHO_MSG} "===> Vendoring Rust dependencies via mach"
 	cd ${WRKSRC} && \
-		${ECHO} "# Generated by ports: apply MOZ_OPTIONS" > .mozconfig && \
-		for opt in ${MOZ_OPTIONS}; do ${ECHO} "ac_add_options $$opt" >> .mozconfig; done
-	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${SH} ${FILESDIR}/patch_rust_manifests.sh ${WRKSRC} || true && \
-	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ./mach vendor rust || true
-	@${ECHO_MSG} "===> Configuring build"
-	cd ${WRKSRC} && \
-		if [ -f "${WASI_SYSROOT}/include/wasm32-wasi/string.h" ]; then \
-			${ECHO_MSG} "===> Found WASI headers; passing include flags and sysroot to configure"; \
-			${SETENV} C_INCLUDE_PATH="${WASI_SYSROOT}/include/wasm32-wasi:${WASI_SYSROOT}/include" CPLUS_INCLUDE_PATH="${WASI_SYSROOT}/include/wasm32-wasi:${WASI_SYSROOT}/include" ${CONFIGURE_ENV} ./mach configure; \
-		else \
-			${ECHO_MSG} "===> WASI headers not found; configuring with --without-wasm-sandboxed-libraries"; \
-			${SETENV} C_INCLUDE_PATH="${WASI_SYSROOT}/include/wasm32-wasi:${WASI_SYSROOT}/include" CPLUS_INCLUDE_PATH="${WASI_SYSROOT}/include/wasm32-wasi:${WASI_SYSROOT}/include" ${CONFIGURE_ENV} ./mach configure; \
-		fi
+	${ECHO} "ac_add_options --with-wasi-sysroot=${WASI_SYSROOT}" > .mozconfig && \
+	${ECHO} "ac_add_options --with-libclang-path=/usr/local/llvm20/lib" >> .mozconfig && \
+	${SETENV} PATH=/usr/local/llvm20/bin:${PATH} WASM_CC=/usr/local/llvm20/bin/clang WASM_CXX=/usr/local/llvm20/bin/clang++ ${CONFIGURE_ENV} ${MAKE_ENV} CC=cc CXX=c++ \
+	./mach configure
+
 
 do-build:
 	# Opt-in parallel build: set PARALLEL_BUILD=yes to enable parallel build with
@@ -283,16 +220,13 @@ post-patch:
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}
 	${MKDIR} ${STAGEDIR}${PREFIX}/bin
-	# Copy built application to staging directory
 	cd ${WRKSRC}/obj-*/dist/bin && \
 		${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/{} \; && \
 		${FIND} . -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/{} \; && \
 		${FIND} . -type f -perm +111 -exec ${INSTALL_PROGRAM} {} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/{} \;
-	# Create wrapper script
-	@${ECHO_CMD} '#!/bin/sh' > ${WRKDIR}/${PORTNAME}.sh
-	@${ECHO_CMD} 'exec ${PREFIX}/lib/${PORTNAME}/zen-bin "$$@"' >> ${WRKDIR}/${PORTNAME}.sh
-	${INSTALL_SCRIPT} ${WRKDIR}/${PORTNAME}.sh ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
-	@${RM} ${WRKDIR}/${PORTNAME}.sh
+	${ECHO_CMD} '#!/bin/sh' > ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+	${ECHO_CMD} 'exec ${PREFIX}/lib/${PORTNAME}/zen-bin "$$@"' >> ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+	${CHMOD} +x ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/pixmaps
