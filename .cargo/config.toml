@@ -1,136 +1,136 @@
 [source.cargo]
-directory = '/home/berke/workdir/www/zen-browser/work//cargo-crates'
+directory = '/home/berke/workdir/www/zen-browser/work-py311/cargo-crates'
 [source.crates-io]
 replace-with = 'cargo'
 [patch.crates-io]
-cssparser = { path = '/home/berke/workdir/www/zen-browser/work/rust-cssparser-958a3f098acb92ddacdce18a7ef2c4a87ac3326f' }
-bhttp = { path = '/home/berke/workdir/www/zen-browser/work/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/bhttp' }
-suggest = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/suggest' }
-context_id = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/context_id' }
-any_all_workaround = { path = '/home/berke/workdir/www/zen-browser/work/any_all_workaround-7fb1b7034c9f172aade21ee1c8554e8d8a48af80' }
-chardetng_c = { path = '/home/berke/workdir/www/zen-browser/work/chardetng_c-2f0aba284677d098de14f91ffe5a9e5b9a4922c2' }
-midir = { path = '/home/berke/workdir/www/zen-browser/work/midir-37ad39de3382c2aad0758dab49ba545331a2257d' }
-objc = { path = '/home/berke/workdir/www/zen-browser/work/rust-objc-4de89f5aa9851ceca4d40e7ac1e2759410c04324' }
-error-support = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/error' }
-relevancy = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/relevancy' }
-viaduct = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/viaduct' }
-nss-gk-api = { path = '/home/berke/workdir/www/zen-browser/work/nss-gk-api-e48a946811ffd64abc78de3ee284957d8d1c0d63' }
-tabs = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/tabs' }
-sync15 = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/sync15' }
-filter_adult = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/filter_adult' }
-ohttp = { path = '/home/berke/workdir/www/zen-browser/work/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/ohttp' }
-tracing-support = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/tracing' }
-init_rust_components = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/init_rust_components' }
-chardetng = { path = '/home/berke/workdir/www/zen-browser/work/chardetng-a07d20273ce36146adaf76bd667dd57bd7b3508b' }
-unicode-bidi = { path = '/home/berke/workdir/www/zen-browser/work/unicode-bidi-ca612daf1c08c53abe07327cb3e6ef6e0a760f0c' }
-interrupt-support = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/interrupt' }
-search = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/search' }
-allocator-api2 = { path = '/home/berke/workdir/www/zen-browser/work/allocator-api2-ad5f3d56a5a4519eff52af4ff85293431466ef5c' }
-logins = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/logins' }
-sql-support = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/sql' }
-cose = { path = '/home/berke/workdir/www/zen-browser/work/cose-rust-43c22248d136c8b38fe42ea709d08da6355cf04b' }
-webext-storage = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/webext-storage' }
-hashlink = { path = '/home/berke/workdir/www/zen-browser/work/hashlink-76dc47a12af5829c1e8bf4834e38b410dec2aeff' }
+cssparser = { path = '/home/berke/workdir/www/zen-browser/work-py311/rust-cssparser-958a3f098acb92ddacdce18a7ef2c4a87ac3326f' }
+bhttp = { path = '/home/berke/workdir/www/zen-browser/work-py311/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/bhttp' }
+suggest = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/suggest' }
+context_id = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/context_id' }
+any_all_workaround = { path = '/home/berke/workdir/www/zen-browser/work-py311/any_all_workaround-7fb1b7034c9f172aade21ee1c8554e8d8a48af80' }
+chardetng_c = { path = '/home/berke/workdir/www/zen-browser/work-py311/chardetng_c-2f0aba284677d098de14f91ffe5a9e5b9a4922c2' }
+midir = { path = '/home/berke/workdir/www/zen-browser/work-py311/midir-37ad39de3382c2aad0758dab49ba545331a2257d' }
+objc = { path = '/home/berke/workdir/www/zen-browser/work-py311/rust-objc-4de89f5aa9851ceca4d40e7ac1e2759410c04324' }
+error-support = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/error' }
+relevancy = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/relevancy' }
+viaduct = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/viaduct' }
+nss-gk-api = { path = '/home/berke/workdir/www/zen-browser/work-py311/nss-gk-api-e48a946811ffd64abc78de3ee284957d8d1c0d63' }
+tabs = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/tabs' }
+sync15 = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/sync15' }
+filter_adult = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/filter_adult' }
+ohttp = { path = '/home/berke/workdir/www/zen-browser/work-py311/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/ohttp' }
+tracing-support = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/tracing' }
+init_rust_components = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/init_rust_components' }
+chardetng = { path = '/home/berke/workdir/www/zen-browser/work-py311/chardetng-a07d20273ce36146adaf76bd667dd57bd7b3508b' }
+unicode-bidi = { path = '/home/berke/workdir/www/zen-browser/work-py311/unicode-bidi-ca612daf1c08c53abe07327cb3e6ef6e0a760f0c' }
+interrupt-support = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/interrupt' }
+search = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/search' }
+allocator-api2 = { path = '/home/berke/workdir/www/zen-browser/work-py311/allocator-api2-ad5f3d56a5a4519eff52af4ff85293431466ef5c' }
+logins = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/logins' }
+sql-support = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/sql' }
+cose = { path = '/home/berke/workdir/www/zen-browser/work-py311/cose-rust-43c22248d136c8b38fe42ea709d08da6355cf04b' }
+webext-storage = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/webext-storage' }
+hashlink = { path = '/home/berke/workdir/www/zen-browser/work-py311/hashlink-76dc47a12af5829c1e8bf4834e38b410dec2aeff' }
 [patch.'https://github.com/mozilla/midir.git']
-midir = { path = '/home/berke/workdir/www/zen-browser/work/midir-37ad39de3382c2aad0758dab49ba545331a2257d' }
+midir = { path = '/home/berke/workdir/www/zen-browser/work-py311/midir-37ad39de3382c2aad0758dab49ba545331a2257d' }
 [patch.'https://github.com/mozilla/neqo']
-mtu = { path = '/home/berke/workdir/www/zen-browser/work/neqo-0.16.1/mtu' }
-neqo-bin = { path = '/home/berke/workdir/www/zen-browser/work/neqo-0.16.1/neqo-bin' }
-neqo-common = { path = '/home/berke/workdir/www/zen-browser/work/neqo-0.16.1/neqo-common' }
-neqo-crypto = { path = '/home/berke/workdir/www/zen-browser/work/neqo-0.16.1/neqo-crypto' }
-neqo-http3 = { path = '/home/berke/workdir/www/zen-browser/work/neqo-0.16.1/neqo-http3' }
-neqo-qpack = { path = '/home/berke/workdir/www/zen-browser/work/neqo-0.16.1/neqo-qpack' }
-neqo-transport = { path = '/home/berke/workdir/www/zen-browser/work/neqo-0.16.1/neqo-transport' }
-neqo-udp = { path = '/home/berke/workdir/www/zen-browser/work/neqo-0.16.1/neqo-udp' }
+mtu = { path = '/home/berke/workdir/www/zen-browser/work-py311/neqo-0.16.1/mtu' }
+neqo-bin = { path = '/home/berke/workdir/www/zen-browser/work-py311/neqo-0.16.1/neqo-bin' }
+neqo-common = { path = '/home/berke/workdir/www/zen-browser/work-py311/neqo-0.16.1/neqo-common' }
+neqo-crypto = { path = '/home/berke/workdir/www/zen-browser/work-py311/neqo-0.16.1/neqo-crypto' }
+neqo-http3 = { path = '/home/berke/workdir/www/zen-browser/work-py311/neqo-0.16.1/neqo-http3' }
+neqo-qpack = { path = '/home/berke/workdir/www/zen-browser/work-py311/neqo-0.16.1/neqo-qpack' }
+neqo-transport = { path = '/home/berke/workdir/www/zen-browser/work-py311/neqo-0.16.1/neqo-transport' }
+neqo-udp = { path = '/home/berke/workdir/www/zen-browser/work-py311/neqo-0.16.1/neqo-udp' }
 [patch.'https://github.com/mozilla/audioipc']
-audioipc2 = { path = '/home/berke/workdir/www/zen-browser/work/audioipc-82fe7fa7e3aaa35468137239a0e4c2f867457214/audioipc' }
-audioipc2-client = { path = '/home/berke/workdir/www/zen-browser/work/audioipc-82fe7fa7e3aaa35468137239a0e4c2f867457214/client' }
-audioipc2-server = { path = '/home/berke/workdir/www/zen-browser/work/audioipc-82fe7fa7e3aaa35468137239a0e4c2f867457214/server' }
+audioipc2 = { path = '/home/berke/workdir/www/zen-browser/work-py311/audioipc-82fe7fa7e3aaa35468137239a0e4c2f867457214/audioipc' }
+audioipc2-client = { path = '/home/berke/workdir/www/zen-browser/work-py311/audioipc-82fe7fa7e3aaa35468137239a0e4c2f867457214/client' }
+audioipc2-server = { path = '/home/berke/workdir/www/zen-browser/work-py311/audioipc-82fe7fa7e3aaa35468137239a0e4c2f867457214/server' }
 [patch.'https://github.com/FirefoxGraphics/aa-stroke']
-aa-stroke = { path = '/home/berke/workdir/www/zen-browser/work/aa-stroke-a821fa621c2def48e90c82774b4c6563b5a8ea4a' }
+aa-stroke = { path = '/home/berke/workdir/www/zen-browser/work-py311/aa-stroke-a821fa621c2def48e90c82774b4c6563b5a8ea4a' }
 [patch.'https://github.com/glandium/rust-objc']
-objc = { path = '/home/berke/workdir/www/zen-browser/work/rust-objc-4de89f5aa9851ceca4d40e7ac1e2759410c04324' }
+objc = { path = '/home/berke/workdir/www/zen-browser/work-py311/rust-objc-4de89f5aa9851ceca4d40e7ac1e2759410c04324' }
 [patch.'https://github.com/beurdouche/mls-platform-api']
-mls-platform-api = { path = '/home/berke/workdir/www/zen-browser/work/mls-platform-api-5d88241b9765cae3669aba21f0946bd3700f7db1' }
+mls-platform-api = { path = '/home/berke/workdir/www/zen-browser/work-py311/mls-platform-api-5d88241b9765cae3669aba21f0946bd3700f7db1' }
 [patch.'https://github.com/rust-lang/rust-bindgen']
-bindgen = { path = '/home/berke/workdir/www/zen-browser/work/rust-bindgen-9366e0af8da529c958b4cd4fcbe492d951c86f5c/bindgen' }
+bindgen = { path = '/home/berke/workdir/www/zen-browser/work-py311/rust-bindgen-9366e0af8da529c958b4cd4fcbe492d951c86f5c/bindgen' }
 [patch.'https://github.com/mozilla/cubeb-pulse-rs']
-cubeb-pulse = { path = '/home/berke/workdir/www/zen-browser/work/cubeb-pulse-rs-4e3ea4bbc582705a4e7d9220679525283c035a7e' }
-pulse = { path = '/home/berke/workdir/www/zen-browser/work/cubeb-pulse-rs-4e3ea4bbc582705a4e7d9220679525283c035a7e/pulse-rs' }
-pulse-ffi = { path = '/home/berke/workdir/www/zen-browser/work/cubeb-pulse-rs-4e3ea4bbc582705a4e7d9220679525283c035a7e/pulse-ffi' }
+cubeb-pulse = { path = '/home/berke/workdir/www/zen-browser/work-py311/cubeb-pulse-rs-4e3ea4bbc582705a4e7d9220679525283c035a7e' }
+pulse = { path = '/home/berke/workdir/www/zen-browser/work-py311/cubeb-pulse-rs-4e3ea4bbc582705a4e7d9220679525283c035a7e/pulse-rs' }
+pulse-ffi = { path = '/home/berke/workdir/www/zen-browser/work-py311/cubeb-pulse-rs-4e3ea4bbc582705a4e7d9220679525283c035a7e/pulse-ffi' }
 [patch.'https://github.com/mozilla/cubeb-coreaudio-rs']
-coreaudio-sys-utils = { path = '/home/berke/workdir/www/zen-browser/work/cubeb-coreaudio-rs-7b996ab09d0a57a2345cd1c4509f0a8491cd3d66/coreaudio-sys-utils' }
-cubeb-coreaudio = { path = '/home/berke/workdir/www/zen-browser/work/cubeb-coreaudio-rs-7b996ab09d0a57a2345cd1c4509f0a8491cd3d66' }
+coreaudio-sys-utils = { path = '/home/berke/workdir/www/zen-browser/work-py311/cubeb-coreaudio-rs-7b996ab09d0a57a2345cd1c4509f0a8491cd3d66/coreaudio-sys-utils' }
+cubeb-coreaudio = { path = '/home/berke/workdir/www/zen-browser/work-py311/cubeb-coreaudio-rs-7b996ab09d0a57a2345cd1c4509f0a8491cd3d66' }
 [patch.'https://github.com/franziskuskiefer/cose-rust']
-cose = { path = '/home/berke/workdir/www/zen-browser/work/cose-rust-43c22248d136c8b38fe42ea709d08da6355cf04b' }
+cose = { path = '/home/berke/workdir/www/zen-browser/work-py311/cose-rust-43c22248d136c8b38fe42ea709d08da6355cf04b' }
 [patch.'https://github.com/hsivonen/any_all_workaround']
-any_all_workaround = { path = '/home/berke/workdir/www/zen-browser/work/any_all_workaround-7fb1b7034c9f172aade21ee1c8554e8d8a48af80' }
+any_all_workaround = { path = '/home/berke/workdir/www/zen-browser/work-py311/any_all_workaround-7fb1b7034c9f172aade21ee1c8554e8d8a48af80' }
 [patch.'https://github.com/erichdongubler-contrib/hashlink']
-hashlink = { path = '/home/berke/workdir/www/zen-browser/work/hashlink-76dc47a12af5829c1e8bf4834e38b410dec2aeff' }
+hashlink = { path = '/home/berke/workdir/www/zen-browser/work-py311/hashlink-76dc47a12af5829c1e8bf4834e38b410dec2aeff' }
 [patch.'https://github.com/mozilla/application-services']
-context_id = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/context_id' }
-error-support = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/error' }
-error-support-macros = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/error/macros' }
-filter_adult = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/filter_adult' }
-firefox-versioning = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/firefox-versioning' }
-init_rust_components = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/init_rust_components' }
-interrupt-support = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/interrupt' }
-jwcrypto = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/jwcrypto' }
-logins = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/logins' }
-nss = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/rc_crypto/nss' }
-nss_build_common = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/rc_crypto/nss/nss_build_common' }
-nss_sys = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/rc_crypto/nss/nss_sys' }
-payload-support = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/payload' }
-rc_crypto = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/rc_crypto' }
-relevancy = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/relevancy' }
-remote_settings = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/remote_settings' }
-search = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/search' }
-sql-support = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/sql' }
-suggest = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/suggest' }
-sync-guid = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/guid' }
-sync15 = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/sync15' }
-tabs = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/tabs' }
-tracing-support = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/tracing' }
-types = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/types' }
-viaduct = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/viaduct' }
-webext-storage = { path = '/home/berke/workdir/www/zen-browser/work/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/webext-storage' }
+context_id = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/context_id' }
+error-support = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/error' }
+error-support-macros = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/error/macros' }
+filter_adult = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/filter_adult' }
+firefox-versioning = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/firefox-versioning' }
+init_rust_components = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/init_rust_components' }
+interrupt-support = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/interrupt' }
+jwcrypto = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/jwcrypto' }
+logins = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/logins' }
+nss = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/rc_crypto/nss' }
+nss_build_common = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/rc_crypto/nss/nss_build_common' }
+nss_sys = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/rc_crypto/nss/nss_sys' }
+payload-support = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/payload' }
+rc_crypto = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/rc_crypto' }
+relevancy = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/relevancy' }
+remote_settings = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/remote_settings' }
+search = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/search' }
+sql-support = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/sql' }
+suggest = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/suggest' }
+sync-guid = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/guid' }
+sync15 = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/sync15' }
+tabs = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/tabs' }
+tracing-support = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/tracing' }
+types = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/support/types' }
+viaduct = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/viaduct' }
+webext-storage = { path = '/home/berke/workdir/www/zen-browser/work-py311/application-services-cd04a4d1a74294ab08434d7a5a8152d25d25e53c/components/webext-storage' }
 [patch.'https://github.com/hsivonen/chardetng_c']
-chardetng_c = { path = '/home/berke/workdir/www/zen-browser/work/chardetng_c-2f0aba284677d098de14f91ffe5a9e5b9a4922c2' }
+chardetng_c = { path = '/home/berke/workdir/www/zen-browser/work-py311/chardetng_c-2f0aba284677d098de14f91ffe5a9e5b9a4922c2' }
 [patch.'https://github.com/FirefoxGraphics/wpf-gpu-raster']
-wpf-gpu-raster = { path = '/home/berke/workdir/www/zen-browser/work/wpf-gpu-raster-99979da091fd58fba8477e7fcdf5ec0727102916' }
+wpf-gpu-raster = { path = '/home/berke/workdir/www/zen-browser/work-py311/wpf-gpu-raster-99979da091fd58fba8477e7fcdf5ec0727102916' }
 [patch.'https://github.com/hsivonen/chardetng']
-chardetng = { path = '/home/berke/workdir/www/zen-browser/work/chardetng-a07d20273ce36146adaf76bd667dd57bd7b3508b' }
+chardetng = { path = '/home/berke/workdir/www/zen-browser/work-py311/chardetng-a07d20273ce36146adaf76bd667dd57bd7b3508b' }
 [patch.'https://github.com/beurdouche/nss-gk-api']
-nss-gk-api = { path = '/home/berke/workdir/www/zen-browser/work/nss-gk-api-e48a946811ffd64abc78de3ee284957d8d1c0d63' }
+nss-gk-api = { path = '/home/berke/workdir/www/zen-browser/work-py311/nss-gk-api-e48a946811ffd64abc78de3ee284957d8d1c0d63' }
 [patch.'https://github.com/jfkthame/mapped_hyph.git']
-mapped_hyph = { path = '/home/berke/workdir/www/zen-browser/work/mapped_hyph-eff105f6ad7ec9b79816cfc1985a28e5340ad14b' }
+mapped_hyph = { path = '/home/berke/workdir/www/zen-browser/work-py311/mapped_hyph-eff105f6ad7ec9b79816cfc1985a28e5340ad14b' }
 [patch.'https://github.com/glandium/allocator-api2']
-allocator-api2 = { path = '/home/berke/workdir/www/zen-browser/work/allocator-api2-ad5f3d56a5a4519eff52af4ff85293431466ef5c' }
+allocator-api2 = { path = '/home/berke/workdir/www/zen-browser/work-py311/allocator-api2-ad5f3d56a5a4519eff52af4ff85293431466ef5c' }
 [patch.'https://github.com/martinthomson/ohttp.git']
-bhttp = { path = '/home/berke/workdir/www/zen-browser/work/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/bhttp' }
-ohttp = { path = '/home/berke/workdir/www/zen-browser/work/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/ohttp' }
+bhttp = { path = '/home/berke/workdir/www/zen-browser/work-py311/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/bhttp' }
+ohttp = { path = '/home/berke/workdir/www/zen-browser/work-py311/ohttp-bf6a983845cc0b540effb3a615e92d914dfcfd0b/ohttp' }
 [patch.'https://github.com/beurdouche/mls-rs']
-mls-rs = { path = '/home/berke/workdir/www/zen-browser/work/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs' }
-mls-rs-codec = { path = '/home/berke/workdir/www/zen-browser/work/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-codec' }
-mls-rs-codec-derive = { path = '/home/berke/workdir/www/zen-browser/work/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-codec-derive' }
-mls-rs-core = { path = '/home/berke/workdir/www/zen-browser/work/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-core' }
-mls-rs-crypto-hpke = { path = '/home/berke/workdir/www/zen-browser/work/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-crypto-hpke' }
-mls-rs-crypto-nss = { path = '/home/berke/workdir/www/zen-browser/work/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-crypto-nss' }
-mls-rs-crypto-traits = { path = '/home/berke/workdir/www/zen-browser/work/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-crypto-traits' }
-mls-rs-identity-x509 = { path = '/home/berke/workdir/www/zen-browser/work/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-identity-x509' }
-mls-rs-provider-sqlite = { path = '/home/berke/workdir/www/zen-browser/work/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-provider-sqlite' }
+mls-rs = { path = '/home/berke/workdir/www/zen-browser/work-py311/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs' }
+mls-rs-codec = { path = '/home/berke/workdir/www/zen-browser/work-py311/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-codec' }
+mls-rs-codec-derive = { path = '/home/berke/workdir/www/zen-browser/work-py311/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-codec-derive' }
+mls-rs-core = { path = '/home/berke/workdir/www/zen-browser/work-py311/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-core' }
+mls-rs-crypto-hpke = { path = '/home/berke/workdir/www/zen-browser/work-py311/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-crypto-hpke' }
+mls-rs-crypto-nss = { path = '/home/berke/workdir/www/zen-browser/work-py311/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-crypto-nss' }
+mls-rs-crypto-traits = { path = '/home/berke/workdir/www/zen-browser/work-py311/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-crypto-traits' }
+mls-rs-identity-x509 = { path = '/home/berke/workdir/www/zen-browser/work-py311/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-identity-x509' }
+mls-rs-provider-sqlite = { path = '/home/berke/workdir/www/zen-browser/work-py311/mls-rs-b747d7efb85a776b97ad8afa8d1b32893fa5efa3/mls-rs-provider-sqlite' }
 [patch.'https://github.com/servo/unicode-bidi']
-unicode-bidi = { path = '/home/berke/workdir/www/zen-browser/work/unicode-bidi-ca612daf1c08c53abe07327cb3e6ef6e0a760f0c' }
+unicode-bidi = { path = '/home/berke/workdir/www/zen-browser/work-py311/unicode-bidi-ca612daf1c08c53abe07327cb3e6ef6e0a760f0c' }
 [patch.'https://github.com/servo/rust-cssparser']
-cssparser = { path = '/home/berke/workdir/www/zen-browser/work/rust-cssparser-958a3f098acb92ddacdce18a7ef2c4a87ac3326f' }
-cssparser-macros = { path = '/home/berke/workdir/www/zen-browser/work/rust-cssparser-958a3f098acb92ddacdce18a7ef2c4a87ac3326f/macros' }
+cssparser = { path = '/home/berke/workdir/www/zen-browser/work-py311/rust-cssparser-958a3f098acb92ddacdce18a7ef2c4a87ac3326f' }
+cssparser-macros = { path = '/home/berke/workdir/www/zen-browser/work-py311/rust-cssparser-958a3f098acb92ddacdce18a7ef2c4a87ac3326f/macros' }
 [patch.'https://github.com/gfx-rs/wgpu']
-naga = { path = '/home/berke/workdir/www/zen-browser/work/wgpu-6beea7c20df563883848933f70cdd0ea99fc7144/naga' }
-wgpu-core = { path = '/home/berke/workdir/www/zen-browser/work/wgpu-6beea7c20df563883848933f70cdd0ea99fc7144/wgpu-core' }
-wgpu-core-deps-apple = { path = '/home/berke/workdir/www/zen-browser/work/wgpu-6beea7c20df563883848933f70cdd0ea99fc7144/wgpu-core/platform-deps/apple' }
-wgpu-core-deps-windows-linux-android = { path = '/home/berke/workdir/www/zen-browser/work/wgpu-6beea7c20df563883848933f70cdd0ea99fc7144/wgpu-core/platform-deps/windows-linux-android' }
-wgpu-hal = { path = '/home/berke/workdir/www/zen-browser/work/wgpu-6beea7c20df563883848933f70cdd0ea99fc7144/wgpu-hal' }
-wgpu-types = { path = '/home/berke/workdir/www/zen-browser/work/wgpu-6beea7c20df563883848933f70cdd0ea99fc7144/wgpu-types' }
+naga = { path = '/home/berke/workdir/www/zen-browser/work-py311/wgpu-6beea7c20df563883848933f70cdd0ea99fc7144/naga' }
+wgpu-core = { path = '/home/berke/workdir/www/zen-browser/work-py311/wgpu-6beea7c20df563883848933f70cdd0ea99fc7144/wgpu-core' }
+wgpu-core-deps-apple = { path = '/home/berke/workdir/www/zen-browser/work-py311/wgpu-6beea7c20df563883848933f70cdd0ea99fc7144/wgpu-core/platform-deps/apple' }
+wgpu-core-deps-windows-linux-android = { path = '/home/berke/workdir/www/zen-browser/work-py311/wgpu-6beea7c20df563883848933f70cdd0ea99fc7144/wgpu-core/platform-deps/windows-linux-android' }
+wgpu-hal = { path = '/home/berke/workdir/www/zen-browser/work-py311/wgpu-6beea7c20df563883848933f70cdd0ea99fc7144/wgpu-hal' }
+wgpu-types = { path = '/home/berke/workdir/www/zen-browser/work-py311/wgpu-6beea7c20df563883848933f70cdd0ea99fc7144/wgpu-types' }
 [patch.'https://github.com/mozilla/mp4parse-rust']
-mp4parse = { path = '/home/berke/workdir/www/zen-browser/work/mp4parse-rust-f955be5d2a04a631c0f1777d6f35370ea1a99e2d/mp4parse' }
-mp4parse_capi = { path = '/home/berke/workdir/www/zen-browser/work/mp4parse-rust-f955be5d2a04a631c0f1777d6f35370ea1a99e2d/mp4parse_capi' }
+mp4parse = { path = '/home/berke/workdir/www/zen-browser/work-py311/mp4parse-rust-f955be5d2a04a631c0f1777d6f35370ea1a99e2d/mp4parse' }
+mp4parse_capi = { path = '/home/berke/workdir/www/zen-browser/work-py311/mp4parse-rust-f955be5d2a04a631c0f1777d6f35370ea1a99e2d/mp4parse_capi' }
