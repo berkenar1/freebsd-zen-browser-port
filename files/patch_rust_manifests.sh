@@ -156,6 +156,33 @@ if [ -f "$TOP" ]; then
         else
             echo "authors already present in $TOP"
         fi
+
+        # Add common empty defaults for other package fields that crates may inherit via `.workspace`
+        for ks in homepage repository license keywords categories readme description; do
+            if ! grep -q "^[[:space:]]*$ks[[:space:]]*=" "$TOP"; then
+                echo "Adding $ks default to $TOP (under [workspace.package])"
+                if [ "$APPLY" = true ]; then
+                    case "$ks" in
+                        keywords|categories)
+                            val='[]' ;;
+                        *)
+                            val='""' ;;
+                    esac
+                    awk -v k="$ks" -v v="$val" '1{print; if($0 ~ /\[workspace.package\]/ && !x){print k" = "v; x=1}}' "$TOP" > "$TOP.tmp" && apply_edit "$TOP"
+                else
+                    case "$ks" in
+                        keywords|categories)
+                            val_preview='[]' ;;
+                        *)
+                            val_preview='""' ;;
+                    esac
+                    echo "--- preview (insert $ks default in $TOP) ---"
+                    awk -v k="$ks" -v v="$val_preview" '1{print; if($0 ~ /\[workspace.package\]/ && !x){print k" = "v; x=1}}' "$TOP" | sed -n '1,120p'
+                    echo "--- end preview ---"
+                fi
+            fi
+        done
+
     else
         echo "No [workspace.package] in $TOP, skipping edition/authors insertion"
     fi
