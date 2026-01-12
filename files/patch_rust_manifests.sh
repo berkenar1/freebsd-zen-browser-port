@@ -128,8 +128,22 @@ if [ -f "$TOP" ]; then
         else
             echo "edition already present in $TOP"
         fi
+
+        if ! grep -q "^[[:space:]]*authors[[:space:]]*=" "$TOP"; then
+            echo "Adding authors = [] to $TOP (under [workspace.package])"
+            if [ "$APPLY" = true ]; then
+                awk '1{print; if($0 ~ /\[workspace.package\]/ && !x){print "authors = []"; x=1}}' "$TOP" > "$TOP.tmp"
+                apply_edit "$TOP"
+            else
+                echo "--- preview (insert authors = [] in $TOP) ---"
+                awk '1{print; if($0 ~ /\[workspace.package\]/ && !x){print "authors = []"; x=1}}' "$TOP" | sed -n '1,120p'
+                echo "--- end preview ---"
+            fi
+        else
+            echo "authors already present in $TOP"
+        fi
     else
-        echo "No [workspace.package] in $TOP, skipping edition insertion"
+        echo "No [workspace.package] in $TOP, skipping edition/authors insertion"
     fi
 
     if grep -q "\[workspace.dependencies\]" "$TOP"; then
@@ -168,7 +182,21 @@ find "$ROOT" -type f -path "*/ohttp-*/bhttp/Cargo.toml" -print | while read -r F
     fi
 done
 
-# 7) Tidy: where a dependency line includes trailing commas left by replacements, remove duplicate commas
+# 7) Replace any remaining edition.workspace usages across all Cargo.toml files (global sweep)
+find "$ROOT" -type f -name Cargo.toml -print | while read -r F; do
+    if grep -q "edition[[:space:]]*\.workspace" "$F" 2>/dev/null; then
+        echo "Replacing edition.workspace in: $F"
+        if [ "$APPLY" = true ]; then
+            awk '{ if($0 ~ /^[[:space:]]*edition[[:space:]]*\.workspace[[:space:]]*=.*/){ sub(/edition[[:space:]]*\.workspace[[:space:]]*=.*/, "edition = \"2021\""); print; } else { print } }' "$F" > "$F.tmp" && apply_edit "$F"
+        else
+            echo "--- preview (global edition.workspace replacement for $F) ---"
+            awk '{ if($0 ~ /^[[:space:]]*edition[[:space:]]*\.workspace[[:space:]]*=.*/){ sub(/edition[[:space:]]*\.workspace[[:space:]]*=.*/, "edition = \"2021\""); print; } else { print } }' "$F" | sed -n '1,120p'
+            echo "--- end preview ---"
+        fi
+    fi
+done
+
+# 8) Tidy: where a dependency line includes trailing commas left by replacements, remove duplicate commas
 find "$ROOT" -type f -name Cargo.toml | while read -r f; do
     if grep -q ",," "$f"; then
         echo "Tidying double-commas in: $f"
