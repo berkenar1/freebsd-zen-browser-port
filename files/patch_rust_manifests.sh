@@ -178,6 +178,49 @@ if [ -f "$TOP" ]; then
     else
         echo "No [workspace.dependencies] in $TOP, skipping annotate-snippets insertion"
     fi
+
+    # 8) Inspect crate manifests for other `*.workspace` usage and ensure top-level workspace.package
+    # defines any referenced package metadata keys (version, authors, homepage, repository, rust-version, etc.)
+    echo "Scanning for workspace.* usage across crates to ensure workspace.package provides defaults"
+    used_keys=$(grep -R -h --line-regexp -o '^[[:space:]]*[a-zA-Z0-9_-]*\.workspace' "$ROOT" | sed 's/.*\([a-zA-Z0-9_-]*\)\.workspace.*/\1/' | sort -u || true)
+    for key in $used_keys; do
+        # Skip keys we've already added/handled
+        case "$key" in
+            edition|version|authors|rust-version)
+                continue ;;
+        esac
+        if ! grep -q "^[[:space:]]*$key[[:space:]]*=" "$TOP"; then
+            echo "Adding default for workspace.package.$key to $TOP"
+            if [ "$APPLY" = true ]; then
+                # Choose simple defaults: arrays for authors/keywords/categories, strings for others
+                case "$key" in
+                    keywords|categories|authors)
+                        val="[]" ;;
+                    rust-version)
+                        val='"1.81.0"' ;;
+                    version)
+                        val='"0.0.0"' ;;
+                    *)
+                        val='""' ;;
+                esac
+                awk -v k="$key" -v v="$val" '1{print; if($0 ~ /\[workspace.package\]/ && !x){print k" = "v; x=1}}' "$TOP" > "$TOP.tmp" && apply_edit "$TOP"
+            else
+                echo "--- preview (insert $key default in $TOP) ---"
+                case "$key" in
+                    keywords|categories|authors)
+                        val_preview='[]' ;;
+                    rust-version)
+                        val_preview='"1.81.0"' ;;
+                    version)
+                        val_preview='"0.0.0"' ;;
+                    *)
+                        val_preview='""' ;;
+                esac
+                awk -v k="$key" -v v="$val_preview" '1{print; if($0 ~ /\[workspace.package\]/ && !x){print k" = "v; x=1}}' "$TOP" | sed -n '1,120p'
+                echo "--- end preview ---"
+            fi
+        fi
+done
 fi
 
 # 6) Fix ohttp bhttp crates which use "edition.workspace = true" -> make explicit edition
