@@ -248,6 +248,43 @@ if [ -f "$TOP" ]; then
             fi
         fi
 done
+
+    # 9) Add placeholder entries into [workspace.dependencies] for crates that reference dependency.workspace = true
+    echo "Scanning for dependency.workspace usages to populate [workspace.dependencies] with placeholders"
+    dep_names=$(grep -R -h -E "\.[[:space:]]*workspace|\.workspace" "$ROOT" | sed -E 's/^[[:space:]]*([a-zA-Z0-9_-]+)\.workspace.*/\1/' | sort -u || true)
+    for dep in $dep_names; do
+        # skip obvious package-keys
+        case "$dep" in
+            edition|version|authors|rust-version|homepage|repository|license|keywords|categories|readme|description)
+                continue ;;
+        esac
+        if ! grep -q "^[[:space:]]*$dep[[:space:]]*=" "$TOP"; then
+            echo "Adding workspace dependency placeholder: $dep = \"*\" to $TOP"
+            if [ "$APPLY" = true ]; then
+                awk -v n="$dep" '1{print; if($0 ~ /\[workspace.dependencies\]/ && !x){print n" = \"*\""; x=1}}' "$TOP" > "$TOP.tmp" && apply_edit "$TOP"
+                # Append to a canonical patch file so this is reproducible
+                PATCHFILE="files/patch-rust-manifests/patch-workspace-deps.patch"
+                mkdir -p "$(dirname "$PATCHFILE")"
+                if [ ! -f "$PATCHFILE" ] || ! grep -qF "$dep = \"*\"" "$PATCHFILE" 2>/dev/null; then
+                    cat >> "$PATCHFILE" <<EOF
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.dependencies]
++$dep = "*"
+*** End Patch
+EOF
+                    echo "Appended workspace dep $dep to: $PATCHFILE"
+                else
+                    echo "workspace dep $dep already present in $PATCHFILE; skipping"
+                fi
+            else
+                echo "--- preview (insert $dep = \"*\" in $TOP) ---"
+                awk -v n="$dep" '1{print; if($0 ~ /\[workspace.dependencies\]/ && !x){print n" = \"*\""; x=1}}' "$TOP" | sed -n '1,120p'
+                echo "--- end preview ---"
+            fi
+        fi
+done
 fi
 
 # 6) Fix ohttp bhttp crates which use "edition.workspace = true" -> make explicit edition
