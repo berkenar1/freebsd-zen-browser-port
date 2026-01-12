@@ -1,0 +1,6 @@
+*** Begin Patch
+*** Update File: Cargo.toml
+@@
+ [workspace.package]
++edition = "2021"
+*** End Patch
